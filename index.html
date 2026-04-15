@@ -2,15 +2,14 @@
 <html lang="he" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>ספרות תפארתך | Tifartecha - Global Sacred Arts & STAM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="תפארתך - חנות סת''ם בינלאומית בנשיאות הרה''ג אלדר לוי. רכישת ספרי תורה, תפילין ומזוזות ברמת הידור פרימיום לכל העולם.">
+    <title>תפארתך | חנות הסת''ם העולמית</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@200;300;400;600;700&family=Frank+Ruhl+Libre:wght@300;400;700;900&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;800&family=Frank+Ruhl+Libre:wght@300;400;500;700;900&family=Noto+Serif+Hebrew:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD"></script>
-
+    
     <script>
         tailwind.config = {
             theme: {
@@ -18,11 +17,18 @@
                     fontFamily: {
                         sans: ['Assistant', 'sans-serif'],
                         serif: ['Frank Ruhl Libre', 'serif'],
-                        latin: ['Cinzel', 'serif'],
+                        tradition: ['Noto Serif Hebrew', 'serif'],
                     },
                     colors: {
-                        gold: { light: '#FCF6BA', DEFAULT: '#D4AF37', dark: '#996515', premium: '#AA771C' },
-                        navy: { light: '#1a2a4a', DEFAULT: '#0c1425', dark: '#050a14' }
+                        legacy: {
+                            deep: '#0a0a0a',
+                            gold: '#C5A059',
+                            brass: '#997a3d',
+                            sand: '#F7F5F0',
+                            parchment: '#FCFBF7',
+                            border: '#E8E5DC',
+                            vault: '#111'
+                        }
                     }
                 }
             }
@@ -31,422 +37,670 @@
 
     <style>
         :root {
-            --gold-gradient: linear-gradient(135deg, #BF953F 0%, #FCF6BA 45%, #B38728 70%, #AA771C 100%);
+            --gold-gradient: linear-gradient(135deg, #D4AF37, #C5A059, #997a3d);
+            --luxury-shadow: 0 15px 35px rgba(0,0,0,0.06);
+            --hover-shadow: 0 25px 50px rgba(197, 160, 89, 0.1);
         }
-        body { background-color: #FDFBF7; scroll-behavior: smooth; }
+        
+        body { background-color: #FCFBF7; color: #1a1a1a; scroll-behavior: smooth; }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #F9F7F2; }
+        ::-webkit-scrollbar-thumb { background: var(--gold-gradient); border-radius: 10px; }
+
         .gold-text { background: var(--gold-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .luxury-card { background: rgba(255, 255, 255, 0.95); transition: all 0.5s ease; border: 1px solid rgba(212, 175, 55, 0.1); }
-        .luxury-card:hover { transform: translateY(-10px); box-shadow: 0 30px 60px rgba(0,0,0,0.12); border-color: #D4AF37; }
-        .nav-link { position: relative; }
-        .nav-link::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px; background: #D4AF37; transition: 0.3s; }
-        .nav-link:hover::after { width: 100%; }
-        .section-divider { width: 100px; height: 2px; background: var(--gold-gradient); margin: 2rem auto; }
-        .glass { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px); }
-        .cart-dot { animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite; }
-        @keyframes ping { 75%, 100% { transform: scale(2); opacity: 0; } }
+        
+        .luxury-card { 
+            background: #FFFFFF; 
+            border: 1px solid var(--legacy-border); 
+            transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1); 
+            box-shadow: var(--luxury-shadow);
+        }
+        .luxury-card:hover { 
+            border-color: #C5A059; 
+            transform: translateY(-8px); 
+            box-shadow: var(--hover-shadow); 
+        }
+
+        .btn-royal { background: var(--gold-gradient); color: #fff; transition: all 0.3s ease; position: relative; overflow: hidden; }
+        .btn-royal::after { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); transition: 0.5s; }
+        .btn-royal:hover::after { left: 100%; }
+        .btn-royal:hover { transform: scale(1.02); box-shadow: 0 10px 25px rgba(197, 160, 89, 0.25); }
+        .btn-royal:active { transform: scale(0.98); }
+
+        /* Smooth Header */
+        header.scrolled { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+        header.scrolled nav { box-shadow: 0 10px 30px rgba(0,0,0,0.05); background: rgba(252, 251, 247, 0.98); }
+
+        .top-bar-link { transition: 0.3s; opacity: 0.6; cursor: pointer; }
+        .top-bar-link:hover, .top-bar-link.active { opacity: 1; color: #C5A059; }
+
+        .input-gold:focus { border-color: #C5A059; box-shadow: 0 0 0 2px rgba(197, 160, 89, 0.1); }
+
+        #cart-drawer { transition: transform 0.5s cubic-bezier(0.85, 0, 0.15, 1); }
+        
+        .filter-btn { position: relative; opacity: 0.5; transition: 0.3s; font-weight: 700; font-size: 1rem; cursor: pointer; }
+        .filter-btn.active { opacity: 1; color: #C5A059; }
+        .filter-btn.active::after { content: ''; position: absolute; bottom: -4px; right: 0; width: 100%; height: 2px; background: var(--gold-gradient); }
+
+        .hero-bg {
+            background-image: linear-gradient(to bottom, rgba(252, 251, 247, 0.85), rgba(252, 251, 247, 0.98)), 
+                              url('https://babasali.org.il/wp-content/uploads/2024/12/%D7%AA%D7%9E%D7%95%D7%A0%D7%94-%D7%91%D7%90%D7%91%D7%90-%D7%A1%D7%90%D7%9C%D7%99-%D7%9E%D7%95%D7%A7%D7%98%D7%9F.d110a0.webp');
+            background-size: cover; background-position: center; background-attachment: fixed;
+        }
+
+        /* Marquee Animation */
+        .marquee-wrapper {
+            display: flex;
+            overflow: hidden;
+            width: 100%;
+            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+        }
+        
+        .marquee-track {
+            display: flex;
+            width: max-content;
+            animation: scroll-rtl 45s linear infinite;
+        }
+        
+        .marquee-track.fast {
+            animation: scroll-rtl 30s linear infinite;
+        }
+
+        @keyframes scroll-rtl {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(50%); }
+        }
+        
+        .marquee-wrapper:hover .marquee-track {
+            animation-play-state: paused;
+        }
+
+        .vault-container {
+            background: radial-gradient(circle at top right, #1a1a1a, #000);
+            box-shadow: inset 0 0 50px rgba(0,0,0,0.8);
+        }
     </style>
 </head>
-<body class="font-sans text-navy">
+<body class="font-serif antialiased pt-16">
 
-    <!-- Top Utility Bar -->
-    <div class="bg-navy-dark text-white/70 py-2 px-6 flex justify-between items-center text-[10px] tracking-[0.2em] uppercase font-bold border-b border-gold/10">
-        <div class="flex gap-4">
-            <span class="flex items-center gap-1"><i data-lucide="globe" class="w-3 h-3 text-gold"></i> Shipping to: USA, UK, FR, ISR</span>
+    <!-- Global Top Bar -->
+    <div id="top-bar" class="fixed top-0 w-full bg-legacy-deep text-white/90 text-[10px] uppercase tracking-[0.2em] py-2.5 px-8 flex justify-between items-center z-[200]">
+        <div class="flex gap-8 items-center font-sans font-semibold">
+            <span class="hidden md:inline text-legacy-gold">✓ משלוח מאובטח לכל העולם</span>
+            <span class="hidden lg:inline italic opacity-80">Premium Quality Assured</span>
         </div>
-        <div class="flex gap-4">
-            <button onclick="setCurrency('USD')" class="hover:text-white transition-colors">USD $</button>
-            <button onclick="setCurrency('ILS')" class="hover:text-white transition-colors">ILS ₪</button>
+        <div class="flex items-center gap-8 font-sans font-bold">
+            <div class="flex gap-4 border-r border-white/20 pr-8">
+                <span onclick="setCurrency('USD')" id="curr-usd" class="top-bar-link active">USD ($)</span>
+                <span onclick="setCurrency('ILS')" id="curr-ils" class="top-bar-link">ILS (₪)</span>
+            </div>
+            <div class="flex gap-4">
+                <span class="top-bar-link">EN</span>
+                <span class="top-bar-link active">HE</span>
+            </div>
         </div>
     </div>
 
-    <!-- Main Navigation -->
-    <nav class="sticky top-0 z-50 glass border-b border-gold/10 px-8 py-5 flex justify-between items-center">
-        <div class="flex items-center gap-12">
-            <h1 class="font-serif text-3xl font-black gold-text tracking-tighter cursor-pointer">תפארתך.</h1>
-            <div class="hidden lg:flex gap-8 text-[11px] font-bold tracking-widest uppercase">
-                <a href="#about" class="nav-link">המורשת</a>
-                <a href="#catalog" class="nav-link">הקטלוג</a>
-                <a href="#halacha" class="nav-link">מרכז ההלכה</a>
-                <a href="#gallery" class="nav-link">גלריה</a>
+    <!-- Navigation Header -->
+    <header id="nav-header" class="fixed top-10 w-full z-[100] transition-all duration-500 px-6 py-4">
+        <nav class="max-w-[1400px] mx-auto flex justify-between items-center bg-white/90 backdrop-blur-xl rounded-full px-8 py-3 border border-legacy-border transition-all shadow-sm">
+            <div class="flex flex-col cursor-pointer" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+                <span class="text-3xl font-black gold-text tracking-tighter leading-none">תפארתך</span>
+                <span class="text-[8px] uppercase tracking-[0.4em] opacity-50 font-sans font-bold mt-1">Scribal Artistry</span>
             </div>
-        </div>
-        <div class="flex items-center gap-6">
-            <div class="relative group hidden sm:block">
-                <input type="text" placeholder="חיפוש מוצר..." class="bg-gray-100 border-none rounded-full px-5 py-2 text-xs focus:ring-1 focus:ring-gold w-40 transition-all focus:w-60">
-                <i data-lucide="search" class="w-4 h-4 absolute left-3 top-2 text-gray-400"></i>
+            
+            <div class="hidden lg:flex gap-12 text-sm font-bold text-gray-700 font-sans">
+                <a href="#products" onclick="filterCatalog('תורה')" class="hover:text-legacy-gold transition-colors">ספרי תורה</a>
+                <a href="#products" onclick="filterCatalog('תפילין')" class="hover:text-legacy-gold transition-colors">תפילין ומזוזות</a>
+                <a href="#reviews" class="hover:text-legacy-gold transition-colors">לקוחות ממליצים</a>
+                <a href="#leadership" class="hover:text-legacy-gold transition-colors">נשיאות המכון</a>
             </div>
-            <button onclick="toggleCart()" class="relative">
-                <i data-lucide="shopping-cart" class="w-6 h-6 text-navy"></i>
-                <span id="cart-count" class="absolute -top-2 -right-2 bg-gold text-navy text-[9px] w-5 h-5 rounded-full flex items-center justify-center font-black">0</span>
+
+            <div class="flex items-center gap-6">
+                <button onclick="toggleCart()" class="relative group flex items-center gap-2 outline-none bg-legacy-sand px-5 py-2.5 rounded-full hover:bg-legacy-border transition-colors">
+                    <span class="text-xs font-bold font-sans text-legacy-deep">הסל שלי</span>
+                    <svg class="w-5 h-5 text-legacy-deep" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+                    <span id="cart-count" class="absolute -top-1 -right-1 bg-legacy-gold text-white text-[10px] w-5 h-5 rounded-full flex items-center justify-center font-bold shadow-md">0</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Cart Drawer -->
+    <div id="cart-overlay" onclick="toggleCart()" class="fixed inset-0 bg-black/60 z-[200] hidden opacity-0 transition-opacity duration-300 backdrop-blur-sm"></div>
+    <div id="cart-drawer" class="fixed top-0 left-0 h-full w-full md:w-[450px] bg-white z-[201] translate-x-[-100%] flex flex-col shadow-2xl">
+        <div class="p-8 border-b border-legacy-border flex justify-between items-center bg-legacy-parchment">
+            <h2 class="text-2xl font-black font-tradition italic text-legacy-deep">הסל המהודר</h2>
+            <button onclick="toggleCart()" class="p-2 hover:bg-white rounded-full transition-colors">
+                <svg class="w-6 h-6 text-gray-500 hover:text-legacy-deep" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-width="2"></path></svg>
             </button>
-            <button class="lg:hidden"><i data-lucide="menu" class="w-6 h-6"></i></button>
         </div>
-    </nav>
+        <div id="cart-items" class="flex-1 overflow-y-auto p-8 space-y-4">
+            <div id="empty-cart-msg" class="flex flex-col items-center justify-center py-20 text-gray-400 italic">
+                <svg class="w-12 h-12 mb-4 opacity-20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" stroke-width="1.5"></path></svg>
+                <p class="text-sm">הסל מחכה לבחירת הקדושה שלך...</p>
+            </div>
+        </div>
+        <div class="p-8 border-t border-legacy-border bg-legacy-sand">
+            <div class="flex justify-between items-center mb-6">
+                <span class="text-gray-500 uppercase tracking-widest text-xs font-bold">סה"כ לתשלום:</span>
+                <span id="cart-total" class="text-3xl font-black gold-text">0$</span>
+            </div>
+            <button onclick="goToCheckout()" class="w-full bg-[#003087] hover:bg-[#002266] text-white py-4 rounded-xl font-bold flex items-center justify-center gap-3 transition-all shadow-lg active:scale-95">
+                <span class="text-sm font-sans tracking-wide">לתשלום מאובטח ב-</span>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" class="h-3.5 filter brightness-0 invert" alt="PayPal">
+            </button>
+        </div>
+    </div>
 
-    <!-- Hero Video/Visual Section -->
-    <section class="relative h-[90vh] bg-navy-dark flex items-center justify-center overflow-hidden">
-        <div class="absolute inset-0 z-0 opacity-40">
-             <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&q=80&w=1920" class="w-full h-full object-cover" alt="Artisan background">
-        </div>
-        <div class="relative z-10 text-center px-6" data-aos="fade-up">
-            <span class="font-latin text-gold tracking-[0.8em] text-xs uppercase mb-8 block">Legacy of Holiness</span>
-            <h2 class="text-white text-6xl md:text-9xl font-serif font-black mb-8 leading-none">
-                קדושה <span class="gold-text">מנצחת.</span>
-            </h2>
-            <p class="text-white/60 max-w-3xl mx-auto text-xl font-light mb-12">
-                משרד הסת"ם המוביל בעולם לשירותי כתיבה, בדיקה והידור. <br>
-                יצירות פאר המלוות אתכם לדורות, בפיקוח הדוק של גדולי ישראל.
+    <!-- Hero Section -->
+    <section class="pt-32 pb-16 flex flex-col items-center justify-center hero-bg px-6 relative overflow-hidden min-h-[75vh]">
+        <div class="max-w-4xl text-center z-10" data-aos="zoom-out" data-aos-duration="1200">
+            <div class="inline-block px-5 py-1.5 border border-legacy-gold/40 rounded-full mb-8 bg-white/70 backdrop-blur-sm shadow-sm">
+                <span class="text-[10px] uppercase tracking-[0.4em] font-black text-legacy-gold font-sans">Global Masterpieces of Faith</span>
+            </div>
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-black mb-6 italic text-legacy-deep tracking-tighter leading-[1.1] font-tradition">
+                קדושה שעוברת <br><span class="gold-text">מדורי דורות</span>
+            </h1>
+            <p class="text-lg md:text-xl text-gray-700 mb-10 max-w-2xl mx-auto font-serif italic leading-relaxed">
+                ספרי תורה, תפילין ומזוזות בסטנדרט העולמי הגבוה ביותר. חוויית רכישה מקוונת, אקסקלוסיבית ומאובטחת לכל העולם.
             </p>
-            <div class="flex flex-col md:flex-row justify-center gap-6">
-                <a href="#catalog" class="bg-gold text-navy px-14 py-5 rounded-sm font-black tracking-widest text-xs uppercase hover:bg-white transition-all">לצפייה בקולקציה</a>
-                <a href="https://wa.me/972528219928" class="border border-white/30 text-white px-14 py-5 rounded-sm font-black tracking-widest text-xs uppercase hover:bg-gold hover:text-navy transition-all">ייעוץ VIP אישי</a>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#products" class="btn-royal px-12 py-4 rounded-full font-black text-sm uppercase tracking-widest shadow-xl hover:shadow-2xl transition-all">התחל קנייה</a>
             </div>
         </div>
     </section>
 
-    <!-- Trust Stats -->
-    <section class="py-12 bg-white border-b border-gold/10">
-        <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <div data-aos="fade-up">
-                <div class="text-3xl font-serif font-black text-navy">15+</div>
-                <div class="text-[10px] text-gold-dark font-bold uppercase tracking-widest">שנות מומחיות</div>
+    <!-- Trust Bar (High Conversion Element) -->
+    <section class="bg-legacy-deep text-white py-10 border-y border-legacy-gold/20">
+        <div class="max-w-[1400px] mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-white/10 rtl:divide-x-reverse">
+            <div class="flex flex-col items-center justify-center px-4" data-aos="fade-up">
+                <div class="w-12 h-12 rounded-full border border-legacy-gold/30 flex items-center justify-center mb-4 bg-legacy-gold/10">
+                    <svg class="w-6 h-6 text-legacy-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                </div>
+                <span class="text-sm font-bold text-legacy-parchment">כשרות מהדרין</span>
+                <span class="text-[9px] text-gray-400 font-sans uppercase tracking-widest mt-1">Rabbinical Certified</span>
             </div>
-            <div data-aos="fade-up" data-aos-delay="100">
-                <div class="text-3xl font-serif font-black text-navy">12,000+</div>
-                <div class="text-[10px] text-gold-dark font-bold uppercase tracking-widest">מזוזות נבדקו</div>
+            <div class="flex flex-col items-center justify-center px-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="w-12 h-12 rounded-full border border-legacy-gold/30 flex items-center justify-center mb-4 bg-legacy-gold/10">
+                    <svg class="w-6 h-6 text-legacy-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 002 2h1.5a2.5 2.5 0 012.5 2.5V17m-6 5v-1.5a2.5 2.5 0 012.5-2.5h1.5a2.5 2.5 0 012.5 2.5V22"></path></svg>
+                </div>
+                <span class="text-sm font-bold text-legacy-parchment">משלוח גלובלי</span>
+                <span class="text-[9px] text-gray-400 font-sans uppercase tracking-widest mt-1">Worldwide Insured</span>
             </div>
-            <div data-aos="fade-up" data-aos-delay="200">
-                <div class="text-3xl font-serif font-black text-navy">100%</div>
-                <div class="text-[10px] text-gold-dark font-bold uppercase tracking-widest">עבודת יד</div>
+            <div class="flex flex-col items-center justify-center px-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="w-12 h-12 rounded-full border border-legacy-gold/30 flex items-center justify-center mb-4 bg-legacy-gold/10">
+                    <svg class="w-6 h-6 text-legacy-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                </div>
+                <span class="text-sm font-bold text-legacy-parchment">הצפנה מלאה</span>
+                <span class="text-[9px] text-gray-400 font-sans uppercase tracking-widest mt-1">256-bit SSL Secure</span>
             </div>
-            <div data-aos="fade-up" data-aos-delay="300">
-                <div class="text-3xl font-serif font-black text-navy">Global</div>
-                <div class="text-[10px] text-gold-dark font-bold uppercase tracking-widest">משלוח בינלאומי</div>
+            <div class="flex flex-col items-center justify-center px-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="w-12 h-12 rounded-full border border-legacy-gold/30 flex items-center justify-center mb-4 bg-legacy-gold/10">
+                    <svg class="w-6 h-6 text-legacy-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7"></path></svg>
+                </div>
+                <span class="text-sm font-bold text-legacy-parchment">אחריות וליווי</span>
+                <span class="text-[9px] text-gray-400 font-sans uppercase tracking-widest mt-1">Satisfaction Guarantee</span>
             </div>
         </div>
     </section>
 
-    <!-- Global Catalog Sections -->
-    <section id="catalog" class="py-24 px-6 bg-[#FDFBF7]">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-20" data-aos="fade-up">
-                <h3 class="font-serif text-5xl font-bold text-navy mb-4">קטלוג היצירות</h3>
-                <div class="section-divider"></div>
-                <div class="flex flex-wrap justify-center gap-4 text-[10px] font-bold tracking-widest uppercase text-gray-400">
-                    <button class="text-gold border-b border-gold pb-1">All Collections</button>
-                    <button class="hover:text-navy transition-colors">Torah Scrolls</button>
-                    <button class="hover:text-navy transition-colors">Tefillin</button>
-                    <button class="hover:text-navy transition-colors">Megillot</button>
-                    <button class="hover:text-navy transition-colors">Judaica Art</button>
+    <!-- Catalog Section -->
+    <section id="products" class="py-24 bg-legacy-sand">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-12">
+            
+            <div class="flex flex-col lg:flex-row justify-between items-end mb-16 gap-8">
+                <div data-aos="fade-left">
+                    <h2 class="text-4xl md:text-5xl font-black italic mb-3 font-tradition text-legacy-deep">הקולקציה <span class="gold-text">הנבחרת</span></h2>
+                    <p class="text-gray-500 font-bold uppercase tracking-widest text-[10px] font-sans">Premium Sacred Scrolls Collection</p>
+                </div>
+                
+                <div class="flex gap-8 border-b border-legacy-border pb-3 w-full lg:w-auto overflow-x-auto custom-scrollbar">
+                    <button onclick="filterCatalog('all')" id="filter-all" class="filter-btn active whitespace-nowrap font-sans">הקולקציה כולה</button>
+                    <button onclick="filterCatalog('תורה')" id="filter-תורה" class="filter-btn whitespace-nowrap font-sans">ספרי תורה</button>
+                    <button onclick="filterCatalog('תפילין')" id="filter-תפילין" class="filter-btn whitespace-nowrap font-sans">תפילין</button>
+                    <button onclick="filterCatalog('מזוזות')" id="filter-מזוזות" class="filter-btn whitespace-nowrap font-sans">מזוזות</button>
                 </div>
             </div>
 
             <!-- Product Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <!-- Products will be injected here via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Moving Google Reviews Carousel (Placed ABOVE Checkout) -->
+    <section id="reviews" class="pt-20 pb-10 bg-legacy-deep overflow-hidden border-t border-legacy-gold/20">
+        <div class="max-w-[1400px] mx-auto px-6 mb-12 text-center" data-aos="fade-up">
+            <div class="flex justify-center items-center gap-3 mb-4">
+                <svg class="w-6 h-6" viewBox="0 0 48 48">
+                    <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+                    <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+                    <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+                    <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+                </svg>
+                <span class="text-legacy-gold text-[10px] uppercase tracking-[0.3em] font-black font-sans">Verified Customer Reviews</span>
+            </div>
+            <h2 class="text-4xl md:text-5xl font-black italic font-tradition text-white">אמינות <span class="gold-text">ויוקרה בינלאומית</span></h2>
+        </div>
+
+        <div class="marquee-wrapper mb-8">
+            <div class="marquee-track fast">
+                <script>
+                    const revs = [
+                        { n: "דוד לוי", t: "התפילין הגיעו ארוזות בקפידה. שירות אדיב ומקצועי שמשרה רוגע. ממליץ בחום על המכון!", s: 5 },
+                        { n: "Yoni Stern", t: "Exceptional quality from Israel. The Torah scroll is a true masterpiece. The entire community is amazed.", s: 5 },
+                        { n: "אברהם ר.", t: "מזוזות ברמה הכי גבוהה שראיתי בחיי. ביטחון מלא בכשרות בזכות הפיקוח ההדוק של הרב אלדר.", s: 5 },
+                        { n: "Michael B.", t: "Perfect customer support for international delivery. Arrived safely to New York, exactly on time.", s: 5 },
+                        { n: "ישראל כ.", t: "מלאכת מחשבת של ממש. תענוג להניח תפילין כאלו כל בוקר, מרגישים את הקדושה בכל אות ואות.", s: 5 },
+                        { n: "Simon S.", t: "The communication was excellent. They guided us through every step of writing the scroll.", s: 5 }
+                    ];
+                    const allRevs = [...revs, ...revs];
+                    document.write(allRevs.map(r => `
+                        <div class="w-[350px] mx-4 p-8 rounded-3xl flex flex-col justify-between bg-white/[0.04] border border-legacy-gold/20 backdrop-blur-xl shrink-0 hover:bg-white/[0.08] hover:border-legacy-gold/40 transition-colors">
+                            <div class="flex gap-1 mb-5 text-legacy-gold text-lg drop-shadow-md">${'★'.repeat(r.s)}</div>
+                            <p class="text-sm text-white/90 italic leading-relaxed mb-8 font-serif">"${r.t}"</p>
+                            <div class="flex items-center gap-4 pt-5 border-t border-white/10">
+                                <div class="w-12 h-12 rounded-full bg-legacy-gold/20 flex items-center justify-center text-sm font-black gold-text border border-legacy-gold/30 shadow-inner">${r.n[0]}</div>
+                                <div class="flex flex-col text-right">
+                                    <span class="text-sm font-bold text-white">${r.n}</span>
+                                    <span class="text-[9px] text-green-400 font-sans font-bold uppercase tracking-widest mt-1">Verified Buyer</span>
+                                </div>
+                            </div>
+                        </div>
+                    `).join(''));
+                </script>
+            </div>
+        </div>
+    </section>
+
+    <!-- Global Communities Logos Marquee (Moved Below Reviews) -->
+    <section class="py-6 bg-legacy-deep border-b border-white/10 overflow-hidden">
+        <div class="marquee-wrapper">
+            <div class="marquee-track">
+                <script>
+                    const communities = [
+                        "קהילת שערי ציון, ניו יורק", "בית הכנסת הגדול, פריז", "קהילת אור החיים, מיאמי", 
+                        "קהילת מגן דוד, בוורלי הילס", "בית מנחם, לונדון", "קהילת שובה ישראל, לוס אנג'לס",
+                        "ישיבת תורת אמת, אנטוורפן", "קהילת נצח ישראל, בואנוס איירס"
+                    ];
+                    const allLogos = [...communities, ...communities];
+                    document.write(allLogos.map(name => `
+                        <div class="flex items-center gap-4 px-16 opacity-50 hover:opacity-100 transition-all cursor-default">
+                            <svg class="w-5 h-5 text-legacy-gold drop-shadow-sm" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" stroke-width="1" fill="none"/></svg>
+                            <span class="font-serif font-bold text-sm text-legacy-parchment whitespace-nowrap">${name}</span>
+                        </div>
+                    `).join(''));
+                </script>
+            </div>
+        </div>
+    </section>
+
+    <!-- Secure Checkout Form Section -->
+    <section id="checkout" class="py-24 bg-white relative">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <span class="text-[10px] uppercase tracking-[0.4em] gold-text font-bold mb-3 block font-sans">Secure Checkout Vault</span>
+                <h2 class="text-4xl md:text-5xl font-black italic text-legacy-deep font-tradition">השלמת רכישה <span class="gold-text">מאובטחת</span></h2>
+            </div>
+
+            <div class="luxury-card rounded-[3rem] p-8 md:p-14 shadow-2xl overflow-hidden relative border-legacy-gold/30" data-aos="zoom-in" data-aos-duration="1000">
+                <!-- Vault Background Effect -->
+                <div class="absolute inset-0 bg-gray-50/50 pointer-events-none"></div>
+                <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-legacy-gold via-legacy-brass to-legacy-gold opacity-30"></div>
                 
-                <!-- Category 1: Torah Scrolls -->
-                <div class="lg:col-span-2 luxury-card rounded-none relative group overflow-hidden h-[500px]" data-aos="fade-up">
-                    <img src="https://images.unsplash.com/photo-1599839619722-39751411ea63?auto=format&fit=crop&q=80&w=1200" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000">
-                    <div class="absolute inset-0 bg-gradient-to-t from-navy to-transparent opacity-80"></div>
-                    <div class="absolute bottom-10 right-10 left-10 text-white">
-                        <span class="text-gold text-xs font-bold tracking-widest uppercase">Masterpiece</span>
-                        <h4 class="text-4xl font-serif font-bold mt-2">ספרי תורה פרימיום</h4>
-                        <p class="text-white/60 mt-4 text-sm font-light">כתיבה מותאמת אישית לקהילות ולבתי כנסת עם ליווי צמוד עד למעמד ההכנסה.</p>
-                        <button class="mt-8 border border-gold text-gold px-8 py-3 text-[10px] font-bold tracking-widest uppercase hover:bg-gold hover:text-navy transition-all">הצעת מחיר אישית</button>
+                <div class="flex flex-col lg:flex-row gap-16 relative z-10">
+                    <div class="flex-1">
+                        <h3 class="text-2xl font-bold italic mb-8 pb-4 border-b border-legacy-border text-legacy-deep flex items-center gap-3">
+                            <svg class="w-6 h-6 text-legacy-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                            פרטי הלקוח והמשלוח
+                        </h3>
+                        <form id="order-form" class="space-y-5">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                                <div class="space-y-2">
+                                    <label class="text-[10px] font-black uppercase text-gray-600 pr-1 font-sans">שם מלא *</label>
+                                    <input type="text" id="full-name" placeholder="ישראל ישראלי" class="w-full bg-white border border-gray-200 p-4 rounded-xl outline-none input-gold font-bold text-sm transition-all shadow-sm">
+                                </div>
+                                <div class="space-y-2">
+                                    <label class="text-[10px] font-black uppercase text-gray-600 pr-1 font-sans">אימייל לאישור הזמנה *</label>
+                                    <input type="email" id="email" placeholder="example@mail.com" class="w-full bg-white border border-gray-200 p-4 rounded-xl outline-none input-gold font-bold text-sm transition-all shadow-sm">
+                                </div>
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-[10px] font-black uppercase text-gray-600 pr-1 font-sans">כתובת מדוייקת למשלוח (כולל מדינה ומיקוד) *</label>
+                                <input type="text" id="address" placeholder="רחוב, מספר בית, עיר, מדינה, מיקוד" class="w-full bg-white border border-gray-200 p-4 rounded-xl outline-none input-gold font-bold text-sm transition-all shadow-sm">
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-[10px] font-black uppercase text-gray-600 pr-1 font-sans">הערות / בקשות הלכתיות מיוחדות</label>
+                                <textarea id="notes" placeholder="כאן ניתן לציין כל בקשה מיוחדת..." rows="3" class="w-full bg-white border border-gray-200 p-4 rounded-xl outline-none input-gold font-bold text-sm transition-all shadow-sm resize-none"></textarea>
+                            </div>
+                        </form>
                     </div>
-                </div>
 
-                <!-- Product: Tefillin Set -->
-                <div class="luxury-card p-6 flex flex-col justify-between" data-aos="fade-up">
-                    <div>
-                        <div class="h-48 bg-gray-100 mb-6 overflow-hidden">
-                            <img src="https://www.picshare.co.il/m_pictures/img56451.jpg" class="w-full h-full object-cover">
+                    <!-- Order Summary Vault Box -->
+                    <div class="w-full lg:w-[420px] vault-container rounded-3xl p-10 flex flex-col shadow-2xl relative border border-gray-800">
+                        <!-- Authority Seal -->
+                        <div class="absolute -top-6 -left-6 w-20 h-20 bg-legacy-deep rounded-full border-2 border-legacy-gold flex items-center justify-center shadow-lg rotate-12">
+                            <span class="text-[8px] text-legacy-gold font-black uppercase text-center leading-tight">Secured <br>Transaction</span>
                         </div>
-                        <h5 class="text-lg font-bold text-navy">סט תפילין "כתר"</h5>
-                        <p class="text-xs text-gray-500 mt-2">בתים עבודת יד, רצועות עור עליון, כתב סופר מובהק.</p>
-                    </div>
-                    <div class="mt-8 flex justify-between items-center">
-                        <span class="text-xl font-serif font-black text-navy" data-price-ils="4200">$1,100</span>
-                        <button onclick="addToCart('סט תפילין כתר', 1100)" class="w-10 h-10 bg-navy text-white flex items-center justify-center rounded-full hover:bg-gold transition-colors"><i data-lucide="plus" class="w-5 h-5"></i></button>
-                    </div>
-                </div>
 
-                <!-- Product: Mezuzah -->
-                <div class="luxury-card p-6 flex flex-col justify-between" data-aos="fade-up">
-                    <div>
-                        <div class="h-48 bg-gray-100 mb-6 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1610444304895-15a0c309f3e4?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover">
+                        <h3 class="text-xl font-bold italic mb-6 text-legacy-parchment border-b border-white/10 pb-4">סיכום הזמנה יוקרתי</h3>
+                        <div id="checkout-list" class="flex-1 space-y-3 mb-8 max-h-48 overflow-y-auto custom-scrollbar pr-3">
+                            <p class="text-gray-500 text-sm italic">הסל שלך מחכה לתוספת קדושה...</p>
                         </div>
-                        <h5 class="text-lg font-bold text-navy">מזוזת מהדרין 12 ס"מ</h5>
-                        <p class="text-xs text-gray-500 mt-2">כתב ארי/בית יוסף מהודר, בדיקת מחשב וגברא.</p>
-                    </div>
-                    <div class="mt-8 flex justify-between items-center">
-                        <span class="text-xl font-serif font-black text-navy" data-price-ils="280">$75</span>
-                        <button onclick="addToCart('מזוזת מהדרין 12', 75)" class="w-10 h-10 bg-navy text-white flex items-center justify-center rounded-full hover:bg-gold transition-colors"><i data-lucide="plus" class="w-5 h-5"></i></button>
-                    </div>
-                </div>
-
-                <!-- Product: Megillat Esther -->
-                <div class="luxury-card p-6 flex flex-col justify-between" data-aos="fade-up">
-                    <div>
-                        <span class="bg-red-50 text-red-600 text-[8px] font-bold px-2 py-1 rounded uppercase mb-2 inline-block">Collector's item</span>
-                        <div class="h-48 bg-gray-100 mb-6 overflow-hidden">
-                             <img src="https://images.unsplash.com/photo-1621619856624-42fd193a0661?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover">
+                        <div class="mb-8 bg-black/40 p-5 rounded-xl border border-white/5">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-[10px] font-bold text-gray-400 uppercase tracking-widest font-sans">Subtotal</span>
+                                <span class="text-sm font-bold text-gray-300 sub-total-display">0$</span>
+                            </div>
+                            <div class="flex justify-between items-center mb-4 pb-4 border-b border-white/10">
+                                <span class="text-[10px] font-bold text-gray-400 uppercase tracking-widest font-sans">Insured Shipping</span>
+                                <span class="text-xs font-bold text-green-500">Free</span>
+                            </div>
+                            <div class="flex justify-between items-end mt-2">
+                                <span class="text-sm font-black text-legacy-gold uppercase tracking-widest font-sans">Total:</span>
+                                <span id="final-total" class="text-4xl font-black gold-text tracking-tighter price-display drop-shadow-md" data-usd="0" data-ils="0">$0</span>
+                            </div>
                         </div>
-                        <h5 class="text-lg font-bold text-navy">מגילת אסתר המלך</h5>
-                        <p class="text-xs text-gray-500 mt-2">כתיבת פרימיום 11 שורות, קלף משובח במיוחד.</p>
-                    </div>
-                    <div class="mt-8 flex justify-between items-center">
-                        <span class="text-xl font-serif font-black text-navy" data-price-ils="3500">$950</span>
-                        <button onclick="addToCart('מגילת אסתר פרימיום', 950)" class="w-10 h-10 bg-navy text-white flex items-center justify-center rounded-full hover:bg-gold transition-colors"><i data-lucide="plus" class="w-5 h-5"></i></button>
-                    </div>
-                </div>
 
-                <!-- Product: Ketubah Art -->
-                <div class="luxury-card p-6 flex flex-col justify-between" data-aos="fade-up">
-                    <div>
-                        <div class="h-48 bg-gray-100 mb-6 overflow-hidden">
-                             <img src="https://images.unsplash.com/photo-1512486130939-2c4f79935e4f?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover">
-                        </div>
-                        <h5 class="text-lg font-bold text-navy">כתובה מאוירת בזהב</h5>
-                        <p class="text-xs text-gray-500 mt-2">עבודת יד בשילוב עלי זהב 24K, אומנות יהודית נדירה.</p>
-                    </div>
-                    <div class="mt-8 flex justify-between items-center">
-                        <span class="text-xl font-serif font-black text-navy" data-price-ils="1800">$480</span>
-                        <button onclick="addToCart('כתובה מאוירת זהב', 480)" class="w-10 h-10 bg-navy text-white flex items-center justify-center rounded-full hover:bg-gold transition-colors"><i data-lucide="plus" class="w-5 h-5"></i></button>
-                    </div>
-                </div>
-
-                <!-- Bar Mitzvah Package -->
-                <div class="lg:col-span-2 luxury-card bg-navy text-white p-12 flex flex-col md:flex-row gap-10 items-center overflow-hidden relative" data-aos="fade-up">
-                    <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-gold/5 rounded-full blur-3xl"></div>
-                    <div class="relative z-10 flex-1">
-                        <span class="text-gold text-xs font-bold tracking-[0.3em] uppercase">Special Offer</span>
-                        <h4 class="text-4xl font-serif font-bold mt-4">חבילת בר מצווה VIP</h4>
-                        <ul class="mt-6 space-y-3 text-sm text-white/60">
-                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-gold"></i> תפילין מהודרות מאוד בהתאמה אישית</li>
-                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-gold"></i> טלית מצמר נקי וסידור עור עם שם</li>
-                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-gold"></i> תיק תפילין יוקרתי מרקמה או עור</li>
-                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-gold"></i> סדר לימוד והדרכה אישית לנער</li>
-                        </ul>
-                        <div class="mt-10 flex items-center gap-6">
-                            <span class="text-3xl font-black text-gold" data-price-ils="6500">$1,750</span>
-                            <button onclick="addToCart('חבילת בר מצווה VIP', 1750)" class="bg-gold text-navy px-8 py-3 rounded-full text-[10px] font-black uppercase hover:bg-white transition-all">להזמנת חבילה</button>
+                        <button onclick="processOrder()" class="w-full bg-[#003087] hover:bg-[#002266] text-white py-5 rounded-xl font-bold flex items-center justify-center gap-3 transition-all shadow-lg active:scale-95 border border-[#002266]/50">
+                            <span class="text-sm font-sans tracking-wide">לתשלום מאובטח ב-</span>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" class="h-4 filter brightness-0 invert" alt="PayPal">
+                        </button>
+                        
+                        <!-- High Trust Badges Under Checkout -->
+                        <div class="flex justify-center items-center gap-6 mt-6">
+                            <div class="flex items-center gap-1.5 opacity-70">
+                                <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"></path></svg>
+                                <span class="text-[9px] font-bold text-gray-300 uppercase tracking-widest font-sans">256-bit SSL</span>
+                            </div>
+                            <div class="flex items-center gap-1.5 opacity-70">
+                                <svg class="w-4 h-4 text-blue-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 4.946-2.597 9.181-6.5 11.5a11.954 11.954 0 01-6.5-11.5c0-.68.056-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                <span class="text-[9px] font-bold text-gray-300 uppercase tracking-widest font-sans">100% Protected</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="w-full md:w-1/3 aspect-square bg-white/5 rounded-2xl flex items-center justify-center border border-white/10 group overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1590076215667-873d32462e08?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-700">
-                    </div>
                 </div>
-
             </div>
         </div>
     </section>
 
-    <!-- Halacha & Knowledge Center -->
-    <section id="halacha" class="py-24 bg-white border-y border-gold/10">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-center mb-16 gap-10">
-                <div class="md:w-1/2" data-aos="fade-right">
-                    <h3 class="font-serif text-5xl font-bold text-navy mb-6">מרכז הידע וההלכה</h3>
-                    <p class="text-gray-500 leading-relaxed mb-8">
-                        בספרות תפארתך, אנחנו מאמינים שקדושה מתחילה בידע. ריכזנו עבורכם מאמרים, סרטוני הדרכה ושאלות ותשובות שיעזרו לכם להבין את עומק המלאכה ואת החשיבות של כל פרט ופרט בסת"ם.
+    <!-- Leadership Section: Zig-Zag Layout (Updated Content) -->
+    <section id="leadership" class="py-24 bg-legacy-sand border-t border-legacy-border">
+        <div class="max-w-6xl mx-auto px-6 space-y-24">
+            
+            <div class="text-center mb-16" data-aos="fade-up">
+                <span class="text-legacy-gold text-[10px] uppercase tracking-widest font-black font-sans mb-3 block">Spiritual & Executive Leadership</span>
+                <h2 class="text-4xl md:text-5xl font-black font-tradition italic text-legacy-deep">הפנים מאחורי <span class="gold-text">הקדושה</span></h2>
+            </div>
+
+            <!-- Rabbi Eldar Levi (Spiritual Leader) -->
+            <div class="flex flex-col md:flex-row items-center gap-12 lg:gap-20" data-aos="fade-up">
+                <div class="w-48 h-48 md:w-56 md:h-56 shrink-0 relative">
+                    <div class="absolute inset-0 border border-legacy-gold rounded-full -m-3"></div>
+                    <img src="https://images.unsplash.com/photo-1544928147-79a2dbc1f389?q=80&w=600" class="w-full h-full rounded-full border-4 border-legacy-gold/40 object-cover shadow-2xl" alt="הרה''ג אלדר לוי שליט''א - דיין וסופר סת''ם">
+                </div>
+                <div class="text-center md:text-right">
+                    <h3 class="text-3xl font-black font-tradition italic text-legacy-deep mb-2">
+                        הרה"ג אלדר לוי שליט"א 
+                    </h3>
+                    <span class="text-[11px] font-bold text-legacy-gold block mb-6 font-sans tracking-[0.2em] uppercase">
+                        נשיא המכון, סופר ומכוון הלכתי
+                    </span>
+                    <p class="text-base text-gray-700 leading-loose font-serif max-w-2xl">
+                        הרה"ג אלדר לוי מכהן כדיין בבית הדין לממונות בעיר הקודש נתיבות, ובעל ההסמכה התורנית הגבוהה והנדירה ביותר - "ידין ידין". 
+                        מעבר לגדולתו התורנית, הרב משמש כסופר סת"ם מומחה מזה למעלה מ-10 שנים. היכרותו העמוקה עם נבכי ההלכה, בשילוב ניסיונו המעשי רב השנים בשרטוט האותיות, מבטיחים שכל יריעה, תפילין ומזוזה היוצאים משערי מכון 'תפארתך' ניחנים בתכלית השלמות ההלכתית וההידור, מה שמקנה לכל רוכש ביטחון ושקט נפשי מוחלט.
                     </p>
-                    <a href="#" class="text-navy font-black text-xs uppercase tracking-widest flex items-center gap-2 hover:text-gold transition-colors">כניסה למרכז המאמרים <i data-lucide="arrow-left" class="w-4 h-4"></i></a>
-                </div>
-                <div class="md:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-4" data-aos="fade-left">
-                    <div class="p-6 bg-[#FDFBF7] border border-gold/10 hover:border-gold transition-all cursor-pointer">
-                        <i data-lucide="book-open" class="w-8 h-8 text-gold mb-4"></i>
-                        <h6 class="font-bold text-navy mb-2">כיצד לבחור מזוזה?</h6>
-                        <p class="text-[10px] text-gray-400 uppercase tracking-widest">Guide</p>
-                    </div>
-                    <div class="p-6 bg-[#FDFBF7] border border-gold/10 hover:border-gold transition-all cursor-pointer">
-                        <i data-lucide="shield-check" class="w-8 h-8 text-gold mb-4"></i>
-                        <h6 class="font-bold text-navy mb-2">תהליך הבדיקה שלנו</h6>
-                        <p class="text-[10px] text-gray-400 uppercase tracking-widest">Quality Control</p>
-                    </div>
-                    <div class="p-6 bg-[#FDFBF7] border border-gold/10 hover:border-gold transition-all cursor-pointer">
-                        <i data-lucide="pen-tool" class="w-8 h-8 text-gold mb-4"></i>
-                        <h6 class="font-bold text-navy mb-2">סודות הקלף והדיו</h6>
-                        <p class="text-[10px] text-gray-400 uppercase tracking-widest">Process</p>
-                    </div>
-                    <div class="p-6 bg-[#FDFBF7] border border-gold/10 hover:border-gold transition-all cursor-pointer">
-                        <i data-lucide="help-circle" class="w-8 h-8 text-gold mb-4"></i>
-                        <h6 class="font-bold text-navy mb-2">שו"ת סת"ם אונליין</h6>
-                        <p class="text-[10px] text-gray-400 uppercase tracking-widest">Legal Q&A</p>
-                    </div>
                 </div>
             </div>
+
+            <!-- Shimon Turgeman (CEO) -->
+            <div class="flex flex-col md:flex-row-reverse items-center gap-12 lg:gap-20" data-aos="fade-up" data-aos-delay="100">
+                <div class="w-48 h-48 md:w-56 md:h-56 shrink-0 relative">
+                    <div class="absolute inset-0 border border-legacy-gold rounded-full -m-3"></div>
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=600" class="w-full h-full rounded-full border-4 border-legacy-gold/40 object-cover shadow-2xl grayscale" alt="רבי שמעון תורג'מן - מנכ''ל מכון סת''ם">
+                </div>
+                <div class="text-center md:text-left">
+                    <h3 class="text-3xl font-black font-tradition italic text-legacy-deep mb-2">
+                        רבי שמעון תורג'מן
+                    </h3>
+                    <span class="text-[11px] font-bold text-legacy-gold block mb-6 font-sans tracking-[0.2em] uppercase">
+                        מנכ"ל מכון "ספרות תפארתך"
+                    </span>
+                    <p class="text-base text-gray-700 leading-loose font-serif max-w-2xl">
+                        איש של חסד ונתינה ששורשיו בעיר אילת, שם נודע בקרב הקהילה וכלל הנזקקים בזכות ליבו הרחב ופועלו למען הכלל.
+                        את אותה רוח של שירות ומסירות הביא עמו רבי שמעון לעיר נתיבות, לניהול מכון הסת"ם "ספרות תפארתך". תחת הנהגתו, המכון חרת על דגלו להעניק שירות אישי, שקוף ויוקרתי לכל לקוח ברחבי העולם, תוך הבטחה לחוויית קנייה בטוחה, אמינה ועוטפת מהרגע הראשון ועד להגעת הקדושה לביתכם.
+                    </p>
+                </div>
+            </div>
+
         </div>
     </section>
 
-    <!-- Shopping Cart Drawer -->
-    <div id="cart-drawer" class="fixed inset-y-0 left-0 w-full max-w-lg glass shadow-2xl z-[100] transform -translate-x-full transition-transform duration-500 flex flex-col border-r border-gold/20">
-        <div class="p-8 border-b border-gold/10 flex justify-between items-center bg-navy text-white">
-            <h3 class="font-serif text-2xl font-bold">סל הרכישה היוקרתי</h3>
-            <button onclick="toggleCart()" class="p-2 hover:rotate-90 transition-all duration-300">
-                <i data-lucide="x" class="w-8 h-8"></i>
-            </button>
-        </div>
-        
-        <div id="cart-items" class="flex-1 overflow-y-auto p-8 space-y-6">
-            <div class="text-center text-gray-400 mt-20 opacity-50">
-                <i data-lucide="shopping-bag" class="w-16 h-16 mx-auto mb-4"></i>
-                <p>הסל שלך ממתין ליצירות קודש</p>
+    <!-- Footer -->
+    <footer class="bg-legacy-deep text-white pt-20 pb-10 px-6 text-center border-t border-legacy-gold/20">
+        <div class="max-w-[1200px] mx-auto">
+            <span class="text-4xl font-black gold-text italic font-tradition block mb-8">תפארתך</span>
+            <div class="flex flex-wrap justify-center gap-8 text-xs text-gray-400 font-sans font-bold mb-10">
+                <a href="https://wa.me/972528219928" class="hover:text-legacy-gold transition-colors">WhatsApp: 052-8219928</a>
+                <span class="hidden md:inline text-white/20">|</span>
+                <a href="mailto:Tifarteha@gmail.com" class="hover:text-legacy-gold transition-colors">Tifarteha@gmail.com</a>
+                <span class="hidden md:inline text-white/20">|</span>
+                <span>נתיבות • ישראל</span>
             </div>
-        </div>
-
-        <div class="p-8 border-t border-gold/10 bg-white">
-            <div class="flex justify-between items-center mb-8">
-                <span class="text-gray-400 uppercase tracking-[0.2em] text-[10px] font-bold">Total Investment</span>
-                <span id="cart-total" class="text-3xl font-serif font-black text-navy">$0</span>
-            </div>
-            
-            <div id="paypal-button-container" class="mb-4"></div>
-            
-            <button class="w-full bg-navy text-white py-5 rounded-sm font-black text-xs uppercase tracking-widest hover:bg-gold hover:text-navy transition-all mb-4">מעבר לתשלום מאובטח</button>
-            <div class="flex justify-center gap-4 opacity-30">
-                <i data-lucide="lock" class="w-4 h-4"></i>
-                <span class="text-[9px] uppercase tracking-widest">SSL Encrypted • Global Insurance</span>
-            </div>
-        </div>
-    </div>
-
-    <!-- Contact & Footer -->
-    <footer class="bg-navy-dark text-white pt-24 pb-12 px-8 overflow-hidden relative">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-4 gap-16 relative z-10">
-            <div class="lg:col-span-2">
-                <h2 class="font-serif text-5xl font-black gold-text mb-8">תפארתך.</h2>
-                <p class="text-white/40 max-w-md leading-relaxed mb-12">
-                    החזון שלנו הוא להנגיש את קדושת הסת"ם ברמה הגבוהה ביותר לכל יהודי בעולם. שילוב של יראת שמיים, הקפדה הלכתית ומצוינות אומנותית.
-                </p>
-                <div class="flex gap-6">
-                    <a href="https://wa.me/972528219928" class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-gold hover:text-navy transition-all"><i data-lucide="phone" class="w-5 h-5"></i></a>
-                    <a href="#" class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-gold hover:text-navy transition-all"><i data-lucide="mail" class="w-5 h-5"></i></a>
-                    <a href="#" class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-gold hover:text-navy transition-all"><i data-lucide="instagram" class="w-5 h-5"></i></a>
-                </div>
-            </div>
-            
-            <div>
-                <h6 class="text-gold text-[10px] font-black uppercase tracking-[0.3em] mb-8">Quick Navigation</h6>
-                <ul class="space-y-4 text-sm text-white/60">
-                    <li><a href="#" class="hover:text-white transition-colors">תהליך הכתיבה</a></li>
-                    <li><a href="#" class="hover:text-white transition-colors">מחירון המזוזות</a></li>
-                    <li><a href="#" class="hover:text-white transition-colors">הזמנת ספר תורה</a></li>
-                    <li><a href="#" class="hover:text-white transition-colors">בדיקת סת"ם בבית הלקוח</a></li>
-                    <li><a href="#" class="hover:text-white transition-colors">שאלות נפוצות</a></li>
-                </ul>
-            </div>
-
-            <div>
-                <h6 class="text-gold text-[10px] font-black uppercase tracking-[0.3em] mb-8">Newsletter</h6>
-                <p class="text-xs text-white/40 mb-6">הצטרפו למעגל הלקוחות שלנו לקבלת עדכונים הלכתיים ומבצעים בלעדיים.</p>
-                <div class="flex border-b border-white/20 pb-2">
-                    <input type="email" placeholder="Email Address" class="bg-transparent border-none text-xs focus:ring-0 flex-1">
-                    <button class="text-gold"><i data-lucide="arrow-left" class="w-5 h-5"></i></button>
-                </div>
-            </div>
-        </div>
-        
-        <div class="mt-24 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-[9px] text-white/30 uppercase tracking-[0.2em]">
-            <span>© 2024 Tifartecha Sacred Arts | Premium STAM Israel</span>
-            <div class="flex gap-8">
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Service</a>
-                <a href="#">Worldwide Shipping</a>
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-gray-500 text-[10px] uppercase font-bold tracking-widest font-sans">© 2026 Tifarteha Scribal Arts. Worldwide Insured Shipping.</p>
+                <p class="text-legacy-gold/50 text-[11px] italic font-serif">לאורו וברכתו של סידנא בבא סאלי זיע"א</p>
             </div>
         </div>
     </footer>
 
-    <!-- Fixed Floating Contact -->
-    <a href="https://wa.me/972528219928" class="fixed bottom-10 right-10 z-[60] bg-gold p-4 rounded-full shadow-[0_15px_30px_rgba(212,175,55,0.4)] group hover:scale-110 transition-all">
-        <i data-lucide="message-circle" class="w-8 h-8 text-navy"></i>
-        <span class="absolute right-full mr-4 top-1/2 -translate-y-1/2 bg-navy text-white text-[10px] py-2 px-4 rounded-full opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">ייעוץ עם סופר בווטסאפ</span>
-    </a>
+    <!-- Notification Toast -->
+    <div id="notification" class="fixed top-24 left-1/2 -translate-x-1/2 z-[400] bg-white border border-legacy-gold px-8 py-3 rounded-full shadow-2xl flex items-center gap-3 transition-all duration-500 -translate-y-40 opacity-0">
+        <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+        <div class="text-right flex flex-col">
+            <span class="font-black text-sm font-tradition text-legacy-deep">המוצר נוסף לסל הקניות!</span>
+        </div>
+    </div>
 
+    <!-- Logic Script -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 1000, once: true });
-        lucide.createIcons();
+        AOS.init({ duration: 900, once: true, easing: 'ease-out-quad' });
+
+        const products = [
+            { id: 1, category: "מזוזות", name: "מזוזה מהודרת 'תפארת' 15 ס\"מ", priceUSD: 145, priceILS: 540, img: "https://images.unsplash.com/photo-1603566023308-4171d1e44280?q=80&w=600", alt: "מזוזה מהודרת בכתב סופר פרימיום", type: "buy" },
+            { id: 2, category: "מזוזות", name: "מזוזה 'היכל' כתב אר\"י ז\"ל", priceUSD: 180, priceILS: 670, img: "https://images.unsplash.com/photo-1603566023308-4171d1e44280?q=80&w=600", alt: "מזוזה בכתב האר\"י ז\"ל הידור גבוה", type: "buy" },
+            { id: 3, category: "תפילין", name: "תפילין עור אחד - מהודר", priceUSD: 1850, priceILS: 6900, img: "https://images.unsplash.com/photo-1510131436400-c02058448530?q=80&w=600", alt: "תפילין עור אחד מהודרות", type: "buy" },
+            { id: 4, category: "תפילין", name: "תפילין 'מלכות' פרימיום נדיר", priceUSD: 2400, priceILS: 8950, img: "https://images.unsplash.com/photo-1510131436400-c02058448530?q=80&w=600", alt: "תפילין מלכות פרימיום כתב נדיר", type: "buy" },
+            { id: 5, category: "תורה", name: "ספר תורה אשכנזי - בית יוסף", priceUSD: 45000, priceILS: 168000, img: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?q=80&w=600", alt: "ספר תורה אשכנזי בכתב בית יוסף", type: "consult" },
+            { id: 6, category: "תורה", name: "ספר תורה ספרדי - מרהיב", priceUSD: 42000, priceILS: 157000, img: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?q=80&w=600", alt: "ספר תורה ספרדי כתיבה מהודרת", type: "consult" }
+        ];
 
         let cart = [];
         let currentCurrency = 'USD';
+        let currentFilter = 'all';
 
-        function toggleCart() {
-            document.getElementById('cart-drawer').classList.toggle('-translate-x-full');
-        }
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('nav-header');
+            if (window.scrollY > 50) header.classList.add('scrolled');
+            else header.classList.remove('scrolled');
+        });
 
-        function addToCart(name, price) {
-            cart.push({ name, price, id: Date.now() });
-            updateCart();
-            if(document.getElementById('cart-drawer').classList.contains('-translate-x-full')) toggleCart();
-        }
-
-        function removeFromCart(id) {
-            cart = cart.filter(i => i.id !== id);
-            updateCart();
-        }
-
-        function updateCart() {
-            const container = document.getElementById('cart-items');
-            const totalDisplay = document.getElementById('cart-total');
-            const countDisplay = document.getElementById('cart-count');
+        function renderCatalog() {
+            const grid = document.getElementById('product-grid');
+            const filtered = currentFilter === 'all' ? products : products.filter(p => p.category === currentFilter);
             
-            container.innerHTML = '';
-            let total = 0;
-            
-            if (cart.length === 0) {
-                container.innerHTML = '<div class="text-center text-gray-400 mt-20 opacity-50"><i data-lucide="shopping-bag" class="w-16 h-16 mx-auto mb-4"></i><p>הסל שלך ממתין ליצירות קודש</p></div>';
-            } else {
-                cart.forEach(item => {
-                    total += item.price;
-                    const el = document.createElement('div');
-                    el.className = 'flex justify-between items-center bg-navy/5 p-4 rounded border border-gold/10';
-                    el.innerHTML = `
-                        <div>
-                            <div class="font-bold text-navy text-sm">${item.name}</div>
-                            <div class="text-gold font-bold">${currentCurrency === 'USD' ? '$' : '₪'}${currentCurrency === 'USD' ? item.price : (item.price * 3.75).toFixed(0)}</div>
+            grid.innerHTML = filtered.map(p => `
+                <div class="luxury-card rounded-[2rem] overflow-hidden flex flex-col group" data-aos="fade-up">
+                    <div class="relative aspect-[4/3] overflow-hidden">
+                        <img src="${p.img}" alt="${p.alt}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <div class="absolute top-6 right-6 bg-white/95 backdrop-blur px-5 py-2 rounded-full text-[10px] font-black uppercase tracking-widest text-legacy-gold shadow-md font-sans">${p.category}</div>
+                    </div>
+                    <div class="p-8 flex-1 flex flex-col">
+                        <h3 class="text-2xl font-bold mb-6 text-legacy-deep font-tradition italic">${p.name}</h3>
+                        <div class="mt-auto flex justify-between items-center pt-6 border-t border-legacy-border">
+                            <span class="text-3xl font-black gold-text font-sans price-display" data-usd="${p.priceUSD}" data-ils="${p.priceILS}">
+                                ${currentCurrency === 'USD' ? '$'+p.priceUSD.toLocaleString() : '₪'+p.priceILS.toLocaleString()}
+                            </span>
+                            ${p.type === 'buy' ? 
+                                `<button onclick="addToCart(${p.id})" class="btn-royal px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-widest font-sans">הוסף לסל</button>` :
+                                `<a href="https://wa.me/972528219928?text=אשמח לתיאום פגישה עבור ${p.name}" target="_blank" class="border border-legacy-gold text-legacy-gold px-6 py-2.5 rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-legacy-gold hover:text-white transition-all font-sans">ייעוץ אישי</a>`
+                            }
                         </div>
-                        <button onclick="removeFromCart(${item.id})" class="text-gray-400 hover:text-red-600 transition-colors"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
-                    `;
-                    container.appendChild(el);
-                });
-            }
-            
-            totalDisplay.innerText = `${currentCurrency === 'USD' ? '$' : '₪'}${currentCurrency === 'USD' ? total.toLocaleString() : (total * 3.75).toLocaleString()}`;
-            countDisplay.innerText = cart.length;
-            lucide.createIcons();
-            renderPayPal(total);
+                    </div>
+                </div>
+            `).join('');
         }
 
-        let paypalButton;
-        function renderPayPal(amount) {
-            const container = document.getElementById('paypal-button-container');
-            if (amount <= 0 || paypalButton) {
-                if (amount <= 0) container.innerHTML = '';
+        function filterCatalog(cat) {
+            currentFilter = cat;
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById('filter-' + (cat === 'all' ? 'all' : cat)).classList.add('active');
+            renderCatalog();
+        }
+
+        function setCurrency(ccy) {
+            currentCurrency = ccy;
+            document.getElementById('curr-usd').classList.toggle('active', ccy === 'USD');
+            document.getElementById('curr-ils').classList.toggle('active', ccy === 'ILS');
+            
+            document.querySelectorAll('.price-display').forEach(el => {
+                const usdVal = parseFloat(el.getAttribute('data-usd'));
+                const ilsVal = parseFloat(el.getAttribute('data-ils'));
+                if (usdVal === 0) return;
+                el.innerText = ccy === 'USD' ? '$' + usdVal.toLocaleString() : '₪' + ilsVal.toLocaleString();
+            });
+            updateCartUI();
+        }
+
+        function addToCart(pid) {
+            const p = products.find(prod => prod.id === pid);
+            cart.push(p);
+            updateCartUI();
+            showNotif();
+        }
+
+        function updateCartUI() {
+            const list = document.getElementById('cart-items');
+            const checkList = document.getElementById('checkout-list');
+            const totalDisplay = document.getElementById('cart-total');
+            const finalDisplay = document.getElementById('final-total');
+            document.getElementById('cart-count').innerText = cart.length;
+
+            if (cart.length === 0) {
+                list.innerHTML = `<div class="flex flex-col items-center justify-center py-10 text-gray-400 italic"><p class="text-sm">הסל ריק כרגע</p></div>`;
+                checkList.innerHTML = `<p class="text-gray-500 text-sm italic">הסל שלך מחכה לתוספת קדושה...</p>`;
+                totalDisplay.innerText = currentCurrency === 'USD' ? '$0' : '₪0';
+                finalDisplay.innerText = currentCurrency === 'USD' ? '$0' : '₪0';
+                document.querySelectorAll('.sub-total-display').forEach(el => el.innerText = currentCurrency === 'USD' ? '$0' : '₪0');
                 return;
             }
-            
-            paypal.Buttons({
-                createOrder: (data, actions) => actions.order.create({ purchase_units: [{ amount: { value: amount.toString() } }] }),
-                onApprove: (data, actions) => actions.order.capture().then(details => {
-                    alert('תודה על רכישתך, ' + details.payer.name.given_name);
-                    cart = []; updateCart(); toggleCart();
-                })
-            }).render('#paypal-button-container');
-            paypalButton = true;
+
+            let totalUSD = 0; let totalILS = 0;
+            list.innerHTML = cart.map((item, idx) => {
+                totalUSD += item.priceUSD; totalILS += item.priceILS;
+                const pText = currentCurrency === 'USD' ? '$'+item.priceUSD.toLocaleString() : '₪'+item.priceILS.toLocaleString();
+                return `
+                    <div class="flex items-center gap-4 bg-legacy-sand/50 p-4 rounded-2xl border border-legacy-border group transition-all hover:border-legacy-gold/30 text-right">
+                        <img src="${item.img}" class="w-14 h-14 object-cover rounded-xl shadow-sm">
+                        <div class="flex-1">
+                            <h4 class="text-xs font-bold text-legacy-deep font-tradition mb-1">${item.name}</h4>
+                            <p class="text-[11px] gold-text font-black font-sans">${pText}</p>
+                        </div>
+                        <button onclick="removeFromCart(${idx})" class="p-2 text-gray-300 hover:text-red-500 transition-colors bg-white rounded-full shadow-sm hover:shadow-md">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-width="2"></path></svg>
+                        </button>
+                    </div>
+                `;
+            }).join('');
+
+            checkList.innerHTML = cart.map(item => `
+                <div class="flex justify-between items-center text-[11px] font-bold py-2 border-b border-legacy-gold/10 font-sans">
+                    <span class="text-legacy-parchment truncate pl-2">${item.name}</span>
+                    <span class="text-legacy-gold whitespace-nowrap">${currentCurrency === 'USD' ? '$'+item.priceUSD.toLocaleString() : '₪'+item.priceILS.toLocaleString()}</span>
+                </div>
+            `).join('');
+
+            const finalP = currentCurrency === 'USD' ? '$'+totalUSD.toLocaleString() : '₪'+totalILS.toLocaleString();
+            totalDisplay.innerText = finalP;
+            finalDisplay.innerText = finalP;
+            finalDisplay.setAttribute('data-usd', totalUSD);
+            document.querySelectorAll('.sub-total-display').forEach(el => el.innerText = finalP);
         }
 
-        function setCurrency(curr) {
-            currentCurrency = curr;
-            // Update all prices on page
-            document.querySelectorAll('[data-price-ils]').forEach(el => {
-                const usd = parseFloat(el.innerText.replace('$', '').replace(',', ''));
-                const ils = el.getAttribute('data-price-ils');
-                el.innerText = curr === 'USD' ? `$${usd.toLocaleString()}` : `₪${parseFloat(ils).toLocaleString()}`;
-            });
-            updateCart();
+        function removeFromCart(idx) {
+            cart.splice(idx, 1);
+            updateCartUI();
         }
+
+        function toggleCart() {
+            const d = document.getElementById('cart-drawer');
+            const o = document.getElementById('cart-overlay');
+            const isClosed = d.classList.contains('translate-x-[-100%]');
+            if (isClosed) {
+                d.style.transform = 'translateX(0)';
+                d.classList.remove('translate-x-[-100%]');
+                o.classList.remove('hidden');
+                setTimeout(() => o.style.opacity = '1', 10);
+                document.body.style.overflow = 'hidden';
+            } else {
+                d.style.transform = 'translateX(-100%)';
+                d.classList.add('translate-x-[-100%]');
+                o.style.opacity = '0';
+                setTimeout(() => o.classList.add('hidden'), 300);
+                document.body.style.overflow = '';
+            }
+        }
+
+        function showNotif() {
+            const n = document.getElementById('notification');
+            n.style.transform = 'translate(-50%, 0)'; n.style.opacity = '1';
+            setTimeout(() => { n.style.transform = 'translate(-50%, -40px)'; n.style.opacity = '0'; }, 3000);
+        }
+
+        function goToCheckout() {
+            toggleCart();
+            document.getElementById('checkout').scrollIntoView({behavior:'smooth'});
+        }
+
+        function processOrder() {
+            const totalUSD = document.getElementById('final-total').getAttribute('data-usd');
+            const name = document.getElementById('full-name').value;
+            const email = document.getElementById('email').value;
+            const address = document.getElementById('address').value;
+
+            if (cart.length === 0) {
+                return showMessage("הסל שלך ריק. בחר מוצר לפני המעבר לתשלום.");
+            }
+            if (!name || !email || !address) {
+                return showMessage("אנא מלא את כל פרטי המשלוח (שם, אימייל וכתובת).");
+            }
+            if (!email.includes('@')) {
+                return showMessage("כתובת האימייל אינה תקינה.");
+            }
+
+            window.location.href = `https://paypal.me/Tifarteha/${totalUSD}USD`;
+        }
+
+        function showMessage(text) {
+            const msg = document.createElement('div');
+            msg.className = "fixed top-24 left-1/2 -translate-x-1/2 z-[500] bg-red-50 border border-red-200 text-red-700 px-6 py-3 rounded-full shadow-2xl font-bold text-xs text-right flex items-center gap-2 animate-bounce font-sans";
+            msg.innerHTML = `<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"></path></svg> ${text}`;
+            document.body.appendChild(msg);
+            setTimeout(() => msg.remove(), 4000);
+        }
+
+        window.onload = () => {
+            renderCatalog();
+            updateCartUI();
+            setCurrency('USD');
+        };
     </script>
 </body>
 </html>
