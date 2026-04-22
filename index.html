@@ -2,9 +2,9 @@
 <html lang="he" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="google-site-verification" content="cm8d_DCwtIbzViB0Aos14jc2TJzLiWT1aMGyUKQjQDU"/>
     <meta name="description" content="תפארתך - המכון הבינלאומי לסת''ם פרימיום. ספרי תורה, תפילין ומזוזות עם משלוח מבוטח ואחריות לכל העולם.">
-    <meta name="google-site-verification" content="cm8d_DCwtIbzViB0Aos14jc2TJzLiWT1aMGyUKQjQDU" />
     <title>תפארתך | המכון הבינלאומי לסת''ם פרימיום</title>
     
     <script type="application/ld+json">
@@ -60,7 +60,7 @@
 
     <style>
         :root { --gold: #D4AF37; }
-        html { scroll-behavior: smooth; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); overflow-x: hidden; }
+        html { scroll-behavior: smooth; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); overflow-x: hidden; scroll-padding-top: 110px; }
         body { background-color: #FAFAFA; -webkit-tap-highlight-color: transparent; overflow-x: hidden; }
         
         /* Language Toggle Transition */
@@ -87,11 +87,17 @@
         header.scrolled {
             background: rgba(255, 255, 255, 0.95);
             box-shadow: 0 20px 50px -10px rgba(0,0,0,0.1);
-            transform: translateY(10px);
-            border-radius: 3rem;
+            transform: translateY(0);
+            border-radius: 2rem;
             width: calc(100% - 2rem);
             left: 1rem;
             border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        @media (max-width: 768px) {
+            header.scrolled {
+                width: 95%;
+                left: 2.5%;
+            }
         }
 
         /* Animated Metallic Gold Foil */
@@ -185,14 +191,22 @@
         #product-modal.active { opacity: 1; visibility: visible; }
         #product-modal.active .modal-content { transform: scale(1) translateY(0); }
         
+        /* Mobile App-like Bottom Sheet Modal */
         @media (max-width: 768px) {
-            #product-modal .modal-content { height: 95vh; max-height: 95vh; border-radius: 2rem; display: flex; flex-direction: column; }
-            .modal-scroll-area { flex: 1; overflow-y: auto; padding-bottom: 110px; }
+            #product-modal { align-items: flex-end; padding: 0; }
+            #product-modal .modal-content { 
+                height: 90dvh; max-height: 90dvh; 
+                border-radius: 2rem 2rem 0 0; 
+                display: flex; flex-direction: column; 
+                transform: translateY(100%);
+                margin-top: auto;
+            }
+            #product-modal.active .modal-content { transform: translateY(0); }
+            .modal-scroll-area { flex: 1; overflow-y: auto; padding-bottom: 120px; }
             .modal-action-bar {
                 position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(255,255,255,0.98); backdrop-filter: blur(20px);
-                padding: 1.25rem 1.5rem; border-top: 1px solid rgba(0,0,0,0.05); z-index: 50; box-shadow: 0 -15px 50px rgba(0,0,0,0.08);
+                padding: 1.25rem 1.5rem 1.5rem; border-top: 1px solid rgba(0,0,0,0.05); z-index: 50; box-shadow: 0 -15px 50px rgba(0,0,0,0.08);
             }
-            header.scrolled { width: 100%; left: 0; border-radius: 0; border-x: none; border-top: none; transform: none; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
         }
 
         /* Ethereal Glowing Orbs */
@@ -205,7 +219,7 @@
             100% { transform: translate(50px, -50px) scale(1.15); }
         }
         
-        /* Gallery Editorial Grid */
+        /* Gallery Editorial Grid (Bento Box) */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -364,7 +378,7 @@
         </div>
     </div>
 
-    <section class="relative min-h-[95vh] flex items-center overflow-hidden bg-[#FAFAFA] pt-10">
+    <section class="relative min-h-[100vh] flex items-center overflow-hidden bg-[#FAFAFA] pt-24 pb-32 md:pb-48">
         <div class="absolute inset-0 z-0">
             <div class="absolute inset-0 bg-gradient-to-b from-white/60 via-white/80 to-[#FAFAFA] z-10"></div>
             <!-- Glowing Orbs (Ethereal) -->
@@ -386,9 +400,9 @@
             <div class="absolute inset-0 bg-[url('https://babasali.org.il/wp-content/uploads/2024/12/%D7%AA%D7%9E%D7%95%D7%A0%D7%94-%D7%91%D7%90%D7%91%D7%90-%D7%A1%D7%90%D7%9C%D7%99-%D7%9E%D7%95%D7%A7%D7%98%D7%9F.d110a0.webp')] bg-center bg-no-repeat bg-contain opacity-[0.03] mix-blend-multiply z-10 pointer-events-none" style="background-position: center top 10%;"></div>
         </div>
 
-        <div class="max-w-[1440px] mx-auto px-6 relative z-20 text-center flex flex-col items-center justify-center gap-8 w-full mt-16">
+        <div class="max-w-[1440px] mx-auto px-6 relative z-20 text-center flex flex-col items-center justify-center gap-8 w-full mt-8 md:mt-4">
             <div data-aos="fade-up" data-aos-duration="1500" data-aos-easing="ease-out-cubic">
-                <div class="inline-flex items-center gap-4 bg-white/70 backdrop-blur-md border border-luxury-gold/30 px-6 py-2.5 rounded-full mb-10 shadow-sm">
+                <div class="inline-flex items-center gap-4 bg-white/70 backdrop-blur-md border border-luxury-gold/30 px-6 py-2.5 rounded-full mb-8 md:mb-10 shadow-sm">
                     <span class="w-1.5 h-1.5 bg-luxury-gold rounded-full animate-pulse shadow-[0_0_10px_rgba(212,175,55,0.8)]"></span>
                     <span class="text-[9px] font-black font-sans uppercase tracking-[0.4em] text-gray-800" data-he="אמנות סת&quot;ם בסטנדרט העולמי הגבוה ביותר" data-en="Premium Scribal Arts at the Highest Global Standard">אמנות סת"ם בסטנדרט העולמי הגבוה ביותר</span>
                 </div>
@@ -459,12 +473,12 @@
                     <h2 class="text-4xl lg:text-5xl font-light font-tradition italic text-luxury-dark mb-4" data-he="הקולקציה <span class='font-normal gold-gradient'>הנבחרת</span>" data-en="The Premium <span class='font-normal gold-gradient'>Collection</span>">הקולקציה <span class="font-normal gold-gradient">הנבחרת</span></h2>
                 </div>
                 <!-- Filters -->
-                <div class="flex gap-4 overflow-x-auto no-scrollbar pb-4 w-full lg:w-auto" data-aos="fade-right">
-                    <button onclick="filterCatalog('all')" id="btn-all" class="filter-btn active px-6 py-2.5 rounded-full bg-[#050505] text-white font-sans text-[10px] font-black uppercase tracking-[0.2em] shadow-lg transition-all whitespace-nowrap border border-transparent" data-he="הכל" data-en="All">הכל</button>
-                    <button onclick="filterCatalog('תורה')" id="btn-תורה" class="filter-btn px-6 py-2.5 rounded-full bg-white text-gray-500 border border-gray-200 hover:border-luxury-gold hover:text-luxury-dark font-sans text-[10px] font-black uppercase tracking-[0.2em] transition-all whitespace-nowrap shadow-sm" data-he="ספרי תורה" data-en="Torahs">ספרי תורה</button>
-                    <button onclick="filterCatalog('תפילין')" id="btn-תפילין" class="filter-btn px-6 py-2.5 rounded-full bg-white text-gray-500 border border-gray-200 hover:border-luxury-gold hover:text-luxury-dark font-sans text-[10px] font-black uppercase tracking-[0.2em] transition-all whitespace-nowrap shadow-sm" data-he="תפילין" data-en="Tefillin">תפילין</button>
-                    <button onclick="filterCatalog('מזוזות')" id="btn-מזוזות" class="filter-btn px-6 py-2.5 rounded-full bg-white text-gray-500 border border-gray-200 hover:border-luxury-gold hover:text-luxury-dark font-sans text-[10px] font-black uppercase tracking-[0.2em] transition-all whitespace-nowrap shadow-sm" data-he="מזוזות" data-en="Mezuzot">מזוזות</button>
-                    <button onclick="filterCatalog('מגילות')" id="btn-מגילות" class="filter-btn px-6 py-2.5 rounded-full bg-white text-gray-500 border border-gray-200 hover:border-luxury-gold hover:text-luxury-dark font-sans text-[10px] font-black uppercase tracking-[0.2em] transition-all whitespace-nowrap shadow-sm" data-he="מגילות" data-en="Megillot">מגילות</button>
+                <div class="flex gap-4 overflow-x-auto no-scrollbar pb-4 w-full lg:w-auto px-2 md:px-0 snap-x" data-aos="fade-right">
+                    <button onclick="filterCatalog('all')" id="btn-all" class="filter-btn active px-6 py-2.5 rounded-full bg-[#050505] text-white font-sans text-[10px] font-black uppercase tracking-[0.2em] shadow-lg transition-all whitespace-nowrap border border-transparent snap-start" data-he="הכל" data-en="All">הכל</button>
+                    <button onclick="filterCatalog('תורה')" id="btn-תורה" class="filter-btn px-6 py-2.5 rounded-full bg-white text-gray-500 border border-gray-200 hover:border-luxury-gold hover:text-luxury-dark font-sans text-[10px] font-black uppercase tracking-[0.2em] transition-all whitespace-nowrap shadow-sm snap-start" data-he="ספרי תורה" data-en="Torahs">ספרי תורה</button>
+                    <button onclick="filterCatalog('תפילין')" id="btn-תפילין" class="filter-btn px-6 py-2.5 rounded-full bg-white text-gray-500 border border-gray-200 hover:border-luxury-gold hover:text-luxury-dark font-sans text-[10px] font-black uppercase tracking-[0.2em] transition-all whitespace-nowrap shadow-sm snap-start" data-he="תפילין" data-en="Tefillin">תפילין</button>
+                    <button onclick="filterCatalog('מזוזות')" id="btn-מזוזות" class="filter-btn px-6 py-2.5 rounded-full bg-white text-gray-500 border border-gray-200 hover:border-luxury-gold hover:text-luxury-dark font-sans text-[10px] font-black uppercase tracking-[0.2em] transition-all whitespace-nowrap shadow-sm snap-start" data-he="מזוזות" data-en="Mezuzot">מזוזות</button>
+                    <button onclick="filterCatalog('מגילות')" id="btn-מגילות" class="filter-btn px-6 py-2.5 rounded-full bg-white text-gray-500 border border-gray-200 hover:border-luxury-gold hover:text-luxury-dark font-sans text-[10px] font-black uppercase tracking-[0.2em] transition-all whitespace-nowrap shadow-sm snap-start" data-he="מגילות" data-en="Megillot">מגילות</button>
                 </div>
             </div>
 
@@ -808,6 +822,7 @@
         </div>
     </footer>
 
+    <!-- Cart Drawer -->
     <div id="cart-overlay" onclick="toggleCart()" class="fixed inset-0 bg-[#050505]/70 z-[2000] hidden opacity-0 transition-opacity backdrop-blur-md"></div>
     <div id="cart-drawer" class="fixed top-0 left-0 h-full w-full sm:w-[480px] bg-white z-[2001] translate-x-[-100%] transition-transform duration-700 flex flex-col shadow-2xl border-r border-gray-100">
         <div class="p-8 border-b border-gray-100 flex justify-between items-center bg-[#FAFAFA]">
@@ -840,17 +855,17 @@
         </div>
     </div>
 
-    <!-- Product Quick View Modal (Mobile Optimized) -->
-    <div id="product-modal" class="fixed inset-0 z-[3000] flex items-center justify-center opacity-0 invisible backdrop-blur-xl bg-[#050505]/80 p-4 transition-all duration-500">
+    <!-- Product Quick View Modal (Mobile Optimized App-like Experience) -->
+    <div id="product-modal" class="fixed inset-0 z-[3000] flex items-center justify-center opacity-0 invisible backdrop-blur-xl bg-[#050505]/80 sm:p-4 transition-all duration-500">
         <div class="modal-content bg-white w-full max-w-5xl rounded-[3rem] overflow-hidden flex flex-col md:flex-row shadow-[0_40px_100px_rgba(0,0,0,0.5)] relative border border-white/20">
             <button onclick="closeModal()" class="absolute top-5 right-5 md:left-5 md:right-auto z-20 bg-white/90 backdrop-blur-sm p-3 rounded-full text-luxury-dark hover:bg-gray-100 transition-colors shadow-sm"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path></svg></button>
             
-            <div class="w-full md:w-[45%] bg-[#FAFAFA] relative h-72 md:h-auto shrink-0 overflow-hidden">
+            <div class="w-full md:w-[45%] bg-[#FAFAFA] relative h-64 md:h-auto shrink-0 overflow-hidden">
                 <img id="modal-img" src="" class="w-full h-full object-cover transition-transform duration-1000 hover:scale-105">
                 <div class="absolute inset-0 border border-black/5 pointer-events-none"></div>
             </div>
             
-            <div class="w-full md:w-[55%] flex flex-col modal-scroll-area h-[60vh] md:h-auto relative bg-white">
+            <div class="w-full md:w-[55%] flex flex-col modal-scroll-area h-full md:h-auto relative bg-white">
                 <div class="p-8 lg:p-14 flex-1">
                     <div class="flex items-center justify-between mb-8">
                         <span id="modal-cat" class="text-[10px] font-black uppercase tracking-[0.2em] text-luxury-dark font-sans border border-gray-200 px-5 py-2 rounded-full bg-[#FAFAFA]"></span>
@@ -884,7 +899,7 @@
                     </div>
                 </div>
 
-                <!-- Sticky Bottom Action Bar -->
+                <!-- Sticky Bottom Action Bar (App-like behavior) -->
                 <div class="modal-action-bar lg:px-14 lg:pb-14 flex flex-col sm:flex-row gap-4">
                     <button id="modal-add-btn" class="btn-shine w-full sm:flex-1 bg-[#050505] text-white py-5 rounded-2xl font-bold font-sans text-[12px] uppercase tracking-[0.2em] shadow-premium hover:shadow-premium-hover transition-all hover:-translate-y-1">
                         <span class="z-10 relative" data-he="הוסף לסל" data-en="Add to Cart">הוסף לסל</span>
@@ -990,11 +1005,11 @@
             if (window.scrollY > 50) {
                 header.classList.add('scrolled');
                 topBar.style.transform = 'translateY(-100%)';
-                header.style.top = '20px';
+                header.style.top = '10px'; // Consistent top spacing for scrolled header
             } else {
                 header.classList.remove('scrolled');
                 topBar.style.transform = 'translateY(0)';
-                header.style.top = '';
+                header.style.top = ''; // Reset to CSS default
             }
 
             if (window.scrollY > 600) scrollTopBtn.classList.add('visible');
