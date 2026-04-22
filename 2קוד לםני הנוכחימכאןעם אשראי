@@ -268,7 +268,7 @@
         <!-- Parallax Background -->
         <div class="absolute inset-0 z-0">
             <div class="absolute inset-0 bg-gradient-to-b from-white/70 via-white/90 to-luxury-cream z-10"></div>
-            <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?q=80&w=2000" class="w-full h-full object-cover opacity-30 transform scale-105 animate-[pulse-soft_10s_ease-in-out_infinite]" alt="רקע ספרי תורה">
+            <img src="https://babasali.org.il/wp-content/uploads/2024/12/%D7%AA%D7%9E%D7%95%D7%A0%D7%94-%D7%91%D7%90%D7%91%D7%90-%D7%A1%D7%90%D7%9C%D7%99-%D7%9E%D7%95%D7%A7%D7%98%D7%9F.d110a0.webp" class="w-full h-full object-cover opacity-30 transform scale-105 animate-[pulse-soft_10s_ease-in-out_infinite]" alt="רקע ספרי תורה">
         </div>
 
         <div class="max-w-[1440px] mx-auto px-6 relative z-10 text-center lg:text-right flex flex-col lg:flex-row items-center justify-between gap-16 py-12">
@@ -299,7 +299,7 @@
                     <div class="bg-luxury-cream text-luxury-gold p-3 rounded-full border border-luxury-gold/20"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg></div>
                     <div class="flex flex-col pr-2 rtl:pr-0 rtl:pl-2">
                         <span class="text-sm font-black font-sans text-luxury-dark" data-he="100% כשרות" data-en="100% Kosher">100% כשרות</span>
-                        <span class="text-[9px] text-gray-500 font-sans uppercase tracking-widest" data-he="באחריות דיין" data-en="Rabbinical Certified">באחריות דיין</span>
+                        <span class="text-[9px] text-gray-500 font-sans uppercase tracking-widest" data-he="באחריות והידור" data-en="Rabbinical Certified">באחריות דיין</span>
                     </div>
                 </div>
             </div>
@@ -412,7 +412,7 @@
             <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20" data-aos="fade-right">
                 <div class="w-64 h-64 lg:w-80 lg:h-80 shrink-0 relative">
                     <div class="absolute inset-0 border border-luxury-gold rounded-full -m-4 scale-105 opacity-50"></div>
-                    <img src="https://babasali.org.il/wp-content/uploads/2024/12/%D7%AA%D7%9E%D7%95%D7%A0%D7%94-%D7%91%D7%90%D7%91%D7%90-%D7%A1%D7%90%D7%9C%D7%99-%D7%9E%D7%95%D7%A7%D7%98%D7%9F.d110a0.webp" class="w-full h-full rounded-full object-cover shadow-2xl relative z-10 border-8 border-luxury-cream" alt="הרב אלדר לוי שליט''א">
+                    <img src="https://lh3.googleusercontent.com/d/1jsZzClwy3vWfrDE2Bu260lzWXucQ7YYk" class="w-full h-full rounded-full object-cover shadow-2xl relative z-10 border-8 border-luxury-cream" alt="הרב אלדר לוי שליט''א">
                 </div>
                 <div class="text-center lg:text-right rtl:lg:text-right ltr:lg:text-left flex-1">
                     <h3 class="text-3xl lg:text-4xl font-black font-tradition italic text-luxury-dark mb-4" data-he="הרה&quot;ג אלדר לוי שליט&quot;א" data-en="Dayan Rabbi Eldar Levi">הרה"ג אלדר לוי שליט"א</h3>
