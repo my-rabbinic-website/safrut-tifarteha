@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>תיאום פגישת ייעוץ | ספרותך תפארתך</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;800&family=Frank+Ruhl+Libre:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Assistant', 'sans-serif'], serif: ['Frank Ruhl Libre', 'serif'] },
+                    colors: { brand: { gold: '#CBA153', onyx: '#0A0A0A', cream: '#FCFCFA', platinum: '#E5E3DC' } }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: var(--brand-cream); color: var(--brand-onyx); }
+        .gold-gradient { background: linear-gradient(135deg, #CBA153 0%, #E8D4A2 50%, #9A7B3E 100%); }
+        .gold-text-gradient { background: linear-gradient(135deg, #CBA153 0%, #E8D4A2 50%, #9A7B3E 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        /* Editorial Input Style */
+        .input-editorial {
+            background: transparent; border: none; border-bottom: 1px solid rgba(0,0,0,0.1); border-radius: 0;
+            padding: 16px 0; transition: all 0.4s ease; width: 100%; font-family: 'Assistant', sans-serif;
+        }
+        .input-editorial:focus { border-bottom-color: var(--brand-gold); outline: none; box-shadow: 0 1px 0 0 var(--brand-gold); }
+        .input-editorial::placeholder { color: #9CA3AF; font-weight: 300; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header -->
+    <header class="py-8 text-center bg-white/50 backdrop-blur-md sticky top-0 z-50 border-b border-black/5">
+        <a href="index.html" class="text-3xl font-serif font-black tracking-tighter text-brand-onyx hover:opacity-80 transition-opacity">
+            ספרות תפארתך<span class="text-brand-gold"></span>
+        </a>
+    </header>
+
+    <main class="min-h-screen py-20 px-6">
+        <div class="max-w-[1400px] mx-auto grid lg:grid-cols-2 gap-16 items-center">
+            
+            <!-- Information Section -->
+            <div class="dir-text-right" data-aos="fade-left">
+                <span class="text-brand-gold font-bold uppercase tracking-[0.3em] text-[10px] mb-6 block">Private Consultation</span>
+                <h1 class="text-5xl md:text-7xl font-serif font-black italic gold-text-gradient pb-4 leading-tight">בואו נתחנן<br>את יצירת הקודש<br>שלכם.</h1>
+                <p class="text-gray-500 mt-6 text-lg md:text-xl font-light leading-relaxed max-w-lg">
+                    אנו מזמינים אתכם לפגישת ייעוץ אישית במכון שלנו. נשמח להקשיב לבקשותיכם, לייעץ בנושאי הידור והלכה, ולהתאים עבורכם את מוצר הסת"ם המדויק למידותיכם.
+                </p>
+                
+                <div class="mt-12 space-y-6">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full border border-brand-gold/30 flex items-center justify-center text-brand-gold">📍</div>
+                        <div>
+                            <p class="font-bold text-brand-onyx">המכון שלנו</p>
+                            <p class="text-gray-500 font-light"> נווה שרון 15, נתיבות (בתיאום מראש בלבד)</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full border border-brand-gold/30 flex items-center justify-center text-brand-gold">📞</div>
+                        <div>
+                            <p class="font-bold text-brand-onyx">מענה טלפוני ווואטסאפ</p>
+                            <p class="text-gray-500 font-light dir-ltr">0528219928</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Form Section -->
+            <div class="bg-white p-10 md:p-16 rounded-[3rem] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.05)] border border-black/5" data-aos="fade-right" data-aos-delay="100">
+                <h2 class="text-2xl font-serif font-bold text-brand-onyx mb-8">השאירו פרטים ונחזור אליכם בהקדם</h2>
+                
+                <!-- החלף את YOUR_EMAIL@GMAIL.COM באימייל שלך -->
+                <form action="https://formsubmit.co/tifarteha@GMAIL.COM" method="POST" class="space-y-6">
+                    
+                    <!-- הגדרות חבויות לטופס -->
+                    <input type="hidden" name="_subject" value="פנייה חדשה מהאתר - ספרותך תפארתך!">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <input type="text" name="שם_מלא" required placeholder="שם מלא *" class="input-editorial">
+                        </div>
+                        <div>
+                            <input type="tel" name="טלפון" required placeholder="מספר טלפון *" class="input-editorial" dir="rtl">
+                        </div>
+                    </div>
+
+                    <div>
+                        <input type="email" name="אימייל" placeholder="כתובת אימייל (אופציונלי)" class="input-editorial">
+                    </div>
+
+                    <div>
+                        <select name="נושא_הפנייה" class="input-editorial text-gray-500 cursor-pointer appearance-none">
+                            <option value="" disabled selected>באיזה נושא תרצו להתייעץ?</option>
+                            <option value="ספר תורה">כתיבת ספר תורה</option>
+                            <option value="תפילין">רכישת תפילין מהודרות</option>
+                            <option value="מזוזות">בדיקה או רכישת מזוזות</option>
+                            <option value="יודאיקה ועימוד">יודאיקה / עימוד ועיצוב</option>
+                            <option value="אחר">נושא אחר</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <textarea name="הודעה" rows="3" placeholder="ספרו לנו קצת על הבקשה שלכם..." class="input-editorial resize-none"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full mt-8 py-6 gold-gradient text-white font-black uppercase text-sm tracking-[0.3em] rounded-2xl hover:shadow-[0_20px_40px_rgba(203,161,83,0.3)] transition-all duration-500 transform hover:-translate-y-1">
+                        שלחו פנייה
+                    </button>
+                    <p class="text-center text-xs text-gray-400 mt-4 font-light">* הפרטים נשמרים בדיסקרטיות מלאה ולא יועברו לצד ג'.</p>
+                </form>
+            </div>
+
+        </div>
+    </main>
+
+    <script>AOS.init({ once: true, duration: 1000 });</script>
+</body>
+</html>
