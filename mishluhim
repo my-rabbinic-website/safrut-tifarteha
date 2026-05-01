@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מדיניות משלוחים | ספרותך תפארתך</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;800&family=Frank+Ruhl+Libre:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Assistant', 'sans-serif'], serif: ['Frank Ruhl Libre', 'serif'] },
+                    colors: { brand: { gold: '#CBA153', onyx: '#0A0A0A', cream: '#FCFCFA', platinum: '#E5E3DC' } }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: var(--brand-cream); color: var(--brand-onyx); }
+        .gold-gradient { background: linear-gradient(135deg, #CBA153 0%, #E8D4A2 50%, #9A7B3E 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hairline { height: 1px; background: linear-gradient(90deg, transparent, rgba(203,161,83,0.3), transparent); }
+    </style>
+</head>
+<body class="antialiased selection:bg-brand-gold selection:text-white">
+
+    <!-- Simple Luxury Header -->
+    <header class="py-10 text-center bg-white/50 backdrop-blur-md sticky top-0 z-50 border-b border-black/5">
+        <a href="index.html" class="text-3xl font-serif font-black tracking-tighter text-brand-onyx hover:opacity-80 transition-opacity">
+            תפארתך<span class="text-brand-gold">.</span>
+        </a>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-6 py-24 min-h-screen">
+        <div class="text-center mb-20" data-aos="fade-up">
+            <span class="text-brand-gold font-bold uppercase tracking-[0.3em] text-[10px] mb-4 block">Shipping & Delivery</span>
+            <h1 class="text-5xl md:text-7xl font-serif font-black italic gold-gradient pb-2">מדיניות משלוחים</h1>
+            <p class="text-gray-500 mt-6 text-lg md:text-xl font-light">שינוע בטוח, מבוטח ואחראי ליצירות הקודש שלכם.</p>
+        </div>
+
+        <div class="space-y-16" data-aos="fade-up" data-aos-delay="100">
+            
+            <section>
+                <h2 class="text-2xl font-serif font-bold text-brand-onyx mb-4 flex items-center gap-3">
+                    <span class="w-2 h-2 rounded-full bg-brand-gold"></span> משלוחים בישראל
+                </h2>
+                <div class="text-gray-600 leading-relaxed font-light space-y-4">
+                    <p>אנו מעניקים שירות משלוחים עד דלת הלקוח לכל חלקי הארץ באמצעות חברת בלדרות מאובטחת. כל מוצרי הסת"ם נארזים בקפידה רבה, תוך שימוש בחומרי אריזה אטומים ללחות ולשינויי טמפרטורה, להבטחת שלמותם ההלכתית והפיזית.</p>
+                    <ul class="list-disc list-inside pr-4 space-y-2 text-brand-onyx/80">
+                        <li><strong>מוצרי מדף (כגון מזוזות ותפילין מהמלאי):</strong> אספקה תוך 3-5 ימי עסקים.</li>
+                        <li><strong>הזמנות מיוחדות:</strong> זמני האספקה יתואמו מראש בעת ההזמנה.</li>
+                        <li>עלות משלוח רגיל: 50 ₪. בקנייה מעל 2,000 ₪ – משלוח מאובטח חינם.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <div class="hairline"></div>
+
+            <section>
+                <h2 class="text-2xl font-serif font-bold text-brand-onyx mb-4 flex items-center gap-3">
+                    <span class="w-2 h-2 rounded-full bg-brand-gold"></span> שילוח בינלאומי מבוטח (Worldwide)
+                </h2>
+                <div class="text-gray-600 leading-relaxed font-light space-y-4">
+                    <p>אנו מטיסים ספרי תורה, תפילין ומזוזות לכל קהילה יהודית ברחבי העולם (ארה"ב, אירופה, אוסטרליה ועוד). המשלוחים מבוצעים דרך חברות השילוח המובילות בעולם (כגון DHL/FedEx) וכוללים <strong>ביטוח מלא</strong> מרגע יציאתם מהסטודיו שלנו ועד מסירתם לידיכם.</p>
+                    <p>זמני האספקה לחו"ל נעים בין 5 ל-14 ימי עסקים, בכפוף לשחרור ממכס במדינת היעד. שימו לב: מיסים, היטלים ועמלות מכס במדינת היעד (ככל שיחולו) יחולו על המזמין.</p>
+                </div>
+            </section>
+
+            <div class="hairline"></div>
+
+            <section>
+                <h2 class="text-2xl font-serif font-bold text-brand-onyx mb-4 flex items-center gap-3">
+                    <span class="w-2 h-2 rounded-full bg-brand-gold"></span> שינוע ספרי תורה
+                </h2>
+                <div class="text-gray-600 leading-relaxed font-light space-y-4">
+                    <p>העברת ספר תורה היא אירוע קדוש ורגיש. ספרי תורה נמסרים באופן אישי על ידי נציג מטעמנו בישראל, או נשלחים לחו"ל במארז אקלים מיוחד (Climate-Controlled Case) המגן מפני זעזועים ולחות. במקרים מסוימים ניתן לתאם הטסה אישית של הספר בלוויית שליח.</p>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="py-8 text-center text-gray-400 text-sm border-t border-black/5">
+        &copy; 2024 ספרותך תפארתך. כל הזכויות שמורות.
+    </footer>
+
+    <script>AOS.init({ once: true, duration: 1000 });</script>
+</body>
+</html>
