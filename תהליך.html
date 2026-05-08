@@ -1,1 +1,117 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>תהליך היצירה | ספרותך תפארתך</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;800&family=Frank+Ruhl+Libre:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Assistant', 'sans-serif'], serif: ['Frank Ruhl Libre', 'serif'] },
+                    colors: { brand: { gold: '#CBA153', onyx: '#0A0A0A', cream: '#FCFCFA' } }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: var(--brand-cream); color: var(--brand-onyx); }
+        .gold-gradient { background: linear-gradient(135deg, #CBA153 0%, #E8D4A2 50%, #9A7B3E 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .image-frame { border-radius: 2rem; overflow: hidden; box-shadow: 0 30px 60px -15px rgba(0,0,0,0.1); }
+    </style>
+</head>
+<body class="antialiased overflow-x-hidden">
 
+    <header class="py-8 text-center bg-white/50 backdrop-blur-md sticky top-0 z-50 border-b border-black/5">
+        <a href="index.html" class="text-3xl font-serif font-black tracking-tighter text-brand-onyx hover:opacity-80 transition-opacity">
+            תפארתך<span class="text-brand-gold">.</span>
+        </a>
+    </header>
+
+    <!-- Hero Process -->
+    <section class="py-24 text-center px-6">
+        <div class="max-w-4xl mx-auto" data-aos="fade-up">
+            <span class="text-brand-gold font-bold uppercase tracking-[0.4em] text-[10px] mb-6 block">The Holy Craft</span>
+            <h1 class="text-5xl md:text-8xl font-serif font-black italic gold-gradient pb-4 leading-none mb-8">מסע של קדושה<br>ואומנות.</h1>
+            <p class="text-xl text-gray-500 font-light max-w-2xl mx-auto leading-relaxed">
+                משלב ההכנה הרוחנית, דרך בחירת הקלף המובחר ביותר, ועד לבדיקה הממוחשבת. הכירו את השלבים שהופכים כל יצירה ב"ספרותך תפארתך" למושלמת.
+            </p>
+        </div>
+    </section>
+
+    <main class="max-w-[1400px] mx-auto px-6 py-12 space-y-32 mb-32">
+        
+        <!-- Step 1 -->
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+            <div class="image-frame aspect-[4/3] order-2 lg:order-1" data-aos="fade-left">
+                <img src="https://images.unsplash.com/photo-1544813545-4827233fc5ce?q=80&w=1974" class="w-full h-full object-cover grayscale-[0.3]" alt="הכנה רוחנית">
+            </div>
+            <div class="order-1 lg:order-2" data-aos="fade-right">
+                <span class="text-8xl font-serif text-brand-gold/10 absolute -translate-y-12 -translate-x-12 select-none">01</span>
+                <h2 class="text-4xl font-serif font-bold mb-6 relative z-10">הכנה רוחנית וטהרה</h2>
+                <div class="w-12 h-1 bg-brand-gold mb-6"></div>
+                <p class="text-gray-600 font-light text-lg leading-relaxed">
+                    כתיבת סת"ם אינה רק מלאכת קליגרפיה, אלא עבודת קודש. הסופרים שלנו פותחים כל יום עבודה בטבילה במקווה טהרה ובהכנה רוחנית מעמיקה. כל אות נכתבת מתוך כוונה טהורה ("לשם קדושת ספר תורה / תפילין"), מתוך יראת שמיים והקפדה על הלכות הטהרה החמורות ביותר.
+                </p>
+            </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+            <div data-aos="fade-left">
+                <span class="text-8xl font-serif text-brand-gold/10 absolute -translate-y-12 translate-x-12 select-none">02</span>
+                <h2 class="text-4xl font-serif font-bold mb-6 relative z-10">בחירת הקלף והדיו</h2>
+                <div class="w-12 h-1 bg-brand-gold mb-6"></div>
+                <p class="text-gray-600 font-light text-lg leading-relaxed">
+                    אנו משתמשים אך ורק בקלף עבודת יד ברמת ה"שלם" הגבוהה ביותר, המעובד לשם מצווה מעורות בהמה טהורה. הדיו בו אנו משתמשים הוא דיו לנצח, המיוצר על פי נוסחאות עתיקות שעברו מדור לדור, ומבטיח שהכתב יהיה שחור, מבריק ועמיד לאורך עשרות שנים מבלי לדהות או להיסדק.
+                </p>
+            </div>
+            <div class="image-frame aspect-[4/3]" data-aos="fade-right">
+                <img src="https://images.unsplash.com/photo-1585336139118-132f7f21503e?q=80&w=1980" class="w-full h-full object-cover grayscale-[0.3]" alt="דיו וקולמוס">
+            </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+            <div class="image-frame aspect-[4/3] order-2 lg:order-1" data-aos="fade-left">
+                <!-- Using a placeholder pattern that feels like text/parchment -->
+                <img src="https://images.unsplash.com/photo-1455390582262-044cdead27d8?q=80&w=1973" class="w-full h-full object-cover grayscale-[0.3]" alt="מלאכת הכתיבה">
+            </div>
+            <div class="order-1 lg:order-2" data-aos="fade-right">
+                <span class="text-8xl font-serif text-brand-gold/10 absolute -translate-y-12 -translate-x-12 select-none">03</span>
+                <h2 class="text-4xl font-serif font-bold mb-6 relative z-10">הכתיבה התמה</h2>
+                <div class="w-12 h-1 bg-brand-gold mb-6"></div>
+                <p class="text-gray-600 font-light text-lg leading-relaxed">
+                    בסבלנות אין קץ ובריכוז מוחלט, הסופר משרטט אות אחר אות בעזרת קולמוס קנה או נוצה מסורתי. הכתב נבחן תחת זכוכית מגדלת כדי להבטיח את שלמותן ההלכתית של הצורות, התגים והקוצים. כל יריעה היא יצירת אומנות סימטרית ומאירת עיניים.
+                </p>
+            </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+            <div data-aos="fade-left">
+                <span class="text-8xl font-serif text-brand-gold/10 absolute -translate-y-12 translate-x-12 select-none">04</span>
+                <h2 class="text-4xl font-serif font-bold mb-6 relative z-10">ההגהה המשולשת</h2>
+                <div class="w-12 h-1 bg-brand-gold mb-6"></div>
+                <p class="text-gray-600 font-light text-lg leading-relaxed">
+                    כדי להבטיח שלמות הלכתית באפס תקלות, כל כתב עובר מערך ביקורת משולש וקפדני: תחילה, שתי קריאות ידניות יסודיות על ידי מגיהים מוסמכים ובלתי תלויים. לאחר מכן, סריקה טכנולוגית מתקדמת בתוכנת מחשב ייעודית, הסורקת כל אות ומאתרת טעויות חסר, יתר או דיבוקים שעין אנושית עלולה לפספס.
+                </p>
+            </div>
+            <div class="image-frame aspect-[4/3] bg-brand-onyx flex items-center justify-center p-12 text-center" data-aos="fade-right">
+               <div class="border border-brand-gold/30 p-10 rounded-2xl">
+                    <h3 class="text-3xl font-serif font-bold text-brand-gold mb-4">"וכתבתם לכם..."</h3>
+                    <p class="text-white/60 font-light italic">רק לאחר אישור ההגהה המשולשת, היצירה מוגדרת כמושלמת ומועברת לתפירה ולשילוח אליכם.</p>
+               </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script>AOS.init({ once: true, duration: 1000 });</script>
+</body>
+</html>
