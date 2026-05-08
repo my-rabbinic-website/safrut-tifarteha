@@ -103,7 +103,7 @@
               "@type": "ListItem",
               "position": 2,
               "name": "קולקציית פרימיום",
-              "item": "https://my-rabbinic-website.github.io/safrut-tifarteha/#products"
+              "item": "https://my-rabbinic-website.github.io/safrut-tifarteha/קטלוג"
             }
           ]
         },
@@ -481,8 +481,8 @@
                 </div>
                 <div class="w-px h-3 bg-white/20 hidden md:block" aria-hidden="true"></div>
                 <div class="flex bg-white/5 rounded-md p-0.5 border border-white/10 backdrop-blur-sm cursor-none" aria-label="בחירת מטבע">
-                    <button onclick="setCurrency('ils')" id="cur-ils" aria-label="שקלים" class="px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.15em] rounded transition-all text-gray-400 hover:text-white hover-trigger">₪ ILS</button>
-                    <button onclick="setCurrency('usd')" id="cur-usd" aria-label="דולר אמריקאי" class="px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.15em] rounded transition-all active bg-luxury-gold text-[#050505] shadow-sm hover-trigger">$ USD</button>
+                    <button onclick="setCurrency('ils')" id="cur-ils" aria-label="שקלים" class="px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.15em] rounded transition-all active bg-luxury-gold text-[#050505] shadow-sm hover-trigger">₪ ILS</button>
+                    <button onclick="setCurrency('usd')" id="cur-usd" aria-label="דולר אמריקאי" class="px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.15em] rounded transition-all text-gray-400 hover:text-white hover-trigger">$ USD</button>
                 </div>
             </div>
 
@@ -508,13 +508,13 @@
             <!-- Desktop Nav -->
             <nav class="hidden lg:flex items-center gap-3 xl:gap-5 text-[10.5px] xl:text-[12px] font-black uppercase tracking-[0.1em] xl:tracking-[0.15em] font-sans text-gray-600" aria-label="ניווט ראשי">
                 <!-- להטמעת קישור חיצוני: שנה את הערך בתוך ה-href -->
-                <a href="#products" onclick="scrollToAndFilter('all')" class="hover-trigger hover:text-luxury-gold transition-colors hover:-translate-y-0.5 transform duration-300 inline-block" data-he="קטלוג הסת''ם" data-en="STAM Catalog">קטלוג הסת''ם</a>
-                <a href="#products" onclick="scrollToAndFilter('תפילין')" class="hover-trigger hover:text-luxury-gold transition-colors hover:-translate-y-0.5 transform duration-300 inline-block" data-he="סטים מעוצבים" data-en="Designed Sets">סטים מעוצבים</a>
-                <a href="#products" onclick="scrollToAndFilter('מגילות')" class="hover-trigger hover:text-luxury-gold transition-colors hover:-translate-y-0.5 transform duration-300 inline-block" data-he="יודאיקה ואביזרים" data-en="Judaica & Accessories">יודאיקה ואביזרים</a>
-                <a href="#process" class="hover-trigger hover:text-luxury-gold transition-colors hover:-translate-y-0.5 transform duration-300 inline-block" data-he="תהליך היצירה" data-en="The Process">תהליך היצירה</a>
-                <a href="#gallery-section" class="hover-trigger hover:text-luxury-gold transition-colors hover:-translate-y-0.5 transform duration-300 inline-block" data-he="גלריית אירועים" data-en="Events Gallery">גלריית אירועים</a>
-                <a href="#about" class="hover-trigger hover:text-luxury-gold transition-colors hover:-translate-y-0.5 transform duration-300 inline-block" data-he="מכון נתיבות" data-en="Netivot Institute">מכון נתיבות</a>
-                <a href="#footer-contact" class="hover-trigger hover:text-luxury-gold transition-colors hover:-translate-y-0.5 transform duration-300 inline-block" data-he="יצירת קשר" data-en="Contact Us">יצירת קשר</a>
+                <a href="קטלוג" onclick="scrollToAndFilter('all')" class="hover-trigger hover:text-luxury-gold transition-colors hover:-translate-y-0.5 transform duration-300 inline-block" data-he="קטלוג הסת''ם" data-en="STAM Catalog">קטלוג הסת''ם</a>
+                <a href="סטים" onclick="scrollToAndFilter('תפילין')" class="hover-trigger hover:text-luxury-gold transition-colors hover:-translate-y-0.5 transform duration-300 inline-block" data-he="סטים מעוצבים" data-en="Designed Sets">סטים מעוצבים</a>
+                <a href="יודאיקה" onclick="scrollToAndFilter('מגילות')" class="hover-trigger hover:text-luxury-gold transition-colors hover:-translate-y-0.5 transform duration-300 inline-block" data-he="יודאיקה ואביזרים" data-en="Judaica & Accessories">יודאיקה ואביזרים</a>
+                <a href="תהליך" class="hover-trigger hover:text-luxury-gold transition-colors hover:-translate-y-0.5 transform duration-300 inline-block" data-he="תהליך היצירה" data-en="The Process">תהליך היצירה</a>
+                <a href="גלרייה" class="hover-trigger hover:text-luxury-gold transition-colors hover:-translate-y-0.5 transform duration-300 inline-block" data-he="גלריית אירועים" data-en="Events Gallery">גלריית אירועים</a>
+                <a href="מכון" class="hover-trigger hover:text-luxury-gold transition-colors hover:-translate-y-0.5 transform duration-300 inline-block" data-he="מכון נתיבות" data-en="Netivot Institute">מכון נתיבות</a>
+                <a href="קשר" class="hover-trigger hover:text-luxury-gold transition-colors hover:-translate-y-0.5 transform duration-300 inline-block" data-he="יצירת קשר" data-en="Contact Us">יצירת קשר</a>
             </nav>
 
             <!-- Logo -->
@@ -533,17 +533,17 @@
         </div>
         <div class="flex flex-col p-6 text-xl lg:text-2xl font-light font-tradition italic text-right overflow-y-auto flex-1 gap-2">
             <!-- להטמעת קישור חיצוני בנייד: שנה את הערך בתוך ה-href -->
-            <a href="#products" onclick="scrollToAndFilter('all'); toggleMenu(false)" class="w-full text-right p-4 rounded-2xl hover:bg-white hover:shadow-sm text-luxury-dark transition-all border border-transparent hover:border-luxury-gold/20 block" data-he="קטלוג הסת''ם" data-en="STAM Catalog">קטלוג הסת''ם</a>
-            <a href="#products" onclick="scrollToAndFilter('תפילין'); toggleMenu(false)" class="w-full text-right p-4 rounded-2xl hover:bg-white hover:shadow-sm text-luxury-dark transition-all border border-transparent hover:border-luxury-gold/20 block" data-he="סטים מעוצבים" data-en="Designed Sets">סטים מעוצבים</a>
-            <a href="#products" onclick="scrollToAndFilter('מגילות'); toggleMenu(false)" class="w-full text-right p-4 rounded-2xl hover:bg-white hover:shadow-sm text-luxury-dark transition-all border border-transparent hover:border-luxury-gold/20 block" data-he="יודאיקה ואביזרים" data-en="Judaica & Accessories">יודאיקה ואביזרים</a>
-            <a href="#process" onclick="toggleMenu(false)" class="w-full text-right p-4 rounded-2xl hover:bg-white hover:shadow-sm text-luxury-dark transition-all border border-transparent hover:border-luxury-gold/20 block" data-he="תהליך היצירה" data-en="The Process">תהליך היצירה</a>
-            <a href="#gallery-section" onclick="toggleMenu(false)" class="w-full text-right p-4 rounded-2xl hover:bg-white hover:shadow-sm text-luxury-dark transition-all border border-transparent hover:border-luxury-gold/20 block" data-he="גלריית אירועים" data-en="Events Gallery">גלריית אירועים</a>
-            <a href="#about" onclick="toggleMenu(false)" class="w-full text-right p-4 rounded-2xl hover:bg-white hover:shadow-sm text-luxury-dark transition-all border border-transparent hover:border-luxury-gold/20 block" data-he="מכון נתיבות" data-en="Netivot Institute">מכון נתיבות</a>
-            <a href="#footer-contact" onclick="toggleMenu(false)" class="w-full text-right p-4 rounded-2xl hover:bg-white hover:shadow-sm text-luxury-dark transition-all border border-transparent hover:border-luxury-gold/20 block" data-he="יצירת קשר" data-en="Contact Us">יצירת קשר</a>
+            <a href="קטלוג" onclick="scrollToAndFilter('all'); toggleMenu(false)" class="w-full text-right p-4 rounded-2xl hover:bg-white hover:shadow-sm text-luxury-dark transition-all border border-transparent hover:border-luxury-gold/20 block" data-he="קטלוג הסת''ם" data-en="STAM Catalog">קטלוג הסת''ם</a>
+            <a href="סטים" onclick="scrollToAndFilter('תפילין'); toggleMenu(false)" class="w-full text-right p-4 rounded-2xl hover:bg-white hover:shadow-sm text-luxury-dark transition-all border border-transparent hover:border-luxury-gold/20 block" data-he="סטים מעוצבים" data-en="Designed Sets">סטים מעוצבים</a>
+            <a href="יודאיקה" onclick="scrollToAndFilter('מגילות'); toggleMenu(false)" class="w-full text-right p-4 rounded-2xl hover:bg-white hover:shadow-sm text-luxury-dark transition-all border border-transparent hover:border-luxury-gold/20 block" data-he="יודאיקה ואביזרים" data-en="Judaica & Accessories">יודאיקה ואביזרים</a>
+            <a href="תהליך" onclick="toggleMenu(false)" class="w-full text-right p-4 rounded-2xl hover:bg-white hover:shadow-sm text-luxury-dark transition-all border border-transparent hover:border-luxury-gold/20 block" data-he="תהליך היצירה" data-en="The Process">תהליך היצירה</a>
+            <a href="גלרייה-section" onclick="toggleMenu(false)" class="w-full text-right p-4 rounded-2xl hover:bg-white hover:shadow-sm text-luxury-dark transition-all border border-transparent hover:border-luxury-gold/20 block" data-he="גלריית אירועים" data-en="Events Gallery">גלריית אירועים</a>
+            <a href="מכון" onclick="toggleMenu(false)" class="w-full text-right p-4 rounded-2xl hover:bg-white hover:shadow-sm text-luxury-dark transition-all border border-transparent hover:border-luxury-gold/20 block" data-he="מכון נתיבות" data-en="Netivot Institute">מכון נתיבות</a>
+            <a href="קשר" onclick="toggleMenu(false)" class="w-full text-right p-4 rounded-2xl hover:bg-white hover:shadow-sm text-luxury-dark transition-all border border-transparent hover:border-luxury-gold/20 block" data-he="יצירת קשר" data-en="Contact Us">יצירת קשר</a>
         </div>
         <div class="p-8 bg-white border-t border-gray-200">
             <a href="tel:+972528219928" class="btn-shine flex items-center justify-center gap-3 w-full bg-[#050505] text-white py-4 rounded-xl font-bold font-sans text-[13px] uppercase tracking-[0.2em] shadow-xl hover:scale-105 transition-transform">
-                <span data-he="ייעוץ הלכתי מהיר" data-en="Halachic WhatsApp">ייעוץ הלכתי מהיר </span>
+                <span data-he="ייעוץ" data-en="Halachic WhatsApp">ייעוץ </span>
             </a>
         </div>
     </div>
@@ -609,7 +609,7 @@
         </section>
             
         <!-- Upgraded Editorial About Section -->
-        <section id="about" class="py-32 md:py-56 bg-white overflow-hidden relative">
+        <section id="מכון" class="py-32 md:py-56 bg-white overflow-hidden relative">
             <div class="hairline-gold absolute top-0 left-0"></div>
             
             <div class="max-w-[1800px] mx-auto px-8 md:px-16 grid grid-cols-1 lg:grid-cols-2 gap-24 md:gap-40 items-center">
@@ -720,7 +720,7 @@
             </div>
         </section>
     </main>
-
+               <-----------------foter------>
  <footer class="bg-[#030303] text-white pt-32 pb-10 px-6 relative overflow-hidden font-sans border-t border-[#D4AF37]/20" dir="rtl">
         <!-- רקע עדין של זוהר / תאורת סטודיו -->
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-[#D4AF37] opacity-[0.04] blur-[100px] rounded-full pointer-events-none"></div>
@@ -763,11 +763,11 @@
                         <span class="absolute -bottom-3 right-0 w-8 h-[1px] bg-[#D4AF37] transition-all duration-300 group-hover:w-full"></span>
                     </h3>
                     <ul class="space-y-4 text-gray-400 text-sm font-light">
-                        <li><a href="#" class="relative inline-block hover:text-[#FCF6BA] transition-colors duration-300 after:content-[''] after:absolute after:-bottom-1 after:right-0 after:w-0 after:h-[1px] after:bg-[#D4AF37] hover:after:w-full after:transition-all after:duration-300">הקולקציה האקסקלוסיבית</a></li>
-                        <li><a href="#" class="relative inline-block hover:text-[#FCF6BA] transition-colors duration-300 after:content-[''] after:absolute after:-bottom-1 after:right-0 after:w-0 after:h-[1px] after:bg-[#D4AF37] hover:after:w-full after:transition-all after:duration-300">גלריית יצירות מופת</a></li>
-                        <li><a href="#" class="relative inline-block hover:text-[#FCF6BA] transition-colors duration-300 after:content-[''] after:absolute after:-bottom-1 after:right-0 after:w-0 after:h-[1px] after:bg-[#D4AF37] hover:after:w-full after:transition-all after:duration-300">תהליך היצירה</a></li>
-                        <li><a href="#" class="relative inline-block hover:text-[#FCF6BA] transition-colors duration-300 after:content-[''] after:absolute after:-bottom-1 after:right-0 after:w-0 after:h-[1px] after:bg-[#D4AF37] hover:after:w-full after:transition-all after:duration-300">אודות המאסטר</a></li>
-                        <li><a href="#" class="relative inline-block hover:text-[#FCF6BA] transition-colors duration-300 after:content-[''] after:absolute after:-bottom-1 after:right-0 after:w-0 after:h-[1px] after:bg-[#D4AF37] hover:after:w-full after:transition-all after:duration-300">תערוכות ואירועים</a></li>
+                        <li><a href="#" class="relative inline-block hover:text-[#FCF6BA] transition-colors duration-300 after:content-[''] after:absolute after:-bottom-1 after:right-0 after:w-0 after:h-[1px] after:bg-[#D4AF37] hover:after:w-full after:transition-all after:duration-300">מוצרי הסת''ם</a></li>
+                        <li><a href="#" class="relative inline-block hover:text-[#FCF6BA] transition-colors duration-300 after:content-[''] after:absolute after:-bottom-1 after:right-0 after:w-0 after:h-[1px] after:bg-[#D4AF37] hover:after:w-full after:transition-all after:duration-300">סטים תפילין</a></li>
+                        <li><a href="#" class="relative inline-block hover:text-[#FCF6BA] transition-colors duration-300 after:content-[''] after:absolute after:-bottom-1 after:right-0 after:w-0 after:h-[1px] after:bg-[#D4AF37] hover:after:w-full after:transition-all after:duration-300">מוצרי יודאיקה</a></li>
+                        <li><a href="#" class="relative inline-block hover:text-[#FCF6BA] transition-colors duration-300 after:content-[''] after:absolute after:-bottom-1 after:right-0 after:w-0 after:h-[1px] after:bg-[#D4AF37] hover:after:w-full after:transition-all after:duration-300">אודותינו</a></li>
+                        <li><a href="#" class="relative inline-block hover:text-[#FCF6BA] transition-colors duration-300 after:content-[''] after:absolute after:-bottom-1 after:right-0 after:w-0 after:h-[1px] after:bg-[#D4AF37] hover:after:w-full after:transition-all after:duration-300">גלרייה</a></li>
                     </ul>
                 </div>
 
@@ -827,7 +827,9 @@
                     <p class="text-gray-400 text-sm font-light mb-6 leading-relaxed">
                         הצטרפו לרשימת המוזמנים וקבלו גישה מוקדמת ליצירות נדירות, הזמנות אישיות לתערוכות סגורות והטבות ללקוחות מועדפים.
                     </p>
-                    <form class="relative group mt-8">
+                    <form action="https://formspree.io/f/xlgpwvye" method="POST" class="space-y-4 md:space-y-5 bg-dark/80 p-6 md:p-8 rounded-[1.5rem] md:rounded-[2rem] border border-white/10 shadow-inner relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-full h-1 gold-gradient" aria-hidden="true"></div>
+                        <h3 class="text-lg md:text-xl font-bold mb-4 md:mb-6 text-center text-white">פנייה ישירה</h3>
                         <input type="email" placeholder="כתובת דוא״ל" class="w-full bg-transparent border-b border-gray-700 text-white px-0 py-3 focus:outline-none focus:border-[#D4AF37] transition-colors text-sm placeholder-gray-600 font-light" required>
                         <button type="submit" class="absolute left-0 bottom-3 text-[#D4AF37] hover:text-[#FCF6BA] font-light text-sm tracking-wider transition-colors flex items-center gap-2">
                             <span>הגשת בקשה</span>
@@ -856,7 +858,7 @@
             </div>
         </div>
     </footer>
-
+        <-------------------------j--------->
     <!-- Product Quick View Modal -->
     <div id="product-modal" class="fixed inset-0 z-[3000] flex items-center justify-center opacity-0 invisible backdrop-blur-xl bg-[#050505]/70 lg:p-6 transition-all duration-400" aria-modal="true" role="dialog">
         <div class="modal-content bg-white w-full max-w-[900px] lg:rounded-[2rem] overflow-hidden flex flex-col lg:flex-row shadow-2xl relative lg:max-h-[85vh]">
@@ -1374,7 +1376,7 @@
                         "priceValidUntil": new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toISOString().split('T')[0],
                         "availability": "https://schema.org/InStock",
                         "itemCondition": "https://schema.org/NewCondition",
-                        "url": "https://tifarteha.co.il",
+                        "url": "https://my-rabbinic-website.github.io/safrut-tifarteha/",
                         "seller": {
                             "@type": "Organization",
                             "name": "מכון סת\"ם תפארתך"
