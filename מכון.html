@@ -1,1 +1,93 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>אודותינו | ספרותך תפארתך</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;800&family=Frank+Ruhl+Libre:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Assistant', 'sans-serif'], serif: ['Frank Ruhl Libre', 'serif'] },
+                    colors: { brand: { gold: '#CBA153', onyx: '#0A0A0A', cream: '#FCFCFA' } }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: var(--brand-cream); color: var(--brand-onyx); }
+        .gold-gradient { background: linear-gradient(135deg, #CBA153 0%, #E8D4A2 50%, #9A7B3E 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .drop-cap::first-letter { font-family: 'Frank Ruhl Libre', serif; font-size: 4.5rem; font-weight: 900; float: right; margin-left: 1rem; line-height: 0.8; color: var(--brand-gold); }
+    </style>
+</head>
+<body class="antialiased overflow-x-hidden">
 
+    <header class="py-8 text-center bg-white/50 backdrop-blur-md fixed top-0 w-full z-50 border-b border-black/5">
+        <a href="index.html" class="text-3xl font-serif font-black tracking-tighter text-brand-onyx hover:opacity-80 transition-opacity">
+            תפארתך<span class="text-brand-gold">.</span>
+        </a>
+    </header>
+
+    <!-- Parallax Hero -->
+    <section class="relative h-[60vh] flex items-center justify-center overflow-hidden mt-20">
+        <div class="absolute inset-0 bg-brand-onyx">
+            <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=2070" class="w-full h-full object-cover opacity-40 mix-blend-luminosity transform scale-105" style="transform-origin: center;" alt="סטודיו">
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-brand-cream to-transparent"></div>
+        <div class="relative z-10 text-center" data-aos="fade-up">
+            <span class="text-brand-gold font-bold uppercase tracking-[0.4em] text-xs mb-4 block drop-shadow-md">Our Legacy</span>
+            <h1 class="text-6xl md:text-8xl font-serif font-black text-brand-onyx drop-shadow-lg">הסיפור שלנו</h1>
+        </div>
+    </section>
+
+    <!-- Story Content -->
+    <main class="max-w-4xl mx-auto px-6 py-20 bg-brand-cream relative z-20 -mt-20 rounded-t-[3rem]">
+        
+        <div data-aos="fade-up" data-aos-delay="100">
+            <p class="text-2xl md:text-3xl font-serif text-brand-gold italic text-center mb-16 leading-relaxed">
+                "להביא את האור הגנוז של ספרי התורה, התפילין והמזוזות, מהעיר נתיבות אל כל בית יהודי ברחבי העולם – באיכות, בהידור ובשלמות."
+            </p>
+        </div>
+
+        <article class="space-y-12 text-lg text-gray-600 font-light leading-[2.2]">
+            <p class="drop-cap" data-aos="fade-up">
+                בלב העיר נתיבות, עיר המקובלים המפיצה אורה לעולם כולו בזכות מורשתו של סידנא בבא סאלי זיע"א, הוקם הסטודיו שלנו – <strong class="text-brand-onyx">ספרותך תפארתך</strong>. מטרתנו מאז ומתמיד הייתה אחת: לא להתפשר על אף פרט, קטן כגדול, ולהעמיד סטנדרט חדש בעולם הסת"ם.
+            </p>
+            
+            <p data-aos="fade-up">
+                המסע שלנו התחיל מתוך אהבה עמוקה למסורת הכתיבה היהודית, ומן ההבנה שמוצרי סת"ם הם אינם "עוד מוצר". הם עוגן רוחני של המשפחה, הם החיבור לדורות הקודמים, והם ההשקעה החשובה ביותר שיהודי עושה בחייו. לכן, ריכזנו סביבנו צוות מובחר של סופרי סת"ם יראי שמיים, מהמובחרים והמנוסים בארץ, אשר אומנות הקליגרפיה היהודית זורמת בדמם.
+            </p>
+
+            <div class="my-16 py-12 border-y border-black/5" data-aos="fade-up">
+                <h3 class="text-3xl font-serif font-bold text-brand-onyx mb-6 text-center">החזון: שילוב של מסורת ומודרניזציה</h3>
+                <p>
+                    הייחוד של "ספרותך תפארתך" טמון ביכולת שלנו לשלב בין שתי קצוות: מחד, שמירה נוקשה ואדוקה על ההלכות, המסורות ותהליכי היצירה העתיקים ביותר. מאידך, אימוץ סטנדרטים מודרניים של בקרת איכות קפדנית, שירות לקוחות אישי מסביב לשעון (ללקוחות מישראל ומחו"ל), חוויית רכישה יוקרתית, ושימוש בטכנולוגיות הגהה ממוחשבות שמוודאות אפס טעויות.
+                </p>
+            </div>
+
+            <p data-aos="fade-up">
+                אנו עובדים מול אנשים פרטיים הרוכשים תפילין לבר מצווה, זוגות צעירים הבונים את ביתם וזקוקים למזוזות, ועד לקהילות שלמות ברחבי העולם המזמינות ספרי תורה מהודרים לבית הכנסת. עבור כל אחד ואחת מהם, אנו מעניקים ליווי צמוד, שקיפות מלאה בתהליך, ותעודת אחריות נצחית.
+            </p>
+
+            <div class="text-center pt-16" data-aos="fade-up">
+                <h4 class="text-2xl font-serif font-bold text-brand-onyx mb-4">מוזמנים להיות חלק מהמשפחה.</h4>
+                <a href="consultation.html" class="inline-block mt-6 px-10 py-5 bg-brand-onyx text-brand-gold font-bold uppercase tracking-[0.2em] text-sm rounded-full hover:shadow-[0_15px_30px_rgba(0,0,0,0.2)] transition-all transform hover:-translate-y-1">
+                    לתיאום פגישת היכרות
+                </a>
+            </div>
+        </article>
+
+    </main>
+
+    <footer class="py-12 text-center text-gray-400 text-sm border-t border-black/5 bg-white">
+        &copy; 2024 ספרותך תפארתך. אומנות של קדושה.
+    </footer>
+
+    <script>AOS.init({ once: true, duration: 1000 });</script>
+</body>
+</html>
