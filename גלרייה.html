@@ -1,1 +1,280 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>גלריית אירועים | ספרות תפארתך</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;800&family=Frank+Ruhl+Libre:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Assistant', 'sans-serif'], serif: ['Frank Ruhl Libre', 'serif'] },
+                    colors: { brand: { gold: '#CBA153', darkGold: '#9A7B3E', onyx: '#0A0A0A', cream: '#FCFCFA', platinum: '#E5E3DC' } },
+                    boxShadow: { 'luxury': '0 30px 60px -15px rgba(0,0,0,0.1)', 'luxury-hover': '0 40px 80px -15px rgba(203,161,83,0.25)', 'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.05)' }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: var(--brand-cream); color: var(--brand-onyx); overflow-x: hidden; }
+        .gold-gradient { background: linear-gradient(135deg, #CBA153 0%, #E8D4A2 50%, #9A7B3E 100%); }
+        .gold-text-gradient { background: linear-gradient(135deg, #CBA153 0%, #E8D4A2 50%, #9A7B3E 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        /* Premium Material Texture */
+        .bg-noise { position: relative; }
+        .bg-noise::before {
+            content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: 0.15;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
 
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #CBA153; border-radius: 10px; }
+        
+        /* True Masonry Grid */
+        .masonry-grid { column-count: 1; column-gap: 1.5rem; }
+        @media (min-width: 768px) { .masonry-grid { column-count: 2; } }
+        @media (min-width: 1024px) { .masonry-grid { column-count: 3; } }
+        
+        .gallery-item {
+            break-inside: avoid; margin-bottom: 1.5rem; position: relative; cursor: pointer; border-radius: 1.5rem; 
+            overflow: hidden; border: 1px solid rgba(0,0,0,0.05); transform: translateZ(0); /* Hardware accel */
+        }
+
+        /* Luxury Gold Frame Reveal */
+        .gallery-item::before {
+            content: ''; position: absolute; inset: 1rem; border: 1px solid rgba(203,161,83,0.8); border-radius: 0.5rem;
+            opacity: 0; transform: scale(1.05); transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1); z-index: 20; pointer-events: none;
+        }
+        .gallery-item:hover::before { opacity: 1; transform: scale(1); }
+
+        .gallery-item img { transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1); width: 100%; height: 100%; object-fit: cover; }
+        .gallery-item:hover img { transform: scale(1.08); }
+        
+        .gallery-item .overlay { 
+            position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.4) 40%, transparent 100%); 
+            opacity: 0; transition: opacity 0.6s ease; display: flex; flex-direction: column; justify-content: flex-end; padding: 2.5rem 2rem; z-index: 10;
+        }
+        .gallery-item:hover .overlay { opacity: 1; }
+        
+        /* Video Play Icon Indicator */
+        .play-icon { 
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.9); width: 64px; height: 64px; 
+            background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border: 1px solid rgba(203,161,83,0.5); 
+            border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; 
+            opacity: 0.8; transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1); z-index: 15;
+        }
+        .gallery-item:hover .play-icon { opacity: 1; transform: translate(-50%, -50%) scale(1.1); background: rgba(203,161,83,0.9); border-color: transparent; box-shadow: 0 0 30px rgba(203,161,83,0.4); }
+
+        /* Container Animation for Filtering */
+        #gallery-container { transition: opacity 0.4s ease, transform 0.4s ease; }
+        .gallery-hidden { opacity: 0; transform: translateY(20px); }
+
+        /* Lightbox Cinematic Modal */
+        #lightbox { opacity: 0; pointer-events: none; transition: opacity 0.5s ease; backdrop-filter: blur(25px); }
+        #lightbox.active { opacity: 1; pointer-events: auto; }
+        .lightbox-content { transform: scale(0.95) translateY(20px); transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1); }
+        #lightbox.active .lightbox-content { transform: scale(1) translateY(0); }
+    </style>
+</head>
+<body class="antialiased bg-noise">
+
+    <!-- Header -->
+    <header class="py-8 text-center bg-white/50 backdrop-blur-md sticky top-0 z-50 border-b border-black/5">
+        <a href="index.html" class="text-3xl md:text-4xl font-serif font-black tracking-tighter text-brand-onyx hover:opacity-80 transition-opacity">
+            ספרות תפארתך<span class="text-brand-gold">.</span>
+        </a>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative pt-28 pb-20 px-6 text-center">
+        <div class="max-w-4xl mx-auto" data-aos="fade-up">
+            <span class="text-brand-gold font-bold uppercase tracking-[0.4em] text-[10px] mb-6 block">Moments of Holiness</span>
+            <h1 class="text-6xl md:text-8xl font-serif font-black italic gold-text-gradient pb-4 leading-tight mb-6">רגעים של קדושה.</h1>
+            <p class="text-lg md:text-2xl text-gray-500 font-light max-w-2xl mx-auto leading-relaxed">
+                תיעוד מרהיב ממעמדי הכנסת ספרי תורה, מסירת תפילין, ואירועים מרגשים ברחבי הארץ והעולם. כל תמונה מספרת סיפור של מסורת, אמונה ואומנות נצחית.
+            </p>
+        </div>
+    </section>
+
+    <!-- Floating Filter Bar -->
+    <section class="sticky top-[100px] z-40 mb-16 px-6 pointer-events-none">
+        <div class="max-w-fit mx-auto bg-white/80 backdrop-blur-xl border border-brand-gold/20 p-2 rounded-full shadow-glass flex overflow-x-auto no-scrollbar gap-2 items-center pointer-events-auto" data-aos="zoom-in" data-aos-delay="200">
+            <button onclick="filterGallery('all')" class="filter-btn active whitespace-nowrap px-8 py-3 rounded-full bg-brand-onyx text-brand-gold text-[10px] md:text-xs font-black uppercase tracking-[0.2em] shadow-lg transition-all duration-300">הכל</button>
+            <button onclick="filterGallery('torah')" class="filter-btn whitespace-nowrap px-6 py-3 rounded-full text-gray-500 hover:text-brand-onyx hover:bg-gray-100 text-[10px] md:text-xs font-black uppercase tracking-[0.2em] transition-all duration-300">הכנסת ספר תורה</button>
+            <button onclick="filterGallery('tefillin')" class="filter-btn whitespace-nowrap px-6 py-3 rounded-full text-gray-500 hover:text-brand-onyx hover:bg-gray-100 text-[10px] md:text-xs font-black uppercase tracking-[0.2em] transition-all duration-300">מסירת תפילין</button>
+            <button onclick="filterGallery('abroad')" class="filter-btn whitespace-nowrap px-6 py-3 rounded-full text-gray-500 hover:text-brand-onyx hover:bg-gray-100 text-[10px] md:text-xs font-black uppercase tracking-[0.2em] transition-all duration-300">אירועים בחו"ל</button>
+        </div>
+    </section>
+
+    <!-- Gallery Grid (Masonry) -->
+    <main class="max-w-[1600px] mx-auto px-6 pb-32">
+        <div id="gallery-container" class="masonry-grid">
+            <!-- Items injected by JS -->
+        </div>
+    </main>
+
+    <!-- Lightbox Cinematic Modal -->
+    <div id="lightbox" class="fixed inset-0 z-[1000] bg-brand-onyx/98 flex items-center justify-center p-4 md:p-12" onclick="if(event.target === this) closeLightbox()">
+        <button onclick="closeLightbox()" class="absolute top-6 left-6 md:top-10 md:left-10 z-[1010] p-4 bg-white/5 border border-white/10 hover:bg-brand-gold hover:border-brand-gold text-white rounded-full transition-all duration-300">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+        
+        <div class="lightbox-content relative w-full max-w-[1400px] flex flex-col items-center justify-center">
+            <!-- Media Container -->
+            <div id="lightbox-media" class="w-full h-auto max-h-[75vh] flex items-center justify-center overflow-hidden rounded-[2rem] shadow-[0_0_100px_rgba(203,161,83,0.15)] border border-brand-gold/20 bg-black">
+                <!-- Media injected here -->
+            </div>
+            <!-- Info -->
+            <div class="mt-8 text-center text-white w-full max-w-3xl">
+                <h3 id="lightbox-title" class="text-3xl md:text-5xl font-serif italic mb-3"></h3>
+                <p id="lightbox-desc" class="text-brand-gold font-light tracking-widest text-xs md:text-sm uppercase"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="py-16 text-center text-gray-400 text-sm border-t border-black/5 bg-white relative z-10">
+        <div class="w-8 h-8 mx-auto mb-6 opacity-30"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path></svg></div>
+        &copy; 2024 ספרות תפארתך. אומנות של קדושה.
+    </footer>
+
+    <script>
+        // =========================================================================
+        // ניהול תוכן הגלריה - כאן מחליפים את הקישורים!
+        // =========================================================================
+        // span: 'aspect-[3/4]' (לתמונה גבוהה/אנכית), 'aspect-[4/3]' (לתמונה רחבה), 'aspect-square' (לתמונה ריבועית)
+        
+        const galleryData = [
+            {
+                id: 1, type: 'image', category: 'torah', span: 'aspect-[3/4]',
+                title: 'הכנסת ספר תורה בירושלים', desc: 'מעמד מרגש ברחבת הכותל המערבי',
+                url: 'https://images.unsplash.com/photo-1544813545-4827233fc5ce?q=80&w=1974'
+            },
+            {
+                id: 2, type: 'image', category: 'tefillin', span: 'aspect-square',
+                title: 'הנחת תפילין לחתן בר מצווה', desc: 'מסירת תפילין עור גסה מהודרות בסטודיו',
+                url: 'https://images.unsplash.com/photo-1543002588-bfa74002ed7e?q=80&w=1974'
+            },
+            {
+                id: 3, type: 'video', category: 'abroad', span: 'aspect-[4/3]',
+                title: 'תהלוכת ספר התורה בפריז', desc: 'הקהילה היהודית חוגגת בספרי תפארתך',
+                thumbUrl: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=2070',
+                url: 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1'
+            },
+            {
+                id: 4, type: 'image', category: 'torah', span: 'aspect-[4/3]',
+                title: 'סיום כתיבת האותיות', desc: 'המעמד המרגש בבית הלקוח',
+                url: 'https://images.unsplash.com/photo-1581441363689-1f3c3c414635?q=80&w=1974'
+            },
+            {
+                id: 5, type: 'image', category: 'abroad', span: 'aspect-[3/4]',
+                title: 'הכנסת ספר תורה בארה"ב', desc: 'הטסה אישית ומסירה לקהילה בניו יורק',
+                url: 'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=2070'
+            },
+            {
+                id: 6, type: 'image', category: 'tefillin', span: 'aspect-square',
+                title: 'סט תפילין מהודר לבר מצווה', desc: 'ערכה מושלמת הכוללת נרתיקים וטלית',
+                url: 'https://images.unsplash.com/photo-1614948505504-22b6432479e4?q=80&w=2070'
+            }
+        ];
+
+        // =========================================================================
+
+        function init() {
+            AOS.init({ once: true, duration: 1000, offset: 50 });
+            renderGallery('all');
+        }
+
+        function renderGallery(filterCategory) {
+            const container = document.getElementById('gallery-container');
+            
+            // Animation out
+            container.classList.add('gallery-hidden');
+            
+            setTimeout(() => {
+                container.innerHTML = ''; // Clear current
+
+                const filteredData = filterCategory === 'all' 
+                    ? galleryData 
+                    : galleryData.filter(item => item.category === filterCategory);
+
+                filteredData.forEach((item) => {
+                    const imageUrl = item.type === 'video' ? item.thumbUrl : item.url;
+                    const playIconHTML = item.type === 'video' 
+                        ? `<div class="play-icon"><svg class="w-8 h-8 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>`
+                        : '';
+
+                    const html = `
+                        <div class="gallery-item ${item.span} shadow-luxury hover:shadow-luxury-hover" onclick="openLightbox(${item.id})">
+                            <img src="${imageUrl}" alt="${item.title}" loading="lazy" class="w-full h-full object-cover">
+                            ${playIconHTML}
+                            <div class="overlay">
+                                <h3 class="text-white font-serif font-bold text-2xl md:text-3xl mb-2 translate-y-6 group-hover:translate-y-0 transition-transform duration-500 ease-out">${item.title}</h3>
+                                <p class="text-brand-gold text-xs md:text-sm tracking-widest translate-y-6 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-100">${item.desc}</p>
+                            </div>
+                        </div>
+                    `;
+                    container.insertAdjacentHTML('beforeend', html);
+                });
+
+                // Animation in
+                container.classList.remove('gallery-hidden');
+                
+                // Refresh AOS for dynamically added elements if needed, though they are animated by CSS now
+            }, 400); // Wait for fade out
+        }
+
+        function filterGallery(category) {
+            // Update buttons styling
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('bg-brand-onyx', 'text-brand-gold', 'shadow-lg', 'active');
+                btn.classList.add('text-gray-500', 'hover:bg-gray-100', 'hover:text-brand-onyx');
+            });
+            event.target.classList.add('bg-brand-onyx', 'text-brand-gold', 'shadow-lg', 'active');
+            event.target.classList.remove('text-gray-500', 'hover:bg-gray-100', 'hover:text-brand-onyx');
+            
+            renderGallery(category);
+        }
+
+        function openLightbox(id) {
+            const item = galleryData.find(i => i.id === id);
+            const lightbox = document.getElementById('lightbox');
+            const mediaContainer = document.getElementById('lightbox-media');
+            
+            document.getElementById('lightbox-title').innerText = item.title;
+            document.getElementById('lightbox-desc').innerText = item.desc;
+
+            mediaContainer.innerHTML = '';
+
+            if (item.type === 'video') {
+                mediaContainer.innerHTML = `<iframe class="w-full h-full aspect-video" src="${item.url}" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>`;
+            } else {
+                mediaContainer.innerHTML = `<img src="${item.url}" class="w-full h-auto max-h-[75vh] object-contain" alt="${item.title}">`;
+            }
+
+            lightbox.classList.remove('hidden');
+            setTimeout(() => lightbox.classList.add('active'), 10);
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+            
+            setTimeout(() => {
+                document.getElementById('lightbox-media').innerHTML = '';
+                document.body.style.overflow = '';
+            }, 500);
+        }
+
+        window.onload = init;
+    </script>
+</body>
+</html>
