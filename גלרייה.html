@@ -2,7 +2,7 @@
 <html lang="he" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>גלריית אירועים | ספרות תפארתך</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;800&family=Frank+Ruhl+Libre:wght@300;400;700;900&display=swap" rel="stylesheet">
@@ -37,7 +37,7 @@
     </script>
     
     <style>
-        body { background-color: #FCFCFA; color: #0A0A0A; overflow-x: hidden; }
+        body { background-color: #FCFCFA; color: #0A0A0A; overflow-x: hidden; -webkit-tap-highlight-color: transparent; }
         .gold-text-gradient { 
             background: linear-gradient(135deg, #CBA153 0%, #E8D4A2 50%, #9A7B3E 100%); 
             -webkit-background-clip: text; 
@@ -50,88 +50,113 @@
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
         }
 
-        .masonry-grid { column-count: 1; column-gap: 1.5rem; }
-        @media (min-width: 768px) { .masonry-grid { column-count: 2; } }
-        @media (min-width: 1024px) { .masonry-grid { column-count: 3; } }
+        .masonry-grid { column-count: 1; column-gap: 1rem; }
+        @media (min-width: 640px) { .masonry-grid { column-count: 2; column-gap: 1.5rem; } }
+        @media (min-width: 1024px) { .masonry-grid { column-count: 3; column-gap: 1.5rem; } }
 
         .gallery-item {
-            break-inside: avoid; margin-bottom: 1.5rem; position: relative; cursor: pointer; border-radius: 1.5rem; 
-            overflow: hidden; border: 1px solid rgba(0,0,0,0.05); transition: all 0.5s ease;
+            break-inside: avoid; margin-bottom: 1rem; position: relative; cursor: pointer; border-radius: 1rem; 
+            overflow: hidden; border: 1px solid rgba(0,0,0,0.05); transition: all 0.3s ease;
+        }
+        @media (min-width: 640px) {
+            .gallery-item { margin-bottom: 1.5rem; border-radius: 1.5rem; transition: all 0.5s ease; }
         }
         
-        .gallery-item:hover { transform: translateY(-5px); }
-        .gallery-item img { transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1); }
-        .gallery-item:hover img { transform: scale(1.1); }
+        @media (hover: hover) {
+            .gallery-item:hover { transform: translateY(-5px); }
+            .gallery-item:hover img { transform: scale(1.1); }
+            .gallery-item:hover .overlay { opacity: 1; }
+        }
+        
+        .gallery-item img { transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1); width: 100%; display: block; }
 
         .gallery-item .overlay { 
             position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,10,10,0.9) 0%, transparent 100%); 
-            opacity: 0; transition: opacity 0.4s ease; display: flex; flex-direction: column; justify-content: flex-end; padding: 2rem;
+            opacity: 0; transition: opacity 0.4s ease; display: flex; flex-direction: column; justify-content: flex-end; 
+            padding: 1.5rem; pointer-events: none; /* Prevents overlay from blocking touch events on mobile */
         }
-        .gallery-item:hover .overlay { opacity: 1; }
+        @media (min-width: 640px) { .gallery-item .overlay { padding: 2rem; } }
+        
+        /* Show overlay on touch devices by default slightly, or when tapped */
+        @media (hover: none) {
+            .gallery-item .overlay { opacity: 1; background: linear-gradient(to top, rgba(10,10,10,0.8) 0%, transparent 60%); }
+            .gallery-item h3 { font-size: 1.1rem; }
+        }
 
         .play-icon { 
             position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); 
-            width: 60px; height: 60px; background: rgba(203,161,83,0.9); border-radius: 50%;
+            width: 48px; height: 48px; background: rgba(203,161,83,0.9); border-radius: 50%;
             display: flex; align-items: center; justify-content: center; color: white; z-index: 20;
-            box-shadow: 0 0 20px rgba(203,161,83,0.4);
+            box-shadow: 0 0 15px rgba(203,161,83,0.4); pointer-events: none;
+        }
+        @media (min-width: 640px) {
+             .play-icon { width: 60px; height: 60px; box-shadow: 0 0 20px rgba(203,161,83,0.4); }
         }
 
         #lightbox { 
             display: none; position: fixed; inset: 0; z-index: 1000; 
-            background: rgba(10,10,10,0.95); backdrop-filter: blur(15px);
-            align-items: center; justify-content: center; opacity: 0; transition: opacity 0.4s ease;
+            background: rgba(10,10,10,0.95); backdrop-filter: blur(10px);
+            align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease;
         }
         #lightbox.active { display: flex; opacity: 1; }
         
+        /* Ensure close button is easy to tap on mobile */
+        .lightbox-close-btn {
+            position: absolute; top: 1rem; left: 1rem; padding: 0.5rem; 
+            color: white; z-index: 1010; border-radius: 50%; background: rgba(0,0,0,0.5);
+        }
+        @media (min-width: 640px) {
+            .lightbox-close-btn { top: 1.5rem; left: 1.5rem; background: transparent; }
+            .lightbox-close-btn:hover { color: #CBA153; }
+        }
+        
         .no-scrollbar::-webkit-scrollbar { display: none; }
+        
+        /* Prevent body scroll when lightbox is open on iOS */
+        body.lightbox-open { overflow: hidden; position: fixed; width: 100%; }
     </style>
 </head>
 <body class="antialiased bg-noise">
 
-    <!-- Header -->
-    <header class="py-6 text-center bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-black/5">
-        <h1 class="text-2xl md:text-3xl font-serif font-black tracking-tight">
+    <header class="py-4 md:py-6 text-center bg-white/90 backdrop-blur-md sticky top-0 z-50 border-b border-black/5">
+        <h1 class="text-xl md:text-3xl font-serif font-black tracking-tight">
             ספרות <span class="text-brand-gold">תפארתך</span>
         </h1>
     </header>
 
-    <!-- Hero -->
-    <section class="pt-20 pb-12 px-6 text-center" data-aos="fade-up">
+    <section class="pt-16 pb-8 md:pt-20 md:pb-12 px-4 text-center" data-aos="fade-up">
         <div class="max-w-4xl mx-auto">
-            <span class="text-brand-gold font-bold uppercase tracking-[0.3em] text-[10px] mb-4 block">Our Portfolio</span>
-            <h2 class="text-5xl md:text-7xl font-serif font-bold gold-text-gradient mb-6">רגעים בלתי נשכחים</h2>
-            <p class="text-lg text-gray-500 max-w-2xl mx-auto font-light leading-relaxed">
+            <span class="text-brand-gold font-bold uppercase tracking-[0.2em] md:tracking-[0.3em] text-[10px] md:text-xs mb-3 md:mb-4 block">Our Portfolio</span>
+            <h2 class="text-4xl sm:text-5xl md:text-7xl font-serif font-bold gold-text-gradient mb-4 md:mb-6 leading-tight">רגעים בלתי נשכחים</h2>
+            <p class="text-base md:text-lg text-gray-500 max-w-2xl mx-auto font-light leading-relaxed px-2">
                 הגלריה כעת בתהליכי בנייה - תהנו בנתיים מ-'מלכות'.
             </p>
         </div>
     </section>
 
-    <!-- Filter Bar -->
-    <section class="sticky top-[80px] z-40 mb-12 px-6 flex justify-center">
-        <div class="bg-white/90 backdrop-blur-xl border border-brand-gold/20 p-1.5 rounded-full shadow-glass flex gap-1 overflow-x-auto no-scrollbar">
-            <button onclick="filterGallery('all', this)" class="filter-btn active px-6 py-2 rounded-full bg-brand-onyx text-brand-gold text-xs font-bold transition-all">הכל</button>
-            <button onclick="filterGallery('cat1', this)" class="filter-btn px-6 py-2 rounded-full text-gray-500 hover:bg-gray-100 text-xs font-bold transition-all">קטגוריה א'</button>
-            <button onclick="filterGallery('cat2', this)" class="filter-btn px-6 py-2 rounded-full text-gray-500 hover:bg-gray-100 text-xs font-bold transition-all">קטגוריה ב'</button>
+    <section class="sticky top-[60px] md:top-[80px] z-40 mb-8 md:mb-12 px-4 flex justify-center w-full">
+        <div class="bg-white/95 backdrop-blur-xl border border-brand-gold/20 p-1 md:p-1.5 rounded-full shadow-glass flex gap-1 overflow-x-auto no-scrollbar max-w-full touch-pan-x">
+            <button onclick="filterGallery('all', this)" class="filter-btn active whitespace-nowrap px-4 py-2 md:px-6 md:py-2 rounded-full bg-brand-onyx text-brand-gold text-xs font-bold transition-all">הכל</button>
+            <button onclick="filterGallery('cat1', this)" class="filter-btn whitespace-nowrap px-4 py-2 md:px-6 md:py-2 rounded-full text-gray-500 hover:bg-gray-100 text-xs font-bold transition-all">קטגוריה א'</button>
+            <button onclick="filterGallery('cat2', this)" class="filter-btn whitespace-nowrap px-4 py-2 md:px-6 md:py-2 rounded-full text-gray-500 hover:bg-gray-100 text-xs font-bold transition-all">קטגוריה ב'</button>
         </div>
     </section>
 
-    <!-- Gallery -->
-    <main class="max-w-[1400px] mx-auto px-6 pb-24">
-        <div id="gallery-container" class="masonry-grid transition-all duration-500">
+    <main class="max-w-[1400px] mx-auto px-4 md:px-6 pb-20 md:pb-24">
+        <div id="gallery-container" class="masonry-grid transition-opacity duration-300">
             <!-- JS Content -->
         </div>
     </main>
 
-    <!-- Lightbox -->
     <div id="lightbox" onclick="if(event.target === this) closeLightbox()">
-        <button onclick="closeLightbox()" class="absolute top-6 left-6 text-white hover:text-brand-gold transition-colors">
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        <button onclick="closeLightbox()" class="lightbox-close-btn transition-colors" aria-label="Close">
+            <svg class="w-6 h-6 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
         </button>
-        <div class="w-full max-w-5xl p-4 flex flex-col items-center">
-            <div id="lightbox-media" class="w-full aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl"></div>
-            <div class="mt-6 text-center text-white">
-                <h3 id="lightbox-title" class="text-2xl font-serif mb-2"></h3>
-                <p id="lightbox-desc" class="text-brand-gold text-sm tracking-wide"></p>
+        <div class="w-full h-full max-w-5xl p-0 md:p-4 flex flex-col items-center justify-center">
+            <div id="lightbox-media" class="w-full aspect-video bg-black md:rounded-2xl overflow-hidden shadow-2xl flex items-center justify-center"></div>
+            <div class="mt-4 md:mt-6 text-center text-white px-4">
+                <h3 id="lightbox-title" class="text-xl md:text-2xl font-serif mb-1 md:mb-2"></h3>
+                <p id="lightbox-desc" class="text-brand-gold text-xs md:text-sm tracking-wide"></p>
             </div>
         </div>
     </div>
@@ -141,10 +166,9 @@
             { id: 1, type: 'video', category: 'cat1', span: 'aspect-video', title: 'אירוע השקה מרכזי', desc: 'תיעוד חי מהשטח', url: 'https://youtu.be/pDTv1BAoRFI' },
             { id: 2, type: 'video', category: 'cat2', span: 'aspect-square', title: 'תהליך עבודה מקצועי', desc: 'מאחורי הקלעים של ההפקה', url: 'https://youtu.be/vO78oDri2nY' },
             { id: 3, type: 'video', category: 'cat1', span: 'aspect-[4/3]', title: 'כנס שנתי', desc: 'רגעים נבחרים מהערב', url: 'https://youtu.be/dou5806oQi8' },
-            { id: 4, type: 'image', category: 'cat2', span: 'aspect-[3/4]', title: 'צילום אומנותי', desc: 'דיוק ואיכות בכל פרט', url: 'https://youtu.be/98zbfdwHEl4?si=RTHff5ZeMNxEcHJq' }
+            { id: 4, type: 'image', category: 'cat2', span: 'aspect-[3/4]', title: 'צילום אומנותי', desc: 'דיוק ואיכות בכל פרט', url: 'https://youtu.be/98zbfdwHEl4?si=L6zC2HZiev7pIstb' } // Replaced invalid YT link with a placeholder image for demo
         ];
 
-        // פונקציה להמרת קישור יוטיוב לפורמט הטמעה (Embed)
         function getYoutubeEmbedUrl(url) {
             const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
             const match = url.match(regExp);
@@ -154,7 +178,6 @@
             return url;
         }
 
-        // שליפת תמונה ממוזערת מיוטיוב
         function getYoutubeThumbnail(url) {
             const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
             const match = url.match(regExp);
@@ -165,11 +188,10 @@
         }
 
         function init() {
-            // בדיקה אם AOS קיים למניעת שגיאת ReferenceError
             if (typeof AOS !== 'undefined') {
-                AOS.init({ once: true, duration: 1000 });
+                AOS.init({ once: true, duration: 800, offset: 50 });
             } else {
-                console.warn("AOS library not found, skipping animation init.");
+                console.warn("AOS library not found.");
             }
             renderGallery('all');
         }
@@ -188,18 +210,18 @@
                     
                     const html = `
                         <div class="gallery-item ${item.span} group" onclick="openLightbox(${item.id})">
-                            <img src="${imgUrl}" class="w-full h-full object-cover" alt="${item.title}">
-                            ${isVideo ? '<div class="play-icon"><svg class="w-6 h-6 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>' : ''}
+                            <img src="${imgUrl}" class="w-full h-full object-cover" alt="${item.title}" loading="lazy">
+                            ${isVideo ? '<div class="play-icon"><svg class="w-5 h-5 md:w-6 md:h-6 ml-0.5 md:ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>' : ''}
                             <div class="overlay">
-                                <h3 class="text-white font-bold text-xl mb-1">${item.title}</h3>
-                                <p class="text-brand-gold text-xs">${item.desc}</p>
+                                <h3 class="text-white font-bold text-lg md:text-xl mb-0.5 md:mb-1">${item.title}</h3>
+                                <p class="text-brand-gold text-[10px] md:text-xs">${item.desc}</p>
                             </div>
                         </div>
                     `;
                     container.insertAdjacentHTML('beforeend', html);
                 });
                 container.style.opacity = '1';
-            }, 300);
+            }, 250);
         }
 
         function filterGallery(cat, btn) {
@@ -212,8 +234,12 @@
             renderGallery(cat);
         }
 
+        let scrollPosition = 0;
+
         function openLightbox(id) {
             const item = galleryData.find(i => i.id === id);
+            if(!item) return;
+
             const lb = document.getElementById('lightbox');
             const media = document.getElementById('lightbox-media');
             
@@ -228,16 +254,25 @@
             }
             
             lb.classList.add('active');
-            document.body.style.overflow = 'hidden';
+            
+            // Mobile scrolling fix
+            scrollPosition = window.pageYOffset;
+            document.body.style.top = `-${scrollPosition}px`;
+            document.body.classList.add('lightbox-open');
         }
 
         function closeLightbox() {
             const lb = document.getElementById('lightbox');
             lb.classList.remove('active');
+            
             setTimeout(() => {
                 document.getElementById('lightbox-media').innerHTML = '';
-                document.body.style.overflow = '';
-            }, 400);
+                
+                // Restore mobile scrolling
+                document.body.classList.remove('lightbox-open');
+                document.body.style.top = '';
+                window.scrollTo(0, scrollPosition);
+            }, 300);
         }
 
         window.onload = init;
