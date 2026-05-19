@@ -598,7 +598,7 @@
                     </p>
                     <div class="flex justify-center mt-4">
                         <button aria-label="לרכישה מהקולקציה" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})" class="hover-trigger btn-shine bg-[#050505] text-white px-12 py-5 rounded-2xl font-bold font-sans text-[13px] uppercase tracking-[0.25em] shadow-premium hover:shadow-premium-hover transition-all duration-300 flex items-center justify-center gap-4 hover:-translate-y-1">
-                            <span data-he="לרכישה מהקולקציה" data-en="Shop the Collection">לרכישה מהקולקציה</span>
+                            <span data-he="לרכישה מהקולקציה" data-en="Shop the Collection">לרכישה מהקטלוג</span>
                             <svg class="w-4 h-4 text-luxury-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </button>
                     </div>
@@ -702,97 +702,75 @@
             </div>
         </section>
 
-        <!-- Gallery Section -->
-        <section id="gallery-section" class="py-32 bg-[#050505] relative overflow-hidden">
-            <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-luxury-gold/30 to-transparent"></div>
-            <div class="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-luxury-gold/30 to-transparent"></div>
-            
-            <div class="max-w-[1440px] mx-auto px-6 relative z-10">
-                <div class="text-center mb-24" data-aos="fade-up">
-                    <span class="subtitle-spaced text-luxury-gold text-[12px] font-black font-sans block mb-4" data-he="תיעוד מהשטח" data-en="Live Documentation">תיעוד מהשטח</span>
-                    <h2 class="text-4xl lg:text-5xl font-light font-tradition italic text-white mb-6" data-he="רגעים של <span class='font-normal gold-gradient'>קדושה</span>" data-en="Moments of <span class='font-normal gold-gradient'>Holiness</span>">רגעים של <span class="font-normal gold-gradient">קדושה</span></h2>
-                    <p class="text-gray-400 font-serif italic max-w-2xl mx-auto font-light leading-relaxed text-xl" data-he="מעמדי סיום והכנסות ספרי תורה. השמחה, ההתרגשות והפאר של קבלת התורה, מלווים ביחס אישי לכל אורך הדרך." data-en="Torah dedication ceremonies. The joy, excitement, and majesty of receiving the Torah, accompanied by personal care every step of the way.">
-                        מעמדי סיום והכנסות ספרי תורה. השמחה, ההתרגשות והפאר של קבלת התורה, מלווים ביחס אישי לכל אורך הדרך.
-                    </p>
-                </div>
-
-                <div class="gallery-grid">
-                    <div class="gallery-item span-2 group" data-aos="zoom-in" data-aos-duration="1000">
-                        <img src="https://images.unsplash.com/photo-1544923246-77307dd654ca?q=80&w=1000" alt="הכנסת ספר תורה מרכזית - קהילת שערי ציון" loading="lazy" decoding="async" class="w-full h-full object-cover aspect-[4/3] lg:aspect-auto filter grayscale-[20%] group-hover:grayscale-0 transition-all duration-700">
-                        <div class="gallery-overlay">
-                            <div class="w-14 h-14 rounded-full bg-luxury-gold/90 text-[#050505] flex items-center justify-center mb-6 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 shadow-lg backdrop-blur-md cursor-pointer hover:scale-105 hover-trigger">
-                                <svg class="w-5 h-5 ml-1" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
-                            </div>
-                            <span class="text-luxury-gold text-[11px] uppercase font-bold tracking-[0.25em] mb-3 font-sans" data-he="מעמד סיום כתיבת אותיות" data-en="Final Letters Ceremony">מעמד סיום כתיבת אותיות</span>
-                            <h3 class="text-3xl font-light font-tradition italic text-white leading-snug" data-he="הכנסת ספר תורה - קהילת שערי ציון" data-en="Torah Dedication - Shaarei Zion">הכנסת ספר תורה - קהילת שערי ציון</h3>
-                        </div>
+        <section class="pt-32 pb-24 bg-[#050505] text-white overflow-hidden hover-trigger">
+            <div class="max-w-[1440px] mx-auto px-6 mb-24 text-center" data-aos="fade-up">
+                <div class="flex justify-center items-center gap-3 mb-6">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+                    <div class="flex gap-1 text-[#FBBC05] ml-2">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
                     </div>
-
-                    <div class="gallery-item group hover-trigger" data-aos="zoom-in" data-aos-delay="100" data-aos-duration="1000">
-                        <img src="https://images.unsplash.com/photo-1599839619722-39751411ea63?q=80&w=600" alt="תהלוכה וריקודים ברחובה של עיר עם ספר התורה" loading="lazy" decoding="async" class="w-full h-full object-cover aspect-square filter grayscale-[20%] group-hover:grayscale-0 transition-all duration-700">
-                        <div class="gallery-overlay">
-                            <span class="text-luxury-gold text-[10px] uppercase font-bold tracking-[0.2em] mb-2 font-sans" data-he="שמחת התורה" data-en="Joy of Torah">שמחת התורה</span>
-                            <h3 class="text-2xl font-light font-tradition italic text-white leading-snug" data-he="תהלוכה וריקודים ברחובה של עיר" data-en="Street Procession & Dancing">תהלוכה וריקודים ברחובה של עיר</h3>
-                        </div>
-                    </div>
-
-                    <div class="gallery-item group hover-trigger" data-aos="zoom-in" data-aos-delay="200" data-aos-duration="1000">
-                        <img src="https://images.unsplash.com/photo-1610444304895-15a0c309f3e4?q=80&w=600" alt="רגעים אחרונים של כתיבת האותיות בבית הכנסת" loading="lazy" decoding="async" class="w-full h-full object-cover aspect-square filter grayscale-[20%] group-hover:grayscale-0 transition-all duration-700">
-                        <div class="gallery-overlay">
-                            <span class="text-luxury-gold text-[10px] uppercase font-bold tracking-[0.2em] mb-2 font-sans" data-he="כתיבה בטהרה" data-en="Pure Writing">כתיבה בטהרה</span>
-                            <h3 class="text-2xl font-light font-tradition italic text-white leading-snug" data-he="רגעים אחרונים בבית הכנסת" data-en="Final Moments in the Synagogue">רגעים אחרונים בבית הכנסת</h3>
-                        </div>
-                    </div>
+                    <span class="text-gray-400 font-sans text-sm uppercase tracking-widest ml-3 font-bold">5.0 Verified Reviews</span>
                 </div>
-                
-                <div class="text-center mt-20">
-                    <a href="https://wa.me/972528219928" target="_blank" aria-label="תכנון מעמד הכנסת ספר תורה בוואטסאפ" class="hover-trigger inline-flex items-center justify-center gap-4 border-2 border-luxury-gold/40 text-white px-10 py-4 rounded-full font-bold font-sans text-[13px] uppercase tracking-[0.25em] hover:bg-luxury-gold hover:text-[#050505] transition-all duration-300 hover:shadow-gold-glow hover:-translate-y-1">
-                        <span data-he="לתכנון מעמד הכנסת ספר תורה" data-en="Plan a Torah Dedication">לתכנון מעמד הכנסת ספר תורה</span>
-                    </a>
-                </div>
+                <h2 class="text-4xl lg:text-6xl font-light italic font-tradition" data-he="אמינות <span class='font-normal gold-gradient'>חוצת יבשות</span>" data-en="Global <span class='font-normal gold-gradient'>Trust</span>">אמינות <span class="font-normal gold-gradient">חוצת יבשות</span></h2>
             </div>
-        </section>
 
-        <!-- Authority Section -->
-        <section id="authority" class="py-32 bg-[#FAFAFA] overflow-hidden relative border-b border-black/5">
-            <div class="max-w-[1200px] mx-auto px-6 relative z-10">
-                <div class="bg-white border border-gray-100 rounded-[3rem] p-10 lg:p-20 flex flex-col lg:flex-row items-center gap-16 shadow-premium relative overflow-hidden hover-trigger">
-                    <div class="absolute top-0 right-0 w-80 h-80 bg-luxury-gold/5 rounded-full blur-3xl pointer-events-none"></div>
-                    
-                    <div class="flex-1 text-center lg:text-right rtl:lg:text-right ltr:lg:text-left relative z-10">
-                        <span class="text-luxury-gold text-[12px] uppercase tracking-[0.4em] font-black font-sans block mb-6" data-he="תעודת יוחסין ואחריות" data-en="Certificate of Authenticity">תעודת יוחסין ואחריות</span>
-                        <h2 class="text-4xl lg:text-5xl font-light font-tradition italic text-luxury-dark mb-8 leading-tight" data-he="חותם של <span class='font-normal gold-gradient'>נצח</span>" data-en="A Seal of <span class='font-normal gold-gradient'>Eternity</span>">חותם של <span class="font-normal gold-gradient">נצח</span></h2>
-                        <p class="text-gray-600 text-lg md:text-xl font-serif italic mb-10 leading-relaxed max-w-xl mx-auto lg:mx-0 font-light" data-he="כל ספר תורה, תפילין ומזוזה היוצאים משערי המכון מלווים בתעודת כשרות מהודרת החתומה בחותמת שעווה מקורית ובחתימת ידו של נשיא המכון, הרה''ג אלדר לוי שליט''א. התעודה היא האסמכתא העליונה לטיב, הידור וקדושת המוצר שרכשתם." data-en="Every item comes with a premium certificate of authenticity, featuring an original wax seal and the personal signature of Dayan Rabbi Eldar Levi.">
-                            כל ספר תורה, תפילין ומזוזה היוצאים משערי המכון מלווים בתעודת כשרות מהודרת החתומה בחותמת שעווה מקורית ובחתימת ידו של נשיא המכון, הרה''ג אלדר לוי שליט''א.
-                        </p>
-                        <ul class="space-y-5 inline-block text-right rtl:text-right ltr:text-left">
-                            <li class="flex items-center gap-5 text-base md:text-lg text-gray-700 font-sans font-bold tracking-wide"><span class="w-1.5 h-1.5 bg-luxury-gold rounded-full shadow-gold-glow"></span> <span data-he="תיעוד שם הסופר וזמן הכתיבה" data-en="Scribe name and writing date documented">תיעוד שם הסופר וזמן הכתיבה</span></li>
-                            <li class="flex items-center gap-5 text-base md:text-lg text-gray-700 font-sans font-bold tracking-wide"><span class="w-1.5 h-1.5 bg-luxury-gold rounded-full shadow-gold-glow"></span> <span data-he="גיבוי דיגיטלי לכל תעודה במערכות המכון" data-en="Digital backup for every certificate">גיבוי דיגיטלי לכל תעודה במערכות המכון</span></li>
-                            <li class="flex items-center gap-5 text-base md:text-lg text-gray-700 font-sans font-bold tracking-wide"><span class="w-1.5 h-1.5 bg-luxury-gold rounded-full shadow-gold-glow"></span> <span data-he="אחריות פרימיום מלאה לכל החיים" data-en="Lifetime premium warranty">אחריות פרימיום מלאה לכל החיים</span></li>
-                        </ul>
-                    </div>
-                    
-                    <div class="lg:w-2/5 w-full flex justify-center perspective-1000 relative z-10" data-aos="zoom-in" data-aos-duration="1000">
-                        <div class="cert-card relative w-full max-w-[320px] aspect-[3/4] bg-[#FDFBF7] rounded-2xl shadow-[0_30px_60px_rgba(0,0,0,0.12)] p-4 transform rotate-y-6 rotate-z-2 border border-white">
-                            <div class="absolute inset-0 border border-luxury-gold/15 m-3 rounded-xl pointer-events-none"></div>
-                            <div class="w-full h-full border border-luxury-gold/20 flex flex-col items-center justify-center p-8 text-center relative overflow-hidden" style="background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');">
-                                <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-transparent via-luxury-gold/40 to-transparent"></div>
-                                <span class="text-luxury-gold text-4xl mb-6 font-serif opacity-90">✡</span>
-                                <h4 class="text-luxury-dark font-light font-tradition text-3xl mb-3">תעודת כשרות</h4>
-                                <p class="text-[10px] text-gray-500 font-sans uppercase tracking-[0.4em] mb-10 border-b border-luxury-gold/20 pb-4 w-full">Certificate</p>
-                                <p class="text-xs text-gray-800 font-serif italic mb-auto px-4 leading-relaxed opacity-80">"וכתבתם על מזוזות ביתך ובשעריך..."</p>
-                                
-                                <div class="w-20 h-20 bg-[#6b1616] rounded-full flex items-center justify-center text-white/90 font-serif italic text-[11px] shadow-inner border-[4px] border-[#4a0f0f] shadow-[0_15px_30px_rgba(107,22,22,0.4)] relative mt-8 transform -rotate-12 hover:scale-110 transition-transform">
-                                    <span class="relative z-10 opacity-90 tracking-widest uppercase">Seal</span>
-                                    <div class="absolute inset-0 rounded-full border border-white/10 m-1.5"></div>
+            <div class="marquee-wrapper mb-24">
+                <div class="marquee-track">
+                    <script>
+                    const revs = [
+                        { n: "Yossi L., NY", t: "הזמנו ספר תורה לקהילה בברוקלין. השירות של שמעון והליווי ההלכתי של הרב אלדר נתנו לנו שקט נפשי מלא לאורך כל הדרך.", s: 5 },
+                        { n: "דוד שמעוני", t: "רכשתי תפילין לבני לבר המצווה. הגיעו באריזה מוגנת, עם כל התעודות. מרגישים את ההידור בכל פרט.", s: 5 },
+                        { n: "Marc D., Paris", t: "Outstanding craftsmanship. The Mezuzot we received are beautiful and the shipping was incredibly secure.", s: 5 },
+                        { n: "משפחת כהן", t: "שירות VIP. ראינו וידאו של הסופר כותב את המזוזות שלנו. פשוט נפלא ומרגש.", s: 5 }
+                    ];
+                    const allRevs = [...revs, ...revs, ...revs];
+                    document.write(allRevs.map(r => `
+                        <div class="w-[350px] md:w-[450px] mx-6 p-10 rounded-[2rem] flex flex-col justify-between bg-[#0a0a0a] border border-white/10 shrink-0 hover:-translate-y-2 transition-transform duration-500 shadow-xl hover:border-luxury-gold/40 cursor-default">
+                            <div class="flex justify-between items-center mb-6">
+                                <div class="flex gap-1.5 text-[#FBBC05] text-lg">${'★'.repeat(r.s)}</div>
+                                <svg class="w-8 h-8 opacity-20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+                            </div>
+                            <p class="text-xl md:text-2xl text-gray-300 italic leading-relaxed mb-8 font-serif font-light">"${r.t}"</p>
+                            <div class="flex items-center gap-4 pt-6 border-t border-white/5">
+                                <div class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-gray-400 font-serif text-2xl border border-white/10">${r.n.charAt(0)}</div>
+                                <div class="flex flex-col text-right rtl:text-right ltr:text-left">
+                                    <span class="text-lg font-bold text-white uppercase tracking-wide font-sans">${r.n}</span>
+                                    <span class="text-[10px] text-[#34A853] font-sans uppercase tracking-[0.2em] mt-1">Verified Purchase</span>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
+                    `).join(''));
+                </script>
             </div>
-        </section>
+        </div>
 
+        <div class="text-center mb-8">
+            <span class="subtitle-spaced text-sm font-bold text-gray-500" data-he="ספקי הסת&quot;ם של הקהילות המובילות" data-en="Trusted by Global Communities">ספקי הסת"ם של הקהילות המובילות</span>
+        </div>
+        <div class="marquee-wrapper pt-8 border-t border-white/10 pb-8">
+            <div class="marquee-track" style="animation-duration: 70s; animation-direction: reverse;">
+                <script>
+                    const communities = [
+                        "קהילת שערי ציון NY", "בית הכנסת הגדול פריז", "קהילת אור החיים מיאמי", 
+                        "מגן דוד בוורלי הילס", "בית מנחם לונדון", "קהילת שובה ישראל LA",
+                        "ישיבת תורת אמת אנטוורפן", "נצח ישראל בואנוס איירס", "קהילת עץ חיים טורונטו"
+                    ];
+                    const allLogos = [...communities, ...communities];
+                    document.write(allLogos.map(name => `
+                        <div class="flex items-center gap-6 px-16 opacity-30 hover:opacity-100 transition-opacity duration-300 cursor-default">
+                            <span class="font-serif font-light text-3xl text-white whitespace-nowrap tracking-wide">${name}</span>
+                            <span class="text-luxury-gold opacity-20 text-3xl">|</span>
+                        </div>
+                    `).join(''));
+                </script>
+            </div>
+        </div>
+    </section>
+        
         <!-- Leadership Section -->
         <section id="leadership" class="py-32 bg-white overflow-hidden border-b border-black/5">
             <div class="max-w-[1200px] mx-auto px-6 space-y-36">
@@ -838,25 +816,6 @@
             </div>
         </section>
 
-        <!-- Trust / Reviews -->
-        <section id="reviews" class="py-32 md:py-56 bg-brand-cream overflow-hidden border-t border-brand-platinum relative">
-            <div class="max-w-[1800px] mx-auto px-6 md:px-16 mb-24 md:mb-40 text-center relative z-10">
-                <div class="inline-flex items-center gap-5 bg-white px-10 md:px-12 py-4 md:py-5 rounded-full border border-black/5 shadow-glass mb-12 md:mb-16" data-aos="fade-up" data-aos-duration="1200">
-                    <svg class="w-6 h-6 md:w-7 md:h-7 text-brand-gold" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                    <span class="text-brand-obsidian font-black tracking-[0.3em] md:tracking-[0.4em] text-[10px] md:text-xs uppercase" data-i18n="reviews_tag">Verified Global Feedback</span>
-                </div>
-                <h2 class="text-5xl md:text-7xl lg:text-[6.5rem] font-black italic text-brand-obsidian leading-[1.05]" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1200">
-                    <span data-i18n="reviews_title">קהילה עולמית</span> <br class="md:hidden"><span class="gold-gradient" data-i18n="reviews_title2">שסומכת עלינו</span>
-                </h2>
-            </div>
-            
-            <div class="relative flex overflow-hidden py-10 md:py-24 marquee-wrapper group">
-                <div class="marquee-track-container" id="track-container-1">
-                    <!-- Javascript will inject duplicated reviews here to ensure seamless infinite scroll -->
-                </div>
-            </div>
-        </section>
-        
         <!-- SEO & Content Architecture Section (Highly Optimized for Search Intent) -->
         <section class="bg-white py-12 md:py-20 border-t border-black/5">
             <div class="max-w-[1440px] mx-auto px-6 text-gray-500 font-sans text-xs md:text-sm leading-loose">
