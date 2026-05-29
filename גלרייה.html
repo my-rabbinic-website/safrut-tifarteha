@@ -124,16 +124,18 @@
 </head>
 <body class="antialiased bg-noise">
 
-    <header class="py-4 md:py-6 text-center bg-white/90 backdrop-blur-md sticky top-0 z-50 border-b border-black/5">
-        <h1 class="text-xl md:text-3xl font-serif font-black tracking-tight">
-            ספרות <span class="text-brand-gold">תפארתך</span>
-        </h1>
+            <!-- Logo -->
+            <div class="flex flex-col items-end cursor-none group hover-trigger" onclick="window.scrollTo({top:0, behavior:'smooth'})" aria-label="לדף הבית" role="https://my-rabbinic-website.github.io/safrut-tifarteha/" tabindex="0">
+                <span class="text-3xl md:text-4xl font-light font-tradition gold-gradient italic leading-none group-hover:scale-105 transition-transform duration-500 drop-shadow-md" data-he="ספרות תפארתך" data-en="Sifrut Tifarteha">ספרות תפארתך</span>
+                <span class="text-[9px] md:text-[10px] tracking-[0.4em] uppercase font-sans font-bold text-gray-500 mt-1.5">Premium Scribal Arts</span>
+            </div>
+        </div>
     </header>
 
     <section class="pt-16 pb-8 md:pt-20 md:pb-12 px-4 text-center" data-aos="fade-up">
         <div class="max-w-4xl mx-auto">
             <span class="text-brand-gold font-bold uppercase tracking-[0.2em] md:tracking-[0.3em] text-[10px] md:text-xs mb-3 md:mb-4 block">Our Portfolio</span>
-            <h2 class="text-4xl sm:text-5xl md:text-7xl font-serif font-bold gold-text-gradient mb-4 md:mb-6 leading-tight">רגעים בלתי נשכחים</h2>
+            <h2 class="text-4xl sm:text-5xl md:text-7xl font-serif font-bold gold-text-gradient mb-4 md:mb-6 leading-tight">גלריית אירועים מרהיבה</h2>
             <p class="text-base md:text-lg text-gray-500 max-w-2xl mx-auto font-light leading-relaxed px-2">
                 הגלריה כעת בתהליכי בנייה - תהנו בנתיים מ-'מקהלת מלכות'.
             </p>
@@ -174,7 +176,16 @@
             { id: 6, type: 'video', category: 'cat2', span: 'aspect-square', title: 'תהליך עבודה מקצועי', desc: 'מאחורי הקלעים של ההפקה', url: 'https://youtu.be/ItkuZs27-ZE?si=_MOJhD-TmOXQ4dkF' },
             { id: 2, type: 'video', category: 'cat2', span: 'aspect-square', title: 'תהליך עבודה מקצועי', desc: 'מאחורי הקלעים של ההפקה', url: 'https://youtu.be/vO78oDri2nY' },
             { id: 3, type: 'video', category: 'cat1', span: 'aspect-[4/3]', title: 'כנס שנתי', desc: 'רגעים נבחרים מהערב', url: 'https://youtu.be/dou5806oQi8' },
-            { id: 4, type: 'image', category: 'cat2', span: 'aspect-[3/4]', title: 'צילום אומנותי', desc: 'דיוק ואיכות בכל פרט', url: 'https://youtu.be/98zbfdwHEl4?si=L6zC2HZiev7pIstb' } // Replaced invalid YT link with a placeholder image for demo
+            { id: 4, type: 'image', category: 'cat2', span: 'aspect-[3/4]', title: 'צילום אומנותי', desc: 'דיוק ואיכות בכל פרט', url: 'https://youtu.be/98zbfdwHEl4?si=L6zC2HZiev7pIstb' },
+            // New videos added below
+            { id: 7, type: 'video', category: 'cat1', span: 'aspect-video', title: 'וידאו 1', desc: 'תיאור וידאו 1', url: 'https://youtu.be/Qn8hQnMbKL4?si=7XJOm0MamFNsf6Y8' },
+            { id: 8, type: 'video', category: 'cat2', span: 'aspect-square', title: 'וידאו 2', desc: 'תיאור וידאו 2', url: 'https://youtu.be/Fq5DyGd869g?si=yVTol52cHjpa4zo-' },
+            { id: 9, type: 'video', category: 'cat1', span: 'aspect-[4/3]', title: 'וידאו 3', desc: 'תיאור וידאו 3', url: 'https://youtu.be/lvPpswQ0omo?si=lyCb8uZ-fht0NWxi' },
+            { id: 10, type: 'video', category: 'cat2', span: 'aspect-video', title: 'וידאו 4', desc: 'תיאור וידאו 4', url: 'https://youtu.be/FwbFZsK_g8c?si=HuS975DGoNvt7iRo' },
+            { id: 11, type: 'video', category: 'cat1', span: 'aspect-square', title: 'וידאו 5', desc: 'תיאור וידאו 5', url: 'https://youtu.be/CPxmKBmPfRI?si=f4MWW2I1_fUWKBk6' },
+            { id: 12, type: 'video', category: 'cat2', span: 'aspect-[4/3]', title: 'וידאו 6', desc: 'תיאור וידאו 6', url: 'https://youtu.be/MLC07iA97tc?si=qH5iKpMhun03IGQN' },
+            { id: 13, type: 'video', category: 'cat1', span: 'aspect-video', title: 'וידאו 7', desc: 'תיאור וידאו 7', url: 'https://youtu.be/nx0QRYZCP8Q?si=XnWba0yS-KEFw3WJ' },
+            { id: 14, type: 'video', category: 'cat2', span: 'aspect-square', title: 'וידאו 8', desc: 'תיאור וידאו 8', url: 'https://youtu.be/2hDMEHALpfk?si=HnjThrNjlvEflZoN' }
         ];
 
         function getYoutubeEmbedUrl(url) {
