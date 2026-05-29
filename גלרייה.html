@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <!-- EMBEDDED FAVICONS (High-Resolution Brand Logo Icons) -->
+    <!-- EMBEDDED FAVICONS -->
     <link rel="icon" href="https://img.youtube.com/vi/dou5806oQi8/hqdefault.jpg" sizes="32x32" />
     <link rel="icon" href="https://img.youtube.com/vi/dou5806oQi8/hqdefault.jpg" sizes="192x192" />
     <link rel="apple-touch-icon" href="https://img.youtube.com/vi/dou5806oQi8/hqdefault.jpg" />
     
-    <title>גלריית אירועים | ספרות תפארתך</title>
+    <title>גלריית אירועים | ספרות תפארתך - חנות הספרות סת''ם פרימיום</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;800&family=Frank+Ruhl+Libre:wght@300;400;700;900&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -26,7 +26,8 @@
                     colors: { 
                         brand: { 
                             gold: '#CBA153', 
-                            darkGold: '#9A7B3E', 
+                            darkGold: '#9A7B3E',
+                            lightGold: '#FDE68A',
                             onyx: '#0A0A0A', 
                             cream: '#FCFCFA', 
                             platinum: '#E5E3DC' 
@@ -34,8 +35,40 @@
                     },
                     boxShadow: { 
                         'luxury': '0 30px 60px -15px rgba(0,0,0,0.1)', 
-                        'luxury-hover': '0 40px 80px -15px rgba(203,161,83,0.25)', 
-                        'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.05)' 
+                        'luxury-hover': '0 20px 40px -10px rgba(203,161,83,0.3)', 
+                        'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.05)',
+                        'glow': '0 0 20px rgba(203,161,83,0.4)'
+                    },
+                    animation: {
+                        'gradient-x': 'gradient-x 3s ease infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-gold': 'pulse-gold 2s infinite',
+                        'fade-in-up': 'fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards'
+                    },
+                    keyframes: {
+                        'gradient-x': {
+                            '0%, 100%': {
+                                'background-size': '200% 200%',
+                                'background-position': 'left center'
+                            },
+                            '50%': {
+                                'background-size': '200% 200%',
+                                'background-position': 'right center'
+                            },
+                        },
+                        'float': {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        'pulse-gold': {
+                            '0%': { boxShadow: '0 0 0 0 rgba(203,161,83, 0.6)' },
+                            '70%': { boxShadow: '0 0 0 15px rgba(203,161,83, 0)' },
+                            '100%': { boxShadow: '0 0 0 0 rgba(203,161,83, 0)' }
+                        },
+                        'fadeInUp': {
+                            '0%': { opacity: 0, transform: 'translateY(30px)' },
+                            '100%': { opacity: 1, transform: 'translateY(0)' }
+                        }
                     }
                 }
             }
@@ -43,174 +76,231 @@
     </script>
     
     <style>
-        body { background-color: #FCFCFA; color: #0A0A0A; overflow-x: hidden; -webkit-tap-highlight-color: transparent; }
-        .gold-text-gradient { 
-            background: linear-gradient(135deg, #CBA153 0%, #E8D4A2 50%, #9A7B3E 100%); 
-            -webkit-background-clip: text; 
-            -webkit-text-fill-color: transparent; 
+        body { 
+            background-color: #FCFCFA; 
+            color: #0A0A0A; 
+            overflow-x: hidden; 
+            -webkit-tap-highlight-color: transparent; 
         }
         
-        .bg-noise { position: relative; }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #FCFCFA; }
+        ::-webkit-scrollbar-thumb { background: #CBA153; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #9A7B3E; }
+
+        .gold-text-gradient { 
+            background: linear-gradient(to right, #CBA153, #FDE68A, #CBA153); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+            background-size: 200% auto;
+        }
+        
+        .bg-noise { position: relative; z-index: 0; }
         .bg-noise::before {
-            content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: 0.15;
+            content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: 0.25;
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
         }
+        
+        /* Radial glow behind hero */
+        .hero-glow {
+            position: absolute;
+            top: -10%; left: 50%; transform: translateX(-50%);
+            width: 100vw; height: 500px;
+            background: radial-gradient(circle, rgba(203,161,83,0.1) 0%, rgba(252,252,250,0) 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
 
-        .masonry-grid { column-count: 1; column-gap: 1rem; }
-        @media (min-width: 640px) { .masonry-grid { column-count: 2; column-gap: 1.5rem; } }
-        @media (min-width: 1024px) { .masonry-grid { column-count: 3; column-gap: 1.5rem; } }
+        .masonry-grid { column-count: 1; column-gap: 1.5rem; }
+        @media (min-width: 640px) { .masonry-grid { column-count: 2; column-gap: 2rem; } }
+        @media (min-width: 1024px) { .masonry-grid { column-count: 3; column-gap: 2rem; } }
 
         .gallery-item {
-            break-inside: avoid; margin-bottom: 1rem; position: relative; cursor: pointer; border-radius: 1rem; 
-            overflow: hidden; border: 1px solid rgba(0,0,0,0.05); transition: all 0.3s ease;
+            break-inside: avoid; margin-bottom: 1.5rem; position: relative; cursor: pointer; border-radius: 1.5rem; 
+            overflow: hidden; border: 1px solid rgba(0,0,0,0.05); transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0; transform: translateY(30px);
         }
         @media (min-width: 640px) {
-            .gallery-item { margin-bottom: 1.5rem; border-radius: 1.5rem; transition: all 0.5s ease; }
+            .gallery-item { margin-bottom: 2rem; }
         }
         
         @media (hover: hover) {
-            .gallery-item:hover { transform: translateY(-5px); }
-            .gallery-item:hover img { transform: scale(1.1); }
-            .gallery-item:hover .overlay { opacity: 1; }
+            .gallery-item:hover { 
+                transform: translateY(-8px) scale(1.01); 
+                border-color: rgba(203,161,83,0.5);
+                box-shadow: 0 20px 40px -10px rgba(203,161,83,0.25);
+            }
+            .gallery-item:hover img { transform: scale(1.08); }
+            .gallery-item:hover .overlay { opacity: 1; background: linear-gradient(to top, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.4) 50%, transparent 100%); }
+            .gallery-item:hover .play-icon { background: rgba(203,161,83,1); transform: translate(-50%, -50%) scale(1.1); }
         }
         
         .gallery-item img { transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1); width: 100%; display: block; }
 
         .gallery-item .overlay { 
-            position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,10,10,0.9) 0%, transparent 100%); 
-            opacity: 0; transition: opacity 0.4s ease; display: flex; flex-direction: column; justify-content: flex-end; 
-            padding: 1.5rem; pointer-events: none; /* Prevents overlay from blocking touch events on mobile */
+            position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,10,10,0.85) 0%, transparent 70%); 
+            opacity: 0.8; transition: all 0.4s ease; display: flex; flex-direction: column; justify-content: flex-end; 
+            padding: 1.5rem; pointer-events: none;
         }
-        @media (min-width: 640px) { .gallery-item .overlay { padding: 2rem; } }
-        
-        /* Show overlay on touch devices by default slightly, or when tapped */
-        @media (hover: none) {
-            .gallery-item .overlay { opacity: 1; background: linear-gradient(to top, rgba(10,10,10,0.8) 0%, transparent 60%); }
-            .gallery-item h3 { font-size: 1.1rem; }
+        @media (min-width: 640px) { 
+            .gallery-item .overlay { opacity: 0; padding: 2rem; } 
         }
 
         .play-icon { 
             position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); 
-            width: 48px; height: 48px; background: rgba(203,161,83,0.9); border-radius: 50%;
+            width: 56px; height: 56px; background: rgba(203,161,83,0.85); border-radius: 50%;
             display: flex; align-items: center; justify-content: center; color: white; z-index: 20;
-            box-shadow: 0 0 15px rgba(203,161,83,0.4); pointer-events: none;
+            backdrop-filter: blur(4px); transition: all 0.4s ease;
+            pointer-events: none;
         }
         @media (min-width: 640px) {
-             .play-icon { width: 60px; height: 60px; box-shadow: 0 0 20px rgba(203,161,83,0.4); }
+             .play-icon { width: 70px; height: 70px; }
         }
 
         #lightbox { 
             display: none; position: fixed; inset: 0; z-index: 1000; 
-            background: rgba(10,10,10,0.95); backdrop-filter: blur(10px);
-            align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease;
+            background: rgba(5,5,5,0.98); backdrop-filter: blur(15px);
+            align-items: center; justify-content: center; opacity: 0; transition: opacity 0.4s ease;
         }
         #lightbox.active { display: flex; opacity: 1; }
         
-        /* Ensure close button is easy to tap on mobile */
         .lightbox-close-btn {
-            position: absolute; top: 1rem; left: 1rem; padding: 0.5rem; 
-            color: white; z-index: 1010; border-radius: 50%; background: rgba(0,0,0,0.5);
+            position: absolute; top: 1rem; left: 1rem; padding: 0.75rem; 
+            color: rgba(255,255,255,0.7); z-index: 1010; border-radius: 50%; 
+            background: rgba(255,255,255,0.1); backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
         }
+        .lightbox-close-btn:hover { color: #CBA153; background: rgba(255,255,255,0.2); transform: rotate(90deg); }
         @media (min-width: 640px) {
-            .lightbox-close-btn { top: 1.5rem; left: 1.5rem; background: transparent; }
-            .lightbox-close-btn:hover { color: #CBA153; }
+            .lightbox-close-btn { top: 2rem; left: 2rem; }
         }
         
         .no-scrollbar::-webkit-scrollbar { display: none; }
-        
-        /* Prevent body scroll when lightbox is open on iOS */
         body.lightbox-open { overflow: hidden; position: fixed; width: 100%; }
+
+        /* Filter buttons styling */
+        .filter-btn { position: relative; overflow: hidden; }
+        .filter-btn::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(203,161,83,0.1); transform: scale(0); transition: transform 0.3s ease; border-radius: 9999px; z-index: -1;
+        }
+        .filter-btn:hover::before { transform: scale(1); }
+        .filter-btn.active { box-shadow: 0 4px 15px -3px rgba(203,161,83,0.4); }
     </style>
 </head>
 <body class="antialiased bg-noise">
 
-            <!-- Logo -->
-            <div class="flex flex-col items-end cursor-none group hover-trigger" onclick="window.scrollTo({top:0, behavior:'smooth'})" aria-label="לדף הבית" role="https://my-rabbinic-website.github.io/safrut-tifarteha/" tabindex="0">
-                <span class="text-3xl md:text-4xl font-light font-tradition gold-gradient italic leading-none group-hover:scale-105 transition-transform duration-500 drop-shadow-md" data-he="ספרות תפארתך" data-en="Sifrut Tifarteha">ספרות תפארתך</span>
-                <span class="text-[9px] md:text-[10px] tracking-[0.4em] uppercase font-sans font-bold text-gray-500 mt-1.5">Premium Scribal Arts</span>
-            </div>
-        </div>
+    <div class="hero-glow"></div>
+
+    <header class="py-4 md:py-5 text-center bg-white/70 backdrop-blur-xl sticky top-0 z-50 border-b border-brand-gold/20 transition-all duration-300 shadow-sm">
+        <h1 class="text-2xl md:text-3xl font-serif font-black tracking-tight flex items-center justify-center gap-2">
+            <svg class="w-6 h-6 text-brand-gold animate-pulse-gold rounded-full" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+            </svg>
+            ספרות <span class="text-brand-gold">תפארתך</span>
+        </h1>
     </header>
 
-    <section class="pt-16 pb-8 md:pt-20 md:pb-12 px-4 text-center" data-aos="fade-up">
-        <div class="max-w-4xl mx-auto">
-            <span class="text-brand-gold font-bold uppercase tracking-[0.2em] md:tracking-[0.3em] text-[10px] md:text-xs mb-3 md:mb-4 block">Our Portfolio</span>
-            <h2 class="text-4xl sm:text-5xl md:text-7xl font-serif font-bold gold-text-gradient mb-4 md:mb-6 leading-tight">גלריית אירועים מרהיבה</h2>
-            <p class="text-base md:text-lg text-gray-500 max-w-2xl mx-auto font-light leading-relaxed px-2">
-                הגלריה כעת בתהליכי בנייה - תהנו בנתיים מ-'מקהלת מלכות'.
+    <section class="pt-20 pb-10 md:pt-28 md:pb-16 px-4 text-center relative" data-aos="fade-up" data-aos-duration="1000">
+        <div class="max-w-4xl mx-auto relative z-10">
+            <span class="inline-block py-1 px-4 rounded-full border border-brand-gold/30 bg-brand-gold/5 text-brand-gold font-bold uppercase tracking-[0.2em] md:tracking-[0.3em] text-[10px] md:text-xs mb-6 animate-float">
+                Our Premium Portfolio
+            </span>
+            <h2 class="text-5xl sm:text-6xl md:text-8xl font-serif font-black gold-text-gradient animate-gradient-x mb-6 md:mb-8 leading-tight drop-shadow-sm">
+                גלריית אירועים <br/><span class="font-light italic text-brand-onyx text-4xl sm:text-5xl md:text-7xl">מרהיבה</span>
+            </h2>
+            <p class="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto font-light leading-relaxed px-4">
+                הגלריה כעת בתהליכי בנייה - תהנו בינתיים מרגעים נבחרים ובלתי נשכחים של <span class="font-semibold text-brand-gold">'מקהלת מלכות'</span>.
             </p>
         </div>
     </section>
 
-    <section class="sticky top-[60px] md:top-[80px] z-40 mb-8 md:mb-12 px-4 flex justify-center w-full">
-        <div class="bg-white/95 backdrop-blur-xl border border-brand-gold/20 p-1 md:p-1.5 rounded-full shadow-glass flex gap-1 overflow-x-auto no-scrollbar max-w-full touch-pan-x">
-            <button onclick="filterGallery('all', this)" class="filter-btn active whitespace-nowrap px-4 py-2 md:px-6 md:py-2 rounded-full bg-brand-onyx text-brand-gold text-xs font-bold transition-all">הכל</button>
-            <button onclick="filterGallery('cat1', this)" class="filter-btn whitespace-nowrap px-4 py-2 md:px-6 md:py-2 rounded-full text-gray-500 hover:bg-gray-100 text-xs font-bold transition-all">קטגוריה א'</button>
-            <button onclick="filterGallery('cat2', this)" class="filter-btn whitespace-nowrap px-4 py-2 md:px-6 md:py-2 rounded-full text-gray-500 hover:bg-gray-100 text-xs font-bold transition-all">קטגוריה ב'</button>
+    <section class="sticky top-[70px] md:top-[76px] z-40 mb-10 md:mb-16 px-4 flex justify-center w-full" data-aos="fade-up" data-aos-delay="200">
+        <div class="bg-white/80 backdrop-blur-xl border border-brand-gold/30 p-1.5 md:p-2 rounded-full shadow-glass flex gap-1 md:gap-2 overflow-x-auto no-scrollbar max-w-full touch-pan-x">
+            <button onclick="filterGallery('all', this)" class="filter-btn active whitespace-nowrap px-6 py-2.5 md:px-8 md:py-3 rounded-full bg-brand-onyx text-brand-lightGold text-sm md:text-base font-bold transition-all">הכל</button>
+            <button onclick="filterGallery('cat1', this)" class="filter-btn whitespace-nowrap px-6 py-2.5 md:px-8 md:py-3 rounded-full text-gray-600 hover:text-brand-onyx text-sm md:text-base font-bold transition-all">קטגוריה א'</button>
+            <button onclick="filterGallery('cat2', this)" class="filter-btn whitespace-nowrap px-6 py-2.5 md:px-8 md:py-3 rounded-full text-gray-600 hover:text-brand-onyx text-sm md:text-base font-bold transition-all">קטגוריה ב'</button>
         </div>
     </section>
 
-    <main class="max-w-[1400px] mx-auto px-4 md:px-6 pb-20 md:pb-24">
-        <div id="gallery-container" class="masonry-grid transition-opacity duration-300">
+    <main class="max-w-[1600px] mx-auto px-4 md:px-8 pb-20 md:pb-32">
+        <div id="gallery-container" class="masonry-grid transition-opacity duration-500">
             <!-- JS Content -->
         </div>
     </main>
+    
+    <footer class="bg-brand-onyx text-center py-12 md:py-16 border-t-4 border-brand-gold relative overflow-hidden">
+        <div class="absolute inset-0 opacity-5 bg-[url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23CBA153\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]"></div>
+        <div class="relative z-10 flex flex-col items-center justify-center">
+            <h2 class="text-2xl font-serif text-white mb-4">ספרות <span class="text-brand-gold">תפארתך</span></h2>
+            <p class="text-gray-400 text-sm font-light mb-6">   ,  053-4192798 | Tifarteha@gmail.com</p>
+            <div class="w-16 h-px bg-brand-gold/50 mb-6"></div>
+            <p class="text-gray-500 text-xs tracking-wider uppercase">&copy; 2024 כל הזכויות שמורות לספרות תפארתך</p>
+        </div>
+    </footer>
 
     <div id="lightbox" onclick="if(event.target === this) closeLightbox()">
-        <button onclick="closeLightbox()" class="lightbox-close-btn transition-colors" aria-label="Close">
+        <button onclick="closeLightbox()" class="lightbox-close-btn" aria-label="Close">
             <svg class="w-6 h-6 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
         </button>
-        <div class="w-full h-full max-w-5xl p-0 md:p-4 flex flex-col items-center justify-center">
-            <div id="lightbox-media" class="w-full aspect-video bg-black md:rounded-2xl overflow-hidden shadow-2xl flex items-center justify-center"></div>
-            <div class="mt-4 md:mt-6 text-center text-white px-4">
-                <h3 id="lightbox-title" class="text-xl md:text-2xl font-serif mb-1 md:mb-2"></h3>
-                <p id="lightbox-desc" class="text-brand-gold text-xs md:text-sm tracking-wide"></p>
+        <div class="w-full h-full max-w-6xl p-0 md:p-8 flex flex-col items-center justify-center">
+            <div id="lightbox-media" class="w-full aspect-video bg-black md:rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(203,161,83,0.15)] border border-brand-gold/10 flex items-center justify-center relative">
+                <!-- Loader -->
+                <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                    <div class="w-10 h-10 border-4 border-brand-gold/30 border-t-brand-gold rounded-full animate-spin"></div>
+                </div>
+            </div>
+            <div class="mt-6 md:mt-8 text-center text-white px-4 max-w-3xl">
+                <h3 id="lightbox-title" class="text-2xl md:text-4xl font-serif font-bold mb-2 md:mb-3 gold-text-gradient inline-block"></h3>
+                <p id="lightbox-desc" class="text-gray-300 text-sm md:text-base font-light tracking-wide"></p>
             </div>
         </div>
     </div>
 
     <script>
         const galleryData = [
-            { id: 5, type: 'video', category: 'cat1', span: 'aspect-video', title: 'אירוע השקה מרכזי', desc: 'תיעוד חי מהשטח', url: 'https://youtu.be/Rfee22TYUcE?si=zu06ZWF-UMsOnZNM' },
+            { id: 5, type: 'video', category: 'cat1', span: 'aspect-video', title: 'שירת הלוויים', desc: 'קליפ מוזיקלי מרגש', url: 'https://youtu.be/Rfee22TYUcE?si=zu06ZWF-UMsOnZNM' },
             { id: 1, type: 'video', category: 'cat1', span: 'aspect-video', title: 'אירוע השקה מרכזי', desc: 'תיעוד חי מהשטח', url: 'https://youtu.be/pDTv1BAoRFI' },
-            { id: 6, type: 'video', category: 'cat2', span: 'aspect-square', title: 'תהליך עבודה מקצועי', desc: 'מאחורי הקלעים של ההפקה', url: 'https://youtu.be/ItkuZs27-ZE?si=_MOJhD-TmOXQ4dkF' },
+            { id: 6, type: 'video', category: 'cat2', span: 'aspect-square', title: 'הכנות לאירוע', desc: 'הצצה בלעדית', url: 'https://youtu.be/ItkuZs27-ZE?si=_MOJhD-TmOXQ4dkF' },
             { id: 2, type: 'video', category: 'cat2', span: 'aspect-square', title: 'תהליך עבודה מקצועי', desc: 'מאחורי הקלעים של ההפקה', url: 'https://youtu.be/vO78oDri2nY' },
             { id: 3, type: 'video', category: 'cat1', span: 'aspect-[4/3]', title: 'כנס שנתי', desc: 'רגעים נבחרים מהערב', url: 'https://youtu.be/dou5806oQi8' },
-            { id: 4, type: 'image', category: 'cat2', span: 'aspect-[3/4]', title: 'צילום אומנותי', desc: 'דיוק ואיכות בכל פרט', url: 'https://youtu.be/98zbfdwHEl4?si=L6zC2HZiev7pIstb' },
-            // New videos added below
-            { id: 7, type: 'video', category: 'cat1', span: 'aspect-video', title: 'וידאו 1', desc: 'תיאור וידאו 1', url: 'https://youtu.be/Qn8hQnMbKL4?si=7XJOm0MamFNsf6Y8' },
-            { id: 8, type: 'video', category: 'cat2', span: 'aspect-square', title: 'וידאו 2', desc: 'תיאור וידאו 2', url: 'https://youtu.be/Fq5DyGd869g?si=yVTol52cHjpa4zo-' },
-            { id: 9, type: 'video', category: 'cat1', span: 'aspect-[4/3]', title: 'וידאו 3', desc: 'תיאור וידאו 3', url: 'https://youtu.be/lvPpswQ0omo?si=lyCb8uZ-fht0NWxi' },
-            { id: 10, type: 'video', category: 'cat2', span: 'aspect-video', title: 'וידאו 4', desc: 'תיאור וידאו 4', url: 'https://youtu.be/FwbFZsK_g8c?si=HuS975DGoNvt7iRo' },
-            { id: 11, type: 'video', category: 'cat1', span: 'aspect-square', title: 'וידאו 5', desc: 'תיאור וידאו 5', url: 'https://youtu.be/CPxmKBmPfRI?si=f4MWW2I1_fUWKBk6' },
-            { id: 12, type: 'video', category: 'cat2', span: 'aspect-[4/3]', title: 'וידאו 6', desc: 'תיאור וידאו 6', url: 'https://youtu.be/MLC07iA97tc?si=qH5iKpMhun03IGQN' },
-            { id: 13, type: 'video', category: 'cat1', span: 'aspect-video', title: 'וידאו 7', desc: 'תיאור וידאו 7', url: 'https://youtu.be/nx0QRYZCP8Q?si=XnWba0yS-KEFw3WJ' },
-            { id: 14, type: 'video', category: 'cat2', span: 'aspect-square', title: 'וידאו 8', desc: 'תיאור וידאו 8', url: 'https://youtu.be/2hDMEHALpfk?si=HnjThrNjlvEflZoN' }
+            { id: 4, type: 'video', category: 'cat2', span: 'aspect-[3/4]', title: 'צילום אומנותי', desc: 'דיוק ואיכות בכל פרט', url: 'https://youtu.be/98zbfdwHEl4?si=L6zC2HZiev7pIstb' },
+            { id: 7, type: 'video', category: 'cat1', span: 'aspect-video', title: 'ביצוע חי מרטיט', desc: 'מתוך אירוע מיוחד', url: 'https://youtu.be/Qn8hQnMbKL4?si=7XJOm0MamFNsf6Y8' },
+            { id: 8, type: 'video', category: 'cat2', span: 'aspect-square', title: 'מאחורי הקלעים', desc: 'רגעים של קסם', url: 'https://youtu.be/Fq5DyGd869g?si=yVTol52cHjpa4zo-' },
+            { id: 9, type: 'video', category: 'cat1', span: 'aspect-[4/3]', title: 'חופה מרגשת', desc: 'ליווי מוזיקלי מושלם', url: 'https://youtu.be/lvPpswQ0omo?si=lyCb8uZ-fht0NWxi' },
+            { id: 10, type: 'video', category: 'cat2', span: 'aspect-video', title: 'שמחת בית השואבה', desc: 'התלהבות ושמחה', url: 'https://youtu.be/FwbFZsK_g8c?si=HuS975DGoNvt7iRo' },
+            { id: 11, type: 'video', category: 'cat1', span: 'aspect-square', title: 'כנס יוקרתי', desc: 'אווירה מרוממת', url: 'https://youtu.be/CPxmKBmPfRI?si=f4MWW2I1_fUWKBk6' },
+            { id: 12, type: 'video', category: 'cat2', span: 'aspect-[4/3]', title: 'הופעה פומבית', desc: 'קהל נלהב', url: 'https://youtu.be/MLC07iA97tc?si=qH5iKpMhun03IGQN' },
+            { id: 13, type: 'video', category: 'cat1', span: 'aspect-video', title: 'רגע של השראה', desc: 'שירה שעולה מהלב', url: 'https://youtu.be/nx0QRYZCP8Q?si=XnWba0yS-KEFw3WJ' },
+            { id: 14, type: 'video', category: 'cat2', span: 'aspect-square', title: 'סיום מרשים', desc: 'אקורד סיום עוצמתי', url: 'https://youtu.be/2hDMEHALpfk?si=HnjThrNjlvEflZoN' }
         ];
 
-        function getYoutubeEmbedUrl(url) {
-            const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+        function getYoutubeId(url) {
+            const regExp = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/i;
             const match = url.match(regExp);
-            if (match && match[2].length === 11) {
-                return `https://www.youtube.com/embed/${match[2]}?autoplay=1&rel=0`;
+            return match ? match[1] : null;
+        }
+
+        function getYoutubeEmbedUrl(url) {
+            const videoId = getYoutubeId(url);
+            if (videoId) {
+                return `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&color=white&modestbranding=1`;
             }
             return url;
         }
 
         function getYoutubeThumbnail(url) {
-            const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
-            const match = url.match(regExp);
-            if (match && match[2].length === 11) {
-                return `https://img.youtube.com/vi/${match[2]}/hqdefault.jpg`;
+            const videoId = getYoutubeId(url);
+            if (videoId) {
+                return `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`; // Changed to maxresdefault for higher quality
             }
-            return 'https://placehold.co/600x400/0A0A0A/CBA153?text=Video';
+            return 'https://placehold.co/800x600/0A0A0A/CBA153?text=Video';
         }
 
         function init() {
             if (typeof AOS !== 'undefined') {
-                AOS.init({ once: true, duration: 800, offset: 50 });
-            } else {
-                console.warn("AOS library not found.");
+                AOS.init({ once: true, duration: 1000, offset: 50, easing: 'ease-out-cubic' });
             }
             renderGallery('all');
         }
@@ -223,33 +313,45 @@
                 container.innerHTML = '';
                 const items = filter === 'all' ? galleryData : galleryData.filter(i => i.category === filter);
                 
-                items.forEach(item => {
+                items.forEach((item, index) => {
                     const isVideo = item.type === 'video' || item.url.includes('youtu');
                     const imgUrl = isVideo ? getYoutubeThumbnail(item.url) : item.url;
                     
+                    // Fallback to hqdefault if maxresdefault fails loading
+                    const imgElement = `<img src="${imgUrl}" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/${getYoutubeId(item.url)}/hqdefault.jpg';" class="w-full h-full object-cover" alt="${item.title}" loading="lazy">`;
+
                     const html = `
-                        <div class="gallery-item ${item.span} group" onclick="openLightbox(${item.id})">
-                            <img src="${imgUrl}" class="w-full h-full object-cover" alt="${item.title}" loading="lazy">
-                            ${isVideo ? '<div class="play-icon"><svg class="w-5 h-5 md:w-6 md:h-6 ml-0.5 md:ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>' : ''}
+                        <div class="gallery-item ${item.span} group" onclick="openLightbox(${item.id})" style="animation-delay: ${index * 100}ms">
+                            ${imgElement}
+                            ${isVideo ? '<div class="play-icon animate-pulse-gold"><svg class="w-6 h-6 md:w-8 md:h-8 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>' : ''}
                             <div class="overlay">
-                                <h3 class="text-white font-bold text-lg md:text-xl mb-0.5 md:mb-1">${item.title}</h3>
-                                <p class="text-brand-gold text-[10px] md:text-xs">${item.desc}</p>
+                                <h3 class="text-white font-serif font-bold text-xl md:text-2xl mb-1 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">${item.title}</h3>
+                                <div class="w-8 h-0.5 bg-brand-gold mb-2 transform scale-x-0 group-hover:scale-x-100 origin-right transition-transform duration-500 delay-100"></div>
+                                <p class="text-brand-lightGold text-xs md:text-sm tracking-wide opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">${item.desc}</p>
                             </div>
                         </div>
                     `;
                     container.insertAdjacentHTML('beforeend', html);
                 });
+                
+                // Trigger reflow to restart animations
+                void container.offsetWidth;
+                
+                // Apply animation class
+                const newlyAddedItems = container.querySelectorAll('.gallery-item');
+                newlyAddedItems.forEach(el => el.classList.add('animate-fade-in-up'));
+                
                 container.style.opacity = '1';
-            }, 250);
+            }, 300);
         }
 
         function filterGallery(cat, btn) {
             document.querySelectorAll('.filter-btn').forEach(b => {
-                b.classList.remove('bg-brand-onyx', 'text-brand-gold');
-                b.classList.add('text-gray-500');
+                b.classList.remove('bg-brand-onyx', 'text-brand-lightGold');
+                b.classList.add('text-gray-600');
             });
-            btn.classList.add('bg-brand-onyx', 'text-brand-gold');
-            btn.classList.remove('text-gray-500');
+            btn.classList.add('bg-brand-onyx', 'text-brand-lightGold');
+            btn.classList.remove('text-gray-600');
             renderGallery(cat);
         }
 
@@ -265,16 +367,16 @@
             document.getElementById('lightbox-title').innerText = item.title;
             document.getElementById('lightbox-desc').innerText = item.desc;
             
+            // Keep the loader inside media container, append iframe above it
             const isVideo = item.type === 'video' || item.url.includes('youtu');
             if (isVideo) {
-                media.innerHTML = `<iframe class="w-full h-full" src="${getYoutubeEmbedUrl(item.url)}" allow="autoplay; fullscreen" frameborder="0"></iframe>`;
+                media.innerHTML += `<iframe class="w-full h-full absolute inset-0 z-10" src="${getYoutubeEmbedUrl(item.url)}" allow="autoplay; fullscreen" frameborder="0" onload="this.style.opacity=1" style="opacity:0; transition: opacity 0.5s ease;"></iframe>`;
             } else {
-                media.innerHTML = `<img src="${item.url}" class="w-full h-full object-contain">`;
+                media.innerHTML += `<img src="${item.url}" class="w-full h-full object-contain absolute inset-0 z-10" onload="this.style.opacity=1" style="opacity:0; transition: opacity 0.5s ease;">`;
             }
             
             lb.classList.add('active');
             
-            // Mobile scrolling fix
             scrollPosition = window.pageYOffset;
             document.body.style.top = `-${scrollPosition}px`;
             document.body.classList.add('lightbox-open');
@@ -285,13 +387,16 @@
             lb.classList.remove('active');
             
             setTimeout(() => {
-                document.getElementById('lightbox-media').innerHTML = '';
+                // Keep only the loader div, remove iframe/img
+                const media = document.getElementById('lightbox-media');
+                while (media.childNodes.length > 1) {
+                    media.removeChild(media.lastChild);
+                }
                 
-                // Restore mobile scrolling
                 document.body.classList.remove('lightbox-open');
                 document.body.style.top = '';
                 window.scrollTo(0, scrollPosition);
-            }, 300);
+            }, 400);
         }
 
         window.onload = init;
