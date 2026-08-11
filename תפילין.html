@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ========================================== -->
+  <!-- 1. אופטימיזציית טעינה מתקדמת (Core Web Vitals) -->
+  <!-- ========================================== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="https://www.google-analytics.com">
+  <meta name="google-site-verification" content="cm8d_DCwtIbzViB0Aos14jc2TJzLiWT1aMGyUKQjQDU"/>
+  <!-- רמז לדפדפן לטעון את תמונת המוצר הראשית מוקדם ככל האפשר -->
+  <link rel="preload" as="image" href="https://www.yourdomain.co.il/images/product-main.jpg">
+
+  <!-- ========================================== -->
+  <!-- 2. תגיות SEO מרכזיות (כולל תמיכה בריבוי שפות) -->
+  <!-- ========================================== -->
+  <title>תפילין מהודרות | קנו עכשיו במחיר מנצח ומשלוח מהיר - ספרות תפארתך</title>
+  <meta name="description" content="רכשו [שם המוצר] באיכות פרימיום. מחיר מיוחד לזמן מוגבל, משלוח מהיר עד הבית ואחריות מלאה. לחצו לרכישה מאובטחת אונליין!">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+  <link rel="canonical" href="https://www.yourdomain.co.il/category/product-slug">
+  
+  <!-- Hreflang - מסמן לגוגל איזה דף להציג באיזו שפה/מדינה (אם רלוונטי) -->
+  <link rel="alternate" hreflang="he" href="https://www.yourdomain.co.il/category/product-slug" />
+  <link rel="alternate" hreflang="x-default" href="https://www.yourdomain.co.il/category/product-slug" />
+
+  <!-- ========================================== -->
+  <!-- 3. תגיות Open Graph & Twitter Cards לשיתופים -->
+  <!-- ========================================== -->
+  <meta property="og:type" content="product">
+  <meta property="og:title" content="שם המוצר | לרכישה אונליין">
+  <meta property="og:description" content="תיאור קצר ומניע לפעולה של המוצר עם המפרט והיתרונות המובילים.">
+  <meta property="og:url" content="https://www.yourdomain.co.il/category/product-slug">
+  <meta property="og:image" content="https://www.yourdomain.co.il/images/product-main.jpg">
+  <meta property="og:site_name" content="שם החנות">
+  <meta property="product:price:amount" content="299.00">
+  <meta property="product:price:currency" content="ILS">
+  <meta property="product:availability" content="instock">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- ========================================== -->
+  <!-- 4. ה"מוח" של העמוד: נתונים מובנים משולבים בשיטת @graph -->
+  <!-- ========================================== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      
+      /* --- א. הגדרת החנות (Organization) --- */
+      {
+        "@type": "Organization",
+        "@id": "https://www.yourdomain.co.il/#organization",
+        "name": "שם החנות שלך",
+        "url": "https://www.yourdomain.co.il/",
+        "logo": "https://www.yourdomain.co.il/logo.png",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+972-50-1234567",
+          "contactType": "customer service",
+          "areaServed": "IL",
+          "availableLanguage": "Hebrew"
+        }
+      },
+
+      /* --- ב. הגדרת דף האינטרנט (WebPage) --- */
+      {
+        "@type": "WebPage",
+        "@id": "https://www.yourdomain.co.il/category/product-slug/#webpage",
+        "url": "https://www.yourdomain.co.il/category/product-slug",
+        "name": "שם המוצר | לרכישה אונליין",
+        "isPartOf": { "@id": "https://www.yourdomain.co.il/#organization" }
+      },
+
+      /* --- ג. פירורי לחם (BreadcrumbList) --- */
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://www.yourdomain.co.il/category/product-slug/#breadcrumb",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "דף הבית", "item": "https://www.yourdomain.co.il/" },
+          { "@type": "ListItem", "position": 2, "name": "שם הקטגוריה", "item": "https://www.yourdomain.co.il/category" },
+          { "@type": "ListItem", "position": 3, "name": "שם המוצר" }
+        ]
+      },
+
+      /* --- ד. הגדרת המוצר המלא (Product + Pros/Cons + Shipping) --- */
+      {
+        "@type": "Product",
+        "@id": "https://www.yourdomain.co.il/category/product-slug/#product",
+        "mainEntityOfPage": { "@id": "https://www.yourdomain.co.il/category/product-slug/#webpage" },
+        "name": "שם המוצר המלא והמדויק",
+        "image": "https://www.yourdomain.co.il/images/product-main.jpg",
+        "description": "תיאור מוצר מקיף, כולל יתרונות, מפרט טכני ושימושים מרכזיים.",
+        "sku": "PROD-10029",
+        "brand": { "@type": "Brand", "name": "שם המותג" },
+        
+        "offers": {
+          "@type": "Offer",
+          "url": "https://www.yourdomain.co.il/category/product-slug",
+          "priceCurrency": "ILS",
+          "price": "299.00",
+          "itemCondition": "https://schema.org/NewCondition",
+          "availability": "https://schema.org/InStock",
+          "seller": { "@id": "https://www.yourdomain.co.il/#organization" },
+          "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "IL",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 14,
+            "returnMethod": "https://schema.org/ReturnByMail"
+          },
+          "shippingDetails": {
+            "@type": "OfferShippingDetails",
+            "shippingRate": { "@type": "MonetaryAmount", "value": "25.00", "currency": "ILS" },
+            "shippingDestination": { "@type": "DefinedRegion", "addressCountry": "IL" },
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 1, "unitCode": "DAY" },
+              "transitTime": { "@type": "QuantitativeValue", "minValue": 1, "maxValue": 3, "unitCode": "DAY" }
+            }
+          }
+        },
+        
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "reviewCount": "42"
+        },
+        
+        "review": {
+          "@type": "Review",
+          "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+          "author": { "@type": "Person", "name": "לקוח מאומת" },
+          "reviewBody": "מוצר איכותי מאוד, הגיע מהר בדיוק כפי שהובטח.",
+          "positiveNotes": {
+            "@type": "ItemList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "איכות חומרים גבוהה" },
+              { "@type": "ListItem", "position": 2, "name": "תמורה מעולה למחיר" }
+            ]
+          },
+          "negativeNotes": {
+            "@type": "ItemList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "מגיע בצבע אחד בלבד" }
+            ]
+          }
+        }
+      },
+
+      /* --- ה. שאלות ותשובות על המוצר (FAQPage) להגדלת הנראות בחיפוש --- */
+      {
+        "@type": "FAQPage",
+        "@id": "https://www.yourdomain.co.il/category/product-slug/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "האם יש אחריות על המוצר?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "כן, המוצר מגיע עם אחריות מלאה לשנה בכפוף לתקנון."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "תוך כמה זמן המשלוח מגיע?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "המשלוח מגיע בדרך כלל בין יום ל-3 ימי עסקים לכל חלקי הארץ."
+            }
+          }
+        ]
+      }
+      
+    ]
+  }
+  </script>
+</head>
