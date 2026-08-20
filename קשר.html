@@ -3,124 +3,634 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>תיאום פגישת ייעוץ | ספרותך תפארתך</title>
+    <meta name="description" content="תיאום פגישת ייעוץ אישית במכון סת"ם ספרותך תפארתך. ייעוץ מקצועי לכתיבת ספרי תורה, תפילין, מזוזות ויודאיקה.">
+    <title>תיאום פגישת ייעוץ אישית | ספרותך תפארתך - מכון סת"ם</title>
+    
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;800&family=Frank+Ruhl+Libre:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@200;300;400;600;800&family=Frank+Ruhl+Libre:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <!-- AOS Animation Library -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: { sans: ['Assistant', 'sans-serif'], serif: ['Frank Ruhl Libre', 'serif'] },
-                    colors: { brand: { gold: '#CBA153', onyx: '#0A0A0A', cream: '#FCFCFA', platinum: '#E5E3DC' } }
+                    fontFamily: { 
+                        sans: ['Assistant', 'sans-serif'], 
+                        serif: ['Frank Ruhl Libre', 'serif'] 
+                    },
+                    colors: { 
+                        brand: { 
+                            gold: '#CBA153', 
+                            goldLight: '#E8D4A2',
+                            goldDark: '#9A7B3E',
+                            onyx: '#0A0A0A',
+                            onyxLight: '#1f1f1f',
+                            cream: '#FCFCFA', 
+                            platinum: '#E5E3DC',
+                            sand: '#F5F3ED'
+                        } 
+                    },
+                    animation: {
+                        'float': 'float 8s ease-in-out infinite',
+                        'float-delayed': 'float 8s ease-in-out 4s infinite',
+                        'spin-slow': 'spin 20s linear infinite',
+                        'pulse-glow': 'pulse-glow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-15px)' },
+                        },
+                        'pulse-glow': {
+                            '0%, 100%': { opacity: 0.4, transform: 'scale(1)' },
+                            '50%': { opacity: 0.6, transform: 'scale(1.05)' },
+                        }
+                    }
                 }
             }
         }
     </script>
+
     <style>
-        body { background-color: var(--brand-cream); color: var(--brand-onyx); }
-        .gold-gradient { background: linear-gradient(135deg, #CBA153 0%, #E8D4A2 50%, #9A7B3E 100%); }
-        .gold-text-gradient { background: linear-gradient(135deg, #CBA153 0%, #E8D4A2 50%, #9A7B3E 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        
-        /* Editorial Input Style */
-        .input-editorial {
-            background: transparent; border: none; border-bottom: 1px solid rgba(0,0,0,0.1); border-radius: 0;
-            padding: 16px 0; transition: all 0.4s ease; width: 100%; font-family: 'Assistant', sans-serif;
+        :root {
+            --brand-cream: #FCFCFA;
+            --brand-onyx: #0A0A0A;
+            --brand-gold: #CBA153;
         }
-        .input-editorial:focus { border-bottom-color: var(--brand-gold); outline: none; box-shadow: 0 1px 0 0 var(--brand-gold); }
-        .input-editorial::placeholder { color: #9CA3AF; font-weight: 300; }
+        
+        body { 
+            background-color: var(--brand-cream); 
+            color: var(--brand-onyx); 
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Typography Enhancements */
+        .text-balance {
+            text-wrap: balance;
+        }
+
+        /* Gradients */
+        .gold-gradient { 
+            background: linear-gradient(135deg, #CBA153 0%, #E8D4A2 40%, #D4AF37 60%, #9A7B3E 100%); 
+        }
+        .gold-gradient-subtle {
+            background: linear-gradient(135deg, rgba(203,161,83,0.1) 0%, rgba(232,212,162,0.15) 100%);
+        }
+        .gold-text-gradient { 
+            background: linear-gradient(135deg, #B8860B 0%, #E8D4A2 30%, #CBA153 70%, #9A7B3E 100%); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+            background-clip: text;
+        }
+        
+        /* Glass & Shadows */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(229, 227, 220, 0.8);
+            box-shadow: 0 10px 40px -10px rgba(0,0,0,0.03);
+        }
+        
+        .shadow-premium {
+            box-shadow: 0 25px 50px -12px rgba(10, 10, 10, 0.08), 0 0 0 1px rgba(229, 227, 220, 0.5);
+        }
+
+        /* Input Styling */
+        .input-editorial {
+            background: transparent; 
+            border: none; 
+            border-bottom: 1.5px solid rgba(10, 10, 10, 0.15); 
+            border-radius: 0;
+            padding: 12px 0 12px 8px; 
+            transition: all 0.4s ease; 
+            width: 100%; 
+            font-family: 'Assistant', sans-serif;
+            color: var(--brand-onyx);
+            font-size: 1.1rem;
+            line-height: 1.5;
+        }
+        .input-editorial:focus { 
+            border-bottom-color: var(--brand-gold); 
+            outline: none; 
+            background: linear-gradient(to top, rgba(203, 161, 83, 0.03), transparent);
+        }
+        .input-editorial::placeholder { 
+            color: #9CA3AF; 
+            font-weight: 300; 
+            font-size: 1rem;
+            transition: opacity 0.3s ease;
+        }
+        .input-editorial:focus::placeholder {
+            opacity: 0.5;
+        }
+        
+        /* Custom Select */
+        .select-wrapper::after {
+            content: '\f107';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--brand-gold);
+            pointer-events: none;
+            transition: transform 0.3s ease;
+        }
+        .select-wrapper:focus-within::after {
+            transform: translateY(-50%) rotate(180deg);
+        }
+        select.input-editorial option {
+            background-color: white;
+            color: var(--brand-onyx);
+            padding: 10px;
+        }
+
+        /* Background Pattern & Ornaments */
+        .bg-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: 
+                radial-gradient(#CBA153 0.5px, transparent 0.5px),
+                radial-gradient(#CBA153 0.5px, transparent 0.5px);
+            background-size: 40px 40px;
+            background-position: 0 0, 20px 20px;
+            opacity: 0.07;
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            z-index: -1;
+            mix-blend-mode: multiply;
+        }
+        .blob-1 {
+            background-color: rgba(232, 212, 162, 0.6);
+            width: 600px;
+            height: 600px;
+            top: -150px;
+            right: -200px;
+        }
+        .blob-2 {
+            background-color: rgba(229, 227, 220, 0.8);
+            width: 700px;
+            height: 700px;
+            bottom: -250px;
+            left: -250px;
+        }
+
+        /* Timeline styling */
+        .timeline-line {
+            position: absolute;
+            right: 23px; /* Center of the icon */
+            top: 50px;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--brand-gold) 0%, rgba(203,161,83,0.1) 100%);
+            z-index: 0;
+        }
+
+        /* Accordion */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .accordion-item.active .accordion-content {
+            max-height: 200px; /* Adjust as needed */
+        }
+        .accordion-icon {
+            transition: transform 0.3s ease;
+        }
+        .accordion-item.active .accordion-icon {
+            transform: rotate(45deg);
+        }
     </style>
 </head>
-<body class="antialiased">
+<body class="antialiased relative min-h-screen flex flex-col selection:bg-brand-gold selection:text-white">
 
-    <!-- Header -->
-    <header class="py-8 text-center bg-white/50 backdrop-blur-md sticky top-0 z-50 border-b border-black/5">
-        <a href="index.html" class="text-3xl font-serif font-black tracking-tighter text-brand-onyx hover:opacity-80 transition-opacity">
-            ספרות תפארתך<span class="text-brand-gold"></span>
-        </a>
+    <!-- Background Elements -->
+    <div class="bg-pattern"></div>
+    <div class="blob blob-1 animate-pulse-glow"></div>
+    <div class="blob blob-2 animate-pulse-glow" style="animation-delay: 2s;"></div>
+
+    <header class="py-5 text-center bg-white/80 backdrop-blur-xl sticky top-0 z-50 border-b border-brand-platinum/60 shadow-sm transition-all duration-300" id="main-header">
+        <div class="max-w-7xl mx-auto px-4 flex justify-between items-center">
+            <!-- Hidden element for flex balance -->
+            <div class="w-10 md:w-24 hidden md:block"></div>
+            
+            <a href="#" class="inline-block group mx-auto">
+                <h2 class="text-3xl md:text-4xl font-serif font-black tracking-tighter text-brand-onyx group-hover:text-brand-gold transition-colors duration-400">
+                    ספרות<span class="font-light">ך</span> תפארת<span class="font-light">ך</span>
+                </h2>
+                <div class="h-[2px] w-0 bg-brand-gold mx-auto mt-1 transition-all duration-500 ease-out group-hover:w-3/4"></div>
+            </a>
+            
+            <a href="#booking-form" class="hidden md:inline-flex items-center gap-2 text-sm font-semibold text-brand-onyx hover:text-brand-gold transition-colors">
+                <span>לתיאום פגישה</span>
+                <i class="fa-solid fa-arrow-left text-xs"></i>
+            </a>
+        </div>
     </header>
 
-    <main class="min-h-screen py-20 px-6">
-        <div class="max-w-[1400px] mx-auto grid lg:grid-cols-2 gap-16 items-center">
-            
-            <!-- Information Section -->
-            <div class="dir-text-right" data-aos="fade-left">
-                <span class="text-brand-gold font-bold uppercase tracking-[0.3em] text-[10px] mb-6 block">Private Consultation</span>
-                <h1 class="text-5xl md:text-7xl font-serif font-black italic gold-text-gradient pb-4 leading-tight">בואו נתחנן<br>את יצירת הקודש<br>שלכם.</h1>
-                <p class="text-gray-500 mt-6 text-lg md:text-xl font-light leading-relaxed max-w-lg">
-                    אנו מזמינים אתכם לפגישת ייעוץ אישית במכון שלנו. נשמח להקשיב לבקשותיכם, לייעץ בנושאי הידור והלכה, ולהתאים עבורכם את מוצר הסת"ם המדויק למידותיכם.
-                </p>
+    <section class="relative pt-16 pb-12 lg:pt-24 lg:pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-12 gap-12 lg:gap-24 items-center">
                 
-                <div class="mt-12 space-y-6">
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 rounded-full border border-brand-gold/30 flex items-center justify-center text-brand-gold">📍</div>
-                        <div>
-                            <p class="font-bold text-brand-onyx">המכון שלנו</p>
-                            <p class="text-gray-500 font-light"> נווה שרון 15, נתיבות (בתיאום מראש בלבד)</p>
+                <!-- Text Content -->
+                <div class="lg:col-span-6 flex flex-col justify-center" data-aos="fade-left" data-aos-duration="1200">
+                    
+                    <div class="inline-flex items-center gap-3 mb-8 bg-white/60 backdrop-blur-sm py-1.5 px-4 rounded-full border border-brand-gold/20 shadow-sm w-max">
+                        <span class="relative flex h-2.5 w-2.5">
+                          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-gold opacity-75"></span>
+                          <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-brand-gold"></span>
+                        </span>
+                        <span class="text-brand-goldDark font-bold uppercase tracking-[0.15em] text-xs">פגישת ייעוץ והכוונה אישית</span>
+                    </div>
+                    
+                    <h1 class="text-5xl sm:text-6xl lg:text-7xl font-serif font-black text-brand-onyx pb-2 leading-[1.1] text-balance">
+                        עיצוב אישי של <br>
+                        <span class="gold-text-gradient block mt-1 pb-2 italic">יצירת הקודש שלכם</span>
+                    </h1>
+                    
+                    <div class="w-16 h-1 bg-brand-gold mt-6 mb-8 rounded-full"></div>
+                    
+                    <p class="text-gray-700 mt-2 text-lg md:text-xl font-light leading-relaxed text-balance">
+                        הידור מצווה מתחיל בתכנון מדויק. אנו מזמינים אתכם לפגישה אישית במכון שלנו, בה נתרגם את החזון שלכם ליצירת פאר, החל מבחירת הקלף ועד לסגנון הכתב, הכל בפיקוח הלכתי קפדני.
+                    </p>
+
+                    <!-- Features -->
+                    <div class="mt-10 grid grid-cols-2 gap-6">
+                        <div class="flex items-start gap-3">
+                            <i class="fa-solid fa-feather-pointed text-brand-gold mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-brand-onyx text-sm">התאמה אישית</h4>
+                                <p class="text-xs text-gray-500 mt-1">בחירת סגנון כתב ועיבוד</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <i class="fa-solid fa-scale-balanced text-brand-gold mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-brand-onyx text-sm">ליווי הלכתי</h4>
+                                <p class="text-xs text-gray-500 mt-1">הקפדה על כל פרט בהלכה</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 rounded-full border border-brand-gold/30 flex items-center justify-center text-brand-gold">📞</div>
+                </div>
+
+                <div class="lg:col-span-6 relative" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="200">
+                    <!-- Decorative Frame -->
+                    <div class="absolute inset-0 border-2 border-brand-gold/30 rounded-t-[50%] rounded-b-[2rem] transform translate-x-4 translate-y-4 lg:translate-x-6 lg:translate-y-6"></div>
+                    
+                    <!-- Main Visual Area (Instead of an image, we use an elegant typographic composition) -->
+                    <div class="bg-brand-onyx rounded-t-[50%] rounded-b-[2rem] p-10 md:p-16 h-[500px] lg:h-[600px] flex flex-col items-center justify-center relative overflow-hidden shadow-2xl">
+                        <!-- Abstract ink/quill overlay -->
+                        <div class="absolute inset-0 opacity-10 bg-[url('data:image/svg+xml,%3Csvg width=\'100\' height=\'100\' viewBox=\'0 0 100 100\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M50 0c27.614 0 50 22.386 50 50s-22.386 50-50 50S0 77.614 0 50 22.386 0 50 0zm0 10C27.909 10 10 27.909 10 50s17.909 40 40 40 40-17.909 40-40S72.091 10 50 10zm0 20c11.046 0 20 8.954 20 20s-8.954 20-20 20-20-8.954-20-20 8.954-20 20-20z\' fill=\'%23CBA153\' fill-rule=\'evenodd\'/%3E%3C/svg%3E')] bg-center bg-cover mix-blend-overlay"></div>
+                        
+                        <div class="relative z-10 text-center text-brand-cream border border-brand-gold/30 p-8 rounded-3xl backdrop-blur-sm bg-black/20">
+                            <i class="fa-solid fa-scroll text-5xl text-brand-gold mb-6 animate-float"></i>
+                            <h3 class="font-serif text-3xl mb-2 text-brand-goldLight">מלאכת מחשבת</h3>
+                            <p class="font-light text-brand-platinum text-sm leading-relaxed max-w-xs mx-auto">
+                                "וכתבתם על מזוזות ביתך ובשעריך"
+                            </p>
+                            <div class="mt-8 flex justify-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-brand-gold"></span>
+                                <span class="w-1.5 h-1.5 rounded-full bg-brand-gold/60"></span>
+                                <span class="w-1.5 h-1.5 rounded-full bg-brand-gold/30"></span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Floating badge -->
+                    <div class="absolute -left-4 md:-left-8 top-1/4 glass-panel px-6 py-4 rounded-2xl flex items-center gap-4 animate-float-delayed">
+                        <div class="w-10 h-10 rounded-full gold-gradient flex items-center justify-center text-white">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
                         <div>
-                            <p class="font-bold text-brand-onyx">מענה טלפוני ווואטסאפ</p>
-                            <p class="text-gray-500 font-light dir-ltr">0528219928</p>
+                            <p class="font-bold text-sm">איכות ללא פשרות</p>
+                            <p class="text-xs text-gray-500">בחומרי הגלם ובכתיבה</p>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <!-- Form Section -->
-            <div class="bg-white p-10 md:p-16 rounded-[3rem] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.05)] border border-black/5" data-aos="fade-right" data-aos-delay="100">
-                <h2 class="text-2xl font-serif font-bold text-brand-onyx mb-8">השאירו פרטים ונחזור אליכם בהקדם</h2>
+    <section class="py-16 lg:py-24 bg-white/40 border-y border-brand-platinum relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 lg:gap-24">
                 
-                <!-- החלף את YOUR_EMAIL@GMAIL.COM באימייל שלך -->
-                <form action="https://formsubmit.co/tifarteha@GMAIL.COM" method="POST" class="space-y-6">
+                <!-- Left: Contact & Info -->
+                <div data-aos="fade-up" data-aos-duration="1000">
+                    <h2 class="text-3xl md:text-4xl font-serif font-bold text-brand-onyx mb-6">פרטי התקשרות והגעה</h2>
+                    <p class="text-gray-600 mb-10 font-light text-lg">אנו זמינים לכל שאלה. רצוי לתאם פגישה מראש כדי שנוכל להעניק לכם את מלוא תשומת הלב.</p>
                     
-                    <!-- הגדרות חבויות לטופס -->
-                    <input type="hidden" name="_subject" value="פנייה חדשה מהאתר - ספרותך תפארתך!">
+                    <div class="space-y-5">
+                        <!-- Location Card -->
+                        <div class="glass-panel p-6 rounded-2xl flex items-start gap-5 hover:border-brand-gold/50 transition-colors duration-300 group">
+                            <div class="w-12 h-12 shrink-0 rounded-full bg-brand-sand flex items-center justify-center text-brand-gold text-xl group-hover:scale-110 transition-transform duration-300">
+                                <i class="fa-solid fa-map-location-dot"></i>
+                            </div>
+                            <div class="pt-1">
+                                <h3 class="font-bold text-brand-onyx text-lg mb-1">מכון ספרותך תפארתך</h3>
+                                <p class="text-gray-600 font-light mb-2">רחוב נווה שרון 15, נתיבות</p>
+                                <span class="inline-block text-xs font-semibold px-2.5 py-1 bg-brand-onyx text-brand-cream rounded-md">
+                                    קבלת קהל בתיאום מראש
+                                </span>
+                            </div>
+                        </div>
+                        
+                        <!-- Phone Card -->
+                        <div class="glass-panel p-6 rounded-2xl flex items-start gap-5 hover:border-brand-gold/50 transition-colors duration-300 group">
+                            <div class="w-12 h-12 shrink-0 rounded-full bg-brand-sand flex items-center justify-center text-brand-gold text-xl group-hover:scale-110 transition-transform duration-300">
+                                <i class="fa-solid fa-phone-volume"></i>
+                            </div>
+                            <div class="pt-1 w-full">
+                                <h3 class="font-bold text-brand-onyx text-lg mb-1">מענה טלפוני</h3>
+                                <div class="flex items-center justify-between mt-2">
+                                    <a href="tel:0528219928" class="text-gray-700 font-medium hover:text-brand-gold transition-colors text-lg" dir="ltr">
+                                        052-821-9928
+                                    </a>
+                                    <a href="https://wa.me/972528219928" target="_blank" class="w-8 h-8 rounded-full bg-green-50 text-green-600 flex items-center justify-center hover:bg-green-500 hover:text-white transition-colors" title="שלח הודעת וואטסאפ">
+                                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Email Card -->
+                        <div class="glass-panel p-6 rounded-2xl flex items-start gap-5 hover:border-brand-gold/50 transition-colors duration-300 group">
+                            <div class="w-12 h-12 shrink-0 rounded-full bg-brand-sand flex items-center justify-center text-brand-gold text-xl group-hover:scale-110 transition-transform duration-300">
+                                <i class="fa-regular fa-envelope"></i>
+                            </div>
+                            <div class="pt-1">
+                                <h3 class="font-bold text-brand-onyx text-lg mb-1">דואר אלקטרוני</h3>
+                                <a href="mailto:tifarteha@gmail.com" class="text-gray-600 font-light hover:text-brand-gold transition-colors text-lg font-sans">
+                                    tifarteha@gmail.com
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Process Timeline -->
+                <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                    <h2 class="text-3xl md:text-4xl font-serif font-bold text-brand-onyx mb-6">מה מצפה לכם בפגישה?</h2>
+                    <p class="text-gray-600 mb-10 font-light text-lg">תהליך יצירה קפדני המשלב מסורת, אומנות והקשבה לצרכים שלכם.</p>
+                    
+                    <div class="relative pl-2 lg:pl-0 pr-8">
+                        <div class="timeline-line hidden sm:block"></div>
+                        
+                        <div class="space-y-8 relative">
+                            <!-- Step 1 -->
+                            <div class="flex gap-4 sm:gap-6 relative z-10">
+                                <div class="w-12 h-12 shrink-0 rounded-full gold-gradient flex items-center justify-center text-white font-bold text-xl shadow-lg border-4 border-white relative z-10">
+                                    1
+                                </div>
+                                <div class="pt-2">
+                                    <h4 class="font-bold text-brand-onyx text-xl mb-2">היכרות והבנת הצורך</h4>
+                                    <p class="text-gray-600 font-light text-sm leading-relaxed">נשמע מכם על המטרה, התקציב והדגשים המיוחדים שחשובים לכם (נוסח, מנהגים ספציפיים).</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Step 2 -->
+                            <div class="flex gap-4 sm:gap-6 relative z-10">
+                                <div class="w-12 h-12 shrink-0 rounded-full bg-white border-2 border-brand-gold flex items-center justify-center text-brand-gold font-bold text-xl shadow-md relative z-10">
+                                    2
+                                </div>
+                                <div class="pt-2">
+                                    <h4 class="font-bold text-brand-onyx text-xl mb-2">בחירת סגנון וחומרים</h4>
+                                    <p class="text-gray-600 font-light text-sm leading-relaxed">הצגת סגנונות כתב שונים, בחירת רמת ההידור של הקלף, הדיו והבתים (בתפילין).</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Step 3 -->
+                            <div class="flex gap-4 sm:gap-6 relative z-10">
+                                <div class="w-12 h-12 shrink-0 rounded-full bg-white border-2 border-brand-gold flex items-center justify-center text-brand-gold font-bold text-xl shadow-md relative z-10">
+                                    3
+                                </div>
+                                <div class="pt-2">
+                                    <h4 class="font-bold text-brand-onyx text-xl mb-2">סיכום ויציאה לדרך</h4>
+                                    <p class="text-gray-600 font-light text-sm leading-relaxed">הגדרת לוח זמנים ברור לכתיבה, שלבי עדכון לאורך התהליך וחתימה על הסכם עבודה מסודר.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="booking-form" class="py-16 lg:py-24 relative z-10">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+            
+            <div class="bg-white/90 backdrop-blur-2xl p-8 sm:p-12 md:p-16 rounded-[2.5rem] shadow-premium relative overflow-hidden" data-aos="zoom-in-up" data-aos-duration="1000">
+                
+                <!-- Corner Ornaments -->
+                <div class="absolute top-0 right-0 w-24 h-24 border-t-4 border-r-4 border-brand-gold/30 rounded-tr-[2rem] m-4 pointer-events-none"></div>
+                <div class="absolute bottom-0 left-0 w-24 h-24 border-b-4 border-l-4 border-brand-gold/30 rounded-bl-[2rem] m-4 pointer-events-none"></div>
+
+                <div class="text-center mb-12 relative z-10">
+                    <span class="text-brand-gold font-bold uppercase tracking-[0.1em] text-sm mb-2 block">שלב ראשון</span>
+                    <h2 class="text-3xl md:text-5xl font-serif font-bold text-brand-onyx mb-4">בקשה לתיאום פגישה</h2>
+                    <p class="text-gray-500 font-light text-lg">מלאו את הפרטים ונחזור אליכם בהקדם לתיאום מועד נוח</p>
+                </div>
+                
+                <form action="https://formsubmit.co/tifarteha@GMAIL.COM" method="POST" class="space-y-8 relative z-10">
+                    
+                    <!-- Hidden Config -->
+                    <input type="hidden" name="_subject" value="ליד חדש מהאתר - בקשה לפגישת ייעוץ">
                     <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_template" value="box">
+                    <!-- <input type="hidden" name="_next" value="https://yourwebsite.com/thanks.html"> -->
 
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <div>
-                            <input type="text" name="שם_מלא" required placeholder="שם מלא *" class="input-editorial">
+                    <div class="grid md:grid-cols-2 gap-8 md:gap-10">
+                        <div class="relative group">
+                            <label class="absolute -top-4 right-0 text-xs text-brand-gold font-semibold transition-all opacity-0 group-focus-within:opacity-100 transform group-focus-within:translate-y-0 translate-y-2">שם מלא *</label>
+                            <div class="relative flex items-center">
+                                <i class="fa-regular fa-user absolute right-2 text-gray-400 group-focus-within:text-brand-gold transition-colors"></i>
+                                <input type="text" name="שם_מלא" required placeholder="שם מלא *" class="input-editorial pr-10 peer">
+                            </div>
                         </div>
-                        <div>
-                            <input type="tel" name="טלפון" required placeholder="מספר טלפון *" class="input-editorial" dir="rtl">
+                        
+                        <div class="relative group">
+                            <label class="absolute -top-4 right-0 text-xs text-brand-gold font-semibold transition-all opacity-0 group-focus-within:opacity-100 transform group-focus-within:translate-y-0 translate-y-2">מספר טלפון *</label>
+                            <div class="relative flex items-center">
+                                <i class="fa-solid fa-mobile-screen absolute right-2 text-gray-400 group-focus-within:text-brand-gold transition-colors"></i>
+                                <input type="tel" name="טלפון" required placeholder="מספר טלפון *" class="input-editorial pr-10" dir="rtl" pattern="^0[2-9]\d{7,8}$" title="אנא הזינו מספר טלפון חוקי (למשל: 0521234567)">
+                            </div>
                         </div>
                     </div>
 
-                    <div>
-                        <input type="email" name="אימייל" placeholder="כתובת אימייל (אופציונלי)" class="input-editorial">
+                    <div class="grid md:grid-cols-2 gap-8 md:gap-10">
+                        <div class="relative group">
+                            <label class="absolute -top-4 right-0 text-xs text-brand-gold font-semibold transition-all opacity-0 group-focus-within:opacity-100 transform group-focus-within:translate-y-0 translate-y-2">אימייל</label>
+                            <div class="relative flex items-center">
+                                <i class="fa-regular fa-envelope absolute right-2 text-gray-400 group-focus-within:text-brand-gold transition-colors"></i>
+                                <input type="email" name="אימייל" placeholder="דואר אלקטרוני (אופציונלי)" class="input-editorial pr-10">
+                            </div>
+                        </div>
+
+                        <div class="relative group select-wrapper">
+                             <label class="absolute -top-4 right-0 text-xs text-brand-gold font-semibold transition-all opacity-0 group-focus-within:opacity-100 transform group-focus-within:translate-y-0 translate-y-2 z-10">נושא הפנייה *</label>
+                            <select name="נושא_הפנייה" required class="input-editorial text-gray-700 cursor-pointer appearance-none bg-transparent relative z-0 pr-2">
+                                <option value="" disabled selected class="text-gray-400">באיזה נושא תרצו להתייעץ? *</option>
+                                <option value="ספר תורה">כתיבת ספר תורה</option>
+                                <option value="תפילין">רכישת תפילין</option>
+                                <option value="מזוזות">בדיקה או רכישת מזוזות</option>
+                                <option value="מגילת אסתר / נביא">מגילת אסתר / ספרי נביאים</option>
+                                <option value="יודאיקה ועימוד">יודאיקה / עימוד ועיצוב</option>
+                                <option value="אחר">נושא אחר</option>
+                            </select>
+                        </div>
                     </div>
 
-                    <div>
-                        <select name="נושא_הפנייה" class="input-editorial text-gray-500 cursor-pointer appearance-none">
-                            <option value="" disabled selected>באיזה נושא תרצו להתייעץ?</option>
-                            <option value="ספר תורה">כתיבת ספר תורה</option>
-                            <option value="תפילין">רכישת תפילין מהודרות</option>
-                            <option value="מזוזות">בדיקה או רכישת מזוזות</option>
-                            <option value="יודאיקה ועימוד">יודאיקה / עימוד ועיצוב</option>
-                            <option value="אחר">נושא אחר</option>
-                        </select>
+                    <div class="relative group pt-2">
+                         <label class="absolute -top-2 right-0 text-xs text-brand-gold font-semibold transition-all opacity-0 group-focus-within:opacity-100 transform group-focus-within:translate-y-0 translate-y-2">הודעה / בקשות מיוחדות</label>
+                        <textarea name="הודעה" rows="4" placeholder="שתפו אותנו בפרטים נוספים, שאלות או דגשים מיוחדים לקראת הפגישה..." class="input-editorial resize-none leading-relaxed bg-brand-sand/30 rounded-t-lg px-3 focus:bg-brand-gold/5 pt-4"></textarea>
                     </div>
 
-                    <div>
-                        <textarea name="הודעה" rows="3" placeholder="ספרו לנו קצת על הבקשה שלכם..." class="input-editorial resize-none"></textarea>
+                    <div class="pt-6">
+                        <button type="submit" class="w-full py-5 gold-gradient text-white font-black uppercase text-xl tracking-[0.15em] rounded-xl shadow-lg shadow-brand-gold/30 hover:shadow-xl hover:shadow-brand-gold/40 transition-all duration-300 transform hover:-translate-y-1 active:translate-y-0 flex justify-center items-center gap-3 group relative overflow-hidden">
+                            <span class="relative z-10">שלחו בקשה לתיאום</span>
+                            <i class="fa-solid fa-paper-plane text-sm relative z-10 transition-transform duration-300 group-hover:-translate-x-2 group-hover:-translate-y-1"></i>
+                            <!-- Button hover effect overlay -->
+                            <div class="absolute inset-0 bg-white/20 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out z-0"></div>
+                        </button>
                     </div>
-
-                    <button type="submit" class="w-full mt-8 py-6 gold-gradient text-white font-black uppercase text-sm tracking-[0.3em] rounded-2xl hover:shadow-[0_20px_40px_rgba(203,161,83,0.3)] transition-all duration-500 transform hover:-translate-y-1">
-                        שלחו פנייה
-                    </button>
-                    <p class="text-center text-xs text-gray-400 mt-4 font-light">* הפרטים נשמרים בדיסקרטיות מלאה ולא יועברו לצד ג'.</p>
+                    
+                    <div class="flex items-center justify-center gap-2 text-gray-400">
+                        <i class="fa-solid fa-shield-halved text-xs"></i>
+                        <p class="text-center text-xs font-light">הפרטים מועברים בצורה מאובטחת ונשמרים בדיסקרטיות.</p>
+                    </div>
                 </form>
             </div>
-
         </div>
-    </main>
+    </section>
 
-    <script>AOS.init({ once: true, duration: 1000 });</script>
+    <section class="py-16 bg-brand-onyxLight text-brand-cream relative z-10">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-serif font-bold text-brand-goldLight mb-4">שאלות ותשובות נפוצות</h2>
+                <div class="w-12 h-[1px] bg-brand-gold mx-auto"></div>
+            </div>
+
+            <div class="space-y-4">
+                <!-- FAQ 1 -->
+                <div class="accordion-item bg-brand-onyx rounded-lg border border-white/10 overflow-hidden">
+                    <button class="w-full px-6 py-5 flex justify-between items-center focus:outline-none text-right" onclick="toggleAccordion(this)">
+                        <span class="font-bold text-lg">האם פגישת הייעוץ כרוכה בתשלום?</span>
+                        <i class="fa-solid fa-plus accordion-icon text-brand-gold"></i>
+                    </button>
+                    <div class="accordion-content bg-black/20">
+                        <p class="px-6 pb-5 pt-2 text-gray-400 font-light text-sm leading-relaxed">
+                            לא, פגישת ההיכרות והייעוץ הראשונית ניתנת ללא עלות וללא התחייבות. מטרת הפגישה היא להבין את הצרכים שלכם ולהציג את האפשרויות העומדות בפניכם.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="accordion-item bg-brand-onyx rounded-lg border border-white/10 overflow-hidden">
+                    <button class="w-full px-6 py-5 flex justify-between items-center focus:outline-none text-right" onclick="toggleAccordion(this)">
+                        <span class="font-bold text-lg">כמה זמן אורכת הפגישה?</span>
+                        <i class="fa-solid fa-plus accordion-icon text-brand-gold"></i>
+                    </button>
+                    <div class="accordion-content bg-black/20">
+                        <p class="px-6 pb-5 pt-2 text-gray-400 font-light text-sm leading-relaxed">
+                            בדרך כלל פגישה אורכת בין 30 ל-45 דקות. אנו מקדישים את הזמן הנדרש כדי לענות על כל שאלותיכם בנחת.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="accordion-item bg-brand-onyx rounded-lg border border-white/10 overflow-hidden">
+                    <button class="w-full px-6 py-5 flex justify-between items-center focus:outline-none text-right" onclick="toggleAccordion(this)">
+                        <span class="font-bold text-lg">האם ניתן לקיים פגישה טלפונית או בזום?</span>
+                        <i class="fa-solid fa-plus accordion-icon text-brand-gold"></i>
+                    </button>
+                    <div class="accordion-content bg-black/20">
+                        <p class="px-6 pb-5 pt-2 text-gray-400 font-light text-sm leading-relaxed">
+                            בהחלט. למרות שאנו ממליצים על פגישה פרונטלית כדי להתרשם מקרוב מהכתב והחומרים, ניתן לתאם גם פגישת ייעוץ מקיפה דרך הטלפון או שיחת וידאו לאלו המתגוררים רחוק.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-brand-onyx text-brand-platinum py-10 text-center border-t border-white/10 mt-auto relative z-10">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col items-center">
+            <h2 class="text-2xl font-serif font-black text-brand-goldLight mb-4">ספרותך תפארתך</h2>
+            <div class="flex gap-4 mb-6">
+                <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-gold hover:text-white transition-colors duration-300">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </a>
+                <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-gold hover:text-white transition-colors duration-300">
+                    <i class="fa-regular fa-envelope"></i>
+                </a>
+            </div>
+            <div class="w-24 h-[1px] bg-white/20 mb-6"></div>
+            <p class="text-sm text-gray-500 font-light">
+                © <span id="current-year"></span> ספרותך תפארתך - מכון סת"ם. כל הזכויות שמורות.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Set current year
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Initialize AOS animation library
+        AOS.init({ 
+            once: true, 
+            duration: 800,
+            offset: 50,
+            easing: 'ease-out-quart'
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('main-header');
+            if (window.scrollY > 10) {
+                header.classList.add('shadow-md');
+                header.classList.replace('bg-white/80', 'bg-white/95');
+                header.classList.replace('py-5', 'py-3');
+            } else {
+                header.classList.remove('shadow-md');
+                header.classList.replace('bg-white/95', 'bg-white/80');
+                header.classList.replace('py-3', 'py-5');
+            }
+        });
+
+        // Accordion logic for FAQ
+        function toggleAccordion(button) {
+            const item = button.parentElement;
+            
+            // Close all other open items
+            const allItems = document.querySelectorAll('.accordion-item');
+            allItems.forEach(i => {
+                if(i !== item && i.classList.contains('active')) {
+                    i.classList.remove('active');
+                }
+            });
+
+            // Toggle current item
+            item.classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
