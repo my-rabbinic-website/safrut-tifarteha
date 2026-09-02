@@ -193,8 +193,9 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@200;300;400;500;600;800&family=Frank+Ruhl+Libre:wght@300;400;500;700;900&family=Noto+Serif+Hebrew:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
-    <script>
+
+     <!-- Tמקטע זה עודכן אם לא טוב תחזיר משיחה גימיני אלדרle Fonts -->
+<script>
         tailwind.config = {
             theme: {
                 extend: {
@@ -208,6 +209,7 @@
                             gold: '#D4AF37', 
                             goldDark: '#996515',
                             goldLight: '#FDF7C3',
+                            goldHover: '#B89628',
                             dark: '#050505', 
                             cream: '#FDFBF7', 
                             border: 'rgba(212, 175, 55, 0.25)',
@@ -226,9 +228,26 @@
     </script>
 
     <style>
-        :root { --gold: #D4AF37; }
-        html { scroll-behavior: smooth; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); overflow-x: hidden; scroll-padding-top: 140px; }
-        body { background-color: #FDFBF7; -webkit-tap-highlight-color: transparent; overflow-x: hidden; }
+        :root { 
+            --gold: #D4AF37; 
+            --gold-dark: #996515;
+            --gold-light: #FDF7C3;
+        }
+        
+        html { 
+            scroll-behavior: smooth; 
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); 
+            overflow-x: hidden; 
+            scroll-padding-top: 140px; 
+        }
+        
+        body { 
+            background-color: #FDFBF7; 
+            -webkit-tap-highlight-color: transparent; 
+            overflow-x: hidden; 
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+        }
 
         /* Language Toggle Transition */
         html[dir="ltr"] { font-family: 'Assistant', sans-serif; text-align: left; }
@@ -237,29 +256,36 @@
 
         /* Global Parchment Grain Effect for Elite Authentic Feel */
         body::after {
-            content: ""; position: fixed; inset: 0; opacity: 0.045; pointer-events: none; z-index: -1;
+            content: ""; 
+            position: fixed; 
+            inset: 0; 
+            opacity: 0.04; 
+            pointer-events: none; 
+            z-index: -1;
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
         }
 
-        /* NEXT-GEN ELITE FLOATING NAVBAR (Polished with Gold Leaves Border & Blur) */
+        /* FLOATING NAVBAR POLISH */
         .glass-nav {
-            background: rgba(255, 255, 255, 0.94);
-            backdrop-filter: blur(35px) saturate(190%);
-            -webkit-backdrop-filter: blur(35px) saturate(190%);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            box-shadow: 0 10px 40px rgba(0,0,0,0.03), inset 0 0 15px rgba(255,255,255,0.9);
-            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(30px) saturate(180%);
+            -webkit-backdrop-filter: blur(30px) saturate(180%);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.04), inset 0 0 15px rgba(255,255,255,0.8);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform, background, box-shadow;
         }
-        
+
         header.scrolled {
-            background: rgba(5, 5, 5, 0.98);
+            background: rgba(5, 5, 5, 0.96);
             backdrop-filter: blur(35px) saturate(200%);
-            box-shadow: 0 25px 60px -10px rgba(0,0,0,0.3);
+            -webkit-backdrop-filter: blur(35px) saturate(200%);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
             transform: translate3d(0, 0, 0);
             border-radius: 2.5rem;
             width: calc(100% - 2.5rem);
             left: 1.25rem;
-            border: 1px solid rgba(212, 175, 55, 0.55);
+            border: 1px solid rgba(212, 175, 55, 0.45);
         }
         header.scrolled a, header.scrolled span.text-luxury-dark {
             color: #ffffff !important;
@@ -269,16 +295,18 @@
         }
         header.scrolled .gold-gradient {
             background: linear-gradient(110deg, #FDF7C3 0%, #D4AF37 50%, #FDF7C3 100%);
+            background-size: 200% auto;
             -webkit-background-clip: text;
             background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         header.scrolled .nav-link, header.scrolled button.nav-link {
-            color: rgba(255, 255, 255, 0.8) !important;
+            color: rgba(255, 255, 255, 0.85) !important;
         }
         header.scrolled .nav-link:hover, header.scrolled button.nav-link:hover {
             color: #D4AF37 !important;
         }
-        
+
         @media (max-width: 768px) {
             header.scrolled { width: 95%; left: 2.5%; }
         }
@@ -292,6 +320,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             animation: shine 8s linear infinite;
+            will-change: background-position;
         }
         @keyframes shine { to { background-position: 200% center; } }
 
@@ -313,20 +342,21 @@
             background: #ffffff;
             border: 1px solid rgba(212, 175, 55, 0.25);
             border-radius: 2rem;
-            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
             overflow: hidden; position: relative;
             display: flex; flex-direction: column; height: 100%;
+            will-change: transform, box-shadow;
         }
         .premium-card:hover {
-            transform: translate3d(0, -12px, 0);
-            border-color: rgba(212, 175, 55, 0.9);
-            box-shadow: 0 45px 85px -20px rgba(212, 175, 55, 0.35), 0 0 35px rgba(212, 175, 55, 0.15);
+            transform: translate3d(0, -10px, 0);
+            border-color: rgba(212, 175, 55, 0.85);
+            box-shadow: 0 35px 70px -15px rgba(212, 175, 55, 0.3), 0 0 30px rgba(212, 175, 55, 0.12);
             z-index: 10;
         }
         .premium-card::before {
             content: ''; position: absolute; inset: 0;
             background: radial-gradient(circle at top right, rgba(212,175,55,0.15), transparent 70%);
-            opacity: 0; transition: opacity 0.6s ease; pointer-events: none;
+            opacity: 0; transition: opacity 0.5s ease; pointer-events: none;
         }
         .premium-card:hover::before { opacity: 1; }
 
@@ -363,6 +393,7 @@
         .quick-view-overlay {
             background: rgba(5, 5, 5, 0.45);
             backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             opacity: 0;
             transition: opacity 0.4s ease;
         }
@@ -401,7 +432,7 @@
             right: 0;
             background: linear-gradient(to left, #050505 15%, transparent 100%);
         }
-        
+
         .marquee-track-container {
             display: flex;
             width: max-content;
@@ -431,7 +462,7 @@
         ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb { background: rgba(212, 175, 55, 0.65); border-radius: 10px; }
         ::-webkit-scrollbar-thumb:hover { background: rgba(212, 175, 55, 1); }
-        
+
         /* Mobile Slide Out Menu Panel */
         #mobile-menu { 
             position: fixed;
@@ -442,8 +473,9 @@
             max-width: 24rem;
             z-index: 2000;
             transform: translate3d(100%, 0, 0); 
-            transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1); 
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1); 
             overscroll-behavior: contain; 
+            will-change: transform;
         }
         html[dir="ltr"] #mobile-menu { transform: translate3d(-100%, 0, 0); right: auto; left: 0; }
         #mobile-menu.active { transform: translate3d(0, 0, 0); }
@@ -453,7 +485,7 @@
         #product-modal .modal-content { transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); transform: scale(0.96) translate3d(0, 20px, 0); }
         #product-modal.active { opacity: 1; visibility: visible; }
         #product-modal.active .modal-content { transform: scale(1) translate3d(0, 0, 0); }
-        
+
         /* Spec Sheet Grid */
         .specs-grid {
             display: grid;
@@ -469,7 +501,7 @@
             transition: border-color 0.3s ease;
         }
         .spec-item:hover { border-color: rgba(212, 175, 55, 0.6); }
-        
+
         /* Bottom Sheet for Mobile Display Adjustments */
         @media (max-width: 1024px) {
             #product-modal { align-items: flex-end; padding: 0; }
@@ -496,6 +528,7 @@
         .glowing-orb {
             position: absolute; border-radius: 50%; filter: blur(140px); opacity: 0.28;
             animation: orb-float 25s infinite alternate cubic-bezier(0.4, 0, 0.2, 1); z-index: 0; pointer-events: none;
+            will-change: transform;
         }
         @keyframes orb-float {
             0% { transform: translate3d(0, 0, 0) scale(1); }
@@ -505,9 +538,10 @@
         /* Circular Floating Action Controllers */
         .fab-container { position: fixed; bottom: 30px; right: 30px; z-index: 999; display: flex; flex-direction: column; gap: 16px; }
         html[dir="ltr"] .fab-container { right: auto; left: 30px; }
-        
+
         .whatsapp-fab, #scroll-top {
             background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
             border: 1px solid rgba(212, 175, 55, 0.4);
             width: 60px; height: 60px; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
@@ -515,7 +549,7 @@
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); color: #D4AF37;
         }
         .whatsapp-fab:hover, #scroll-top:hover { transform: scale(1.1) translate3d(0, -6px, 0); background: #D4AF37; color: white; box-shadow: 0 20px 50px rgba(212, 175, 55, 0.3); border-color: transparent; }
-        
+
         #scroll-top { opacity: 0; transform: translate3d(0, 40px, 0); pointer-events: none; }
         #scroll-top.visible { opacity: 1; transform: translate3d(0, 0, 0); pointer-events: auto; }
 
@@ -573,91 +607,93 @@
 </head>
 <body class="font-serif text-luxury-dark selection:bg-luxury-gold selection:text-white pt-[130px] md:pt-[150px]">
 
-    <!-- Sticky Upper Top Bar with Language and Currency Options -->
-    <div id="top-bar" class="fixed top-0 left-0 w-full bg-[#050505] text-white z-[1001] border-b border-luxury-gold/20 transition-transform duration-500 shadow-md">
-        <div class="max-w-[1440px] mx-auto px-6 md:px-8 py-2.5 flex flex-wrap justify-between items-center gap-4">
+<!-- Sticky Upper Top Bar with Language and Currency Optionsעודכן -->
+    <div id="top-bar" class="fixed top-0 left-0 w-full bg-gradient-to-b from-black to-[#0a0a0a] text-white z-[1001] border-b border-yellow-600/30 transition-transform duration-500 shadow-sm">
+        <div class="max-w-[1440px] mx-auto px-4 md:px-10 py-2 flex flex-wrap justify-between items-center gap-4">
             
             <!-- Global Trust Factors -->
-            <div class="hidden md:flex items-center gap-8">
-                <div class="flex items-center gap-2.5 text-[11px] uppercase tracking-[0.2em] text-gray-300 font-sans font-bold">
-                    <svg class="w-3.5 h-3.5 text-luxury-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+            <div class="hidden md:flex items-center gap-6">
+                <div class="flex items-center gap-2.5 text-[11px] uppercase tracking-widest text-gray-300 font-sans font-medium hover:text-white transition-colors cursor-default">
+                    <svg class="w-4 h-4 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
                     <span data-he="תשלום מאובטח PCI-DSS" data-en="PCI-DSS Secure Payment">תשלום מאובטח PCI-DSS</span>
                 </div>
-                <div class="w-px h-3 bg-white/20" aria-hidden="true"></div>
-                <div class="flex items-center gap-2.5 text-[11px] uppercase tracking-[0.2em] text-gray-300 font-sans font-bold">
-                    <svg class="w-3.5 h-3.5 text-luxury-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 002 2h1.5a2.5 2.5 0 012.5 2.5V17m-6 5v-1.5a2.5 2.5 0 012.5-2.5h1.5a2.5 2.5 0 012.5 2.5V22"></path></svg>
+                <div class="w-px h-4 bg-gray-700" aria-hidden="true"></div>
+                <div class="flex items-center gap-2.5 text-[11px] uppercase tracking-widest text-gray-300 font-sans font-medium hover:text-white transition-colors cursor-default">
+                    <svg class="w-4 h-4 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 002 2h1.5a2.5 2.5 0 012.5 2.5V17m-6 5v-1.5a2.5 2.5 0 012.5-2.5h1.5a2.5 2.5 0 012.5 2.5V22"></path></svg>
                     <span data-he="משלוח בינלאומי בחינם ומבוטח" data-en="Free Insured Global Shipping">משלוח בינלאומי בחינם ומבוטח</span>
                 </div>
             </div>
 
-            <!-- Language and Currency Selectors (Optimized Touch Targets for Mobile) -->
-            <div class="flex items-center gap-4 w-full md:w-auto justify-between md:justify-end">
-                <div class="flex bg-white/5 rounded-md p-1 border border-white/10 backdrop-blur-sm" aria-label="בחירת שפה">
-                    <button onclick="setLang('he')" id="lang-he" aria-label="עברית" class="px-5 py-2.5 text-[10px] sm:text-xs font-bold uppercase tracking-[0.15em] rounded transition-all active bg-luxury-gold text-[#050505] shadow-sm min-h-[38px] min-w-[38px]">עב</button>
-                    <button onclick="setLang('en')" id="lang-en" aria-label="English" class="px-5 py-2.5 text-[10px] sm:text-xs font-bold uppercase tracking-[0.15em] rounded transition-all text-gray-400 hover:text-white min-h-[38px] min-w-[38px]">EN</button>
+            <!-- Language and Currency Selectors (Optimized UI) -->
+            <div class="flex items-center gap-3 w-full md:w-auto justify-between md:justify-end">
+                <div class="flex bg-white/5 rounded-lg p-0.5 border border-white/10 backdrop-blur-md" aria-label="בחירת שפה">
+                    <button onclick="setLang('he')" id="lang-he" aria-label="עברית" class="px-4 py-1.5 text-[11px] sm:text-xs font-bold uppercase tracking-widest rounded-md transition-all duration-300 bg-gradient-to-r from-yellow-600 to-yellow-500 text-black shadow-md min-w-[46px]">עב</button>
+                    <button onclick="setLang('en')" id="lang-en" aria-label="English" class="px-4 py-1.5 text-[11px] sm:text-xs font-bold uppercase tracking-widest rounded-md transition-all duration-300 text-gray-400 hover:text-white hover:bg-white/10 min-w-[46px]">EN</button>
                 </div>
-                <div class="w-px h-3 bg-white/20 hidden md:block" aria-hidden="true"></div>
-                <div class="flex bg-white/5 rounded-md p-1 border border-white/10 backdrop-blur-sm" aria-label="בחירת מטבע">
-                    <button onclick="setCurrency('ils')" id="cur-ils" aria-label="שקלים" class="px-5 py-2.5 text-[10px] sm:text-xs font-bold uppercase tracking-[0.15em] rounded transition-all active bg-luxury-gold text-[#050505] shadow-sm min-h-[38px] min-w-[50px]">₪ ILS</button>
-                    <button onclick="setCurrency('usd')" id="cur-usd" aria-label="דולר אמריקאי" class="px-5 py-2.5 text-[10px] sm:text-xs font-bold uppercase tracking-[0.15em] rounded transition-all text-gray-400 hover:text-white min-h-[38px] min-w-[50px]">$ USD</button>
+                
+                <div class="w-px h-4 bg-gray-700 hidden md:block" aria-hidden="true"></div>
+                
+                <div class="flex bg-white/5 rounded-lg p-0.5 border border-white/10 backdrop-blur-md" aria-label="בחירת מטבע">
+                    <button onclick="setCurrency('ils')" id="cur-ils" aria-label="שקלים" class="px-4 py-1.5 text-[11px] sm:text-xs font-bold uppercase tracking-widest rounded-md transition-all duration-300 bg-gradient-to-r from-yellow-600 to-yellow-500 text-black shadow-md min-w-[58px]">₪ ILS</button>
+                    <button onclick="setCurrency('usd')" id="cur-usd" aria-label="דולר אמריקאי" class="px-4 py-1.5 text-[11px] sm:text-xs font-bold uppercase tracking-widest rounded-md transition-all duration-300 text-gray-400 hover:text-white hover:bg-white/10 min-w-[58px]">$ USD</button>
                 </div>
             </div>
 
         </div>
     </div>
 
-    <!-- MAIN BRAND HEADER -->
-    <header id="nav-header" class="fixed top-[55px] md:top-[60px] left-0 right-0 mx-auto w-full max-w-[1440px] z-[1000] glass-nav h-[75px] md:h-[90px] flex items-center rounded-b-2xl md:rounded-[2.5rem] md:w-[96%] transition-all duration-500">
+          <!-- הדרר מעודכן שיחה גמיני אלדר -->
+   <header id="nav-header" class="fixed top-[55px] md:top-[60px] left-0 right-0 mx-auto w-full max-w-[1440px] z-[1000] glass-nav h-[75px] md:h-[90px] flex items-center rounded-b-2xl md:rounded-[2.5rem] md:w-[96%] transition-all duration-500 shadow-sm backdrop-blur-md bg-white/90">
         <div class="w-full px-6 md:px-10 flex justify-between items-center">
             
             <div class="flex items-center gap-4 md:gap-8">
-                <!-- Mobile Slide Menu Trigger -->
-                <button onclick="toggleMenu(true)" class="lg:hidden p-2.5 rounded-full text-luxury-dark hover:bg-gray-100 transition-colors" aria-label="פתח תפריט">
+                <button onclick="toggleMenu(true)" class="lg:hidden p-2.5 rounded-full text-gray-800 hover:bg-gray-100 transition-colors" aria-label="פתח תפריט">
                     <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                 </button>
             </div>
 
-            <!-- Desktop Nav System -->
-            <nav class="hidden lg:flex items-center gap-4 xl:gap-6 text-[11px] xl:text-[12.5px] font-black uppercase tracking-[0.12em] xl:tracking-[0.18em] font-sans text-gray-600" aria-label="ניווט ראשי">
-                <button onclick="scrollToAndFilter('תפילין')" class="nav-link hover:text-luxury-gold transition-colors hover:-translate-y-0.5 transform duration-300 inline-block py-2" data-he="תפילין מהודרות" data-en="Designed Tefillin">תפילין</button>
-                <button onclick="scrollToAndFilter('מזוזות')" class="nav-link hover:text-luxury-gold transition-colors hover:-translate-y-0.5 transform duration-300 inline-block py-2" data-he="מזוזות קלף" data-en="Kosher Mezuzahs">מזוזות</button>
-                <button onclick="scrollToAndFilter('תורה')" class="nav-link hover:text-luxury-gold transition-colors hover:-translate-y-0.5 transform duration-300 inline-block py-2" data-he="ספרי תורה" data-en="Torah Scrolls">ספרי-תורה</button>
-                <button onclick="scrollToAndFilter('יודאיקה')" class="nav-link hover:text-luxury-gold transition-colors hover:-translate-y-0.5 transform duration-300 inline-block py-2" data-he="מוצרי יודאיקה" data-en="Judaica Items">מוצרי יודאיקה</button>
-                <button onclick="document.getElementById('process').scrollIntoView({behavior:'smooth'})" class="nav-link hover:text-luxury-gold transition-colors hover:-translate-y-0.5 transform duration-300 inline-block py-2" data-he="תהליך היצירה" data-en="The Process">תהליך היצירה</button>
-                <button onclick="document.getElementById('reviews').scrollIntoView({behavior:'smooth'})" class="nav-link hover:text-luxury-gold transition-colors hover:-translate-y-0.5 transform duration-300 inline-block py-2" data-he="המלצות גוגל" data-en="Google Reviews">המלצות מגוגל</button>
+            <nav class="hidden lg:flex items-center gap-4 xl:gap-6 text-[11px] xl:text-[13px] font-black uppercase tracking-[0.12em] xl:tracking-[0.18em] font-sans text-gray-700" aria-label="ניווט ראשי">
+                <button onclick="scrollToAndFilter('תורה')" class="nav-link hover:text-yellow-600 transition-colors hover:-translate-y-0.5 transform duration-300 inline-block py-2" data-he="ספרי תורה" data-en="Torah Scrolls">ספרי תורה</button>
+                <button onclick="scrollToAndFilter('תפילין')" class="nav-link hover:text-yellow-600 transition-colors hover:-translate-y-0.5 transform duration-300 inline-block py-2" data-he="תפילין מהודרות" data-en="Designed Tefillin">תפילין</button>
+                <button onclick="scrollToAndFilter('מזוזות')" class="nav-link hover:text-yellow-600 transition-colors hover:-translate-y-0.5 transform duration-300 inline-block py-2" data-he="מזוזות קלף" data-en="Kosher Mezuzahs">מזוזות</button>
+                <button onclick="scrollToAndFilter('מגילות')" class="nav-link hover:text-yellow-600 transition-colors hover:-translate-y-0.5 transform duration-300 inline-block py-2" data-he="מגילות" data-en="Megillot">מגילות</button>
+                <button onclick="scrollToAndFilter('יודאיקה')" class="nav-link hover:text-yellow-600 transition-colors hover:-translate-y-0.5 transform duration-300 inline-block py-2" data-he="מוצרי יודאיקה" data-en="Judaica Items">יודאיקה</button>
+                <button onclick="document.getElementById('leadership').scrollIntoView({behavior:'smooth'})" class="nav-link hover:text-yellow-600 transition-colors hover:-translate-y-0.5 transform duration-300 inline-block py-2" data-he="פיקוח הלכתי" data-en="Halachic Supervision">פיקוח הלכתי</button>
+                <button onclick="document.getElementById('process').scrollIntoView({behavior:'smooth'})" class="nav-link hover:text-yellow-600 transition-colors hover:-translate-y-0.5 transform duration-300 inline-block py-2" data-he="תהליך היצירה" data-en="The Process">תהליך היצירה</button>
+                <button onclick="document.getElementById('reviews').scrollIntoView({behavior:'smooth'})" class="nav-link hover:text-yellow-600 transition-colors hover:-translate-y-0.5 transform duration-300 inline-block py-2" data-he="המלצות גוגל" data-en="Google Reviews">המלצות</button>
             </nav>
 
-            <!-- Premium Elegant Logo -->
             <div class="flex flex-col items-end group cursor-pointer" onclick="window.scrollTo({top:0, behavior:'smooth'})" aria-label="לדף הבית" role="button" tabindex="0">
-                <span class="text-3.5xl md:text-4xl font-light font-tradition gold-gradient italic leading-none group-hover:scale-105 transition-transform duration-500 drop-shadow-md" data-he="ספרות תפארתך" data-en="Sifrut Tifarteha">ספרות תפארתך</span>
-                <span class="text-[9px] md:text-[10px] tracking-[0.4em] uppercase font-sans font-bold text-gray-500 mt-1.5">Premium Scribal Arts</span>
+                <span class="text-4xl md:text-5xl font-light font-tradition bg-gradient-to-r from-yellow-600 via-yellow-400 to-yellow-600 bg-clip-text text-transparent italic leading-none group-hover:scale-105 transition-transform duration-500 drop-shadow-lg" data-he="ספרות תפארתך" data-en="Sifrut Tifarteha">ספרות תפארתך</span>
+                <span class="text-[10px] md:text-[11px] tracking-[0.4em] uppercase font-sans font-bold text-gray-500 mt-1.5 group-hover:text-yellow-600 transition-colors duration-300">Premium Scribal Arts</span>
             </div>
         </div>
     </header>
 
-    <!-- Mobile Responsive Side Drawer (RTL/LTR Adaptive Slide-in Navigation) -->
-    <div id="mobile-overlay" onclick="toggleMenu(false)" aria-label="סגור תפריט צד" class="fixed inset-0 bg-[#050505]/95 z-[1999] hidden backdrop-blur-2xl transition-opacity duration-300"></div>
-    <div id="mobile-menu" class="bg-[#FAFAFA] flex flex-col shadow-[0_0_80px_rgba(0,0,0,0.4)] border-l border-luxury-gold/30">
-        <div class="p-8 border-b border-gray-200 flex justify-between items-center bg-white">
-            <span class="text-3xl font-light font-tradition gold-gradient italic">תפריט חנות הסת"ם</span>
-            <button onclick="toggleMenu(false)" aria-label="סגור תפריט" class="p-2.5 text-gray-500 hover:text-luxury-dark bg-gray-50 rounded-full transition-colors shadow-sm"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path></svg></button>
+    <div id="mobile-overlay" onclick="toggleMenu(false)" aria-label="סגור תפריט צד" class="fixed inset-0 bg-black/80 z-[1999] hidden backdrop-blur-sm transition-opacity duration-300"></div>
+    <div id="mobile-menu" class="bg-[#FAFAFA] flex flex-col shadow-2xl border-l border-yellow-500/30 fixed right-0 top-0 bottom-0 w-4/5 max-w-sm z-[2000] transform translate-x-full transition-transform duration-300">
+        <div class="p-6 border-b border-gray-200 flex justify-between items-center bg-white shadow-sm">
+            <span class="text-2xl font-light font-tradition bg-gradient-to-r from-yellow-600 to-yellow-400 bg-clip-text text-transparent italic">תפריט חנות הסת"ם</span>
+            <button onclick="toggleMenu(false)" aria-label="סגור תפריט" class="p-2 text-gray-500 hover:text-gray-800 bg-gray-50 rounded-full transition-colors"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path></svg></button>
         </div>
-        <div class="flex flex-col p-6 text-xl lg:text-2xl font-light font-tradition italic text-right overflow-y-auto flex-1 gap-2">
-            <button onclick="scrollToAndFilter('תורה'); toggleMenu(false)" class="w-full text-right p-4 rounded-2xl hover:bg-white hover:shadow-sm text-luxury-dark transition-all border border-transparent hover:border-luxury-gold/20 block" data-he="ספרי תורה למכירה" data-en="Torah Scrolls">ספרי תורה למכירה</button>
-            <button onclick="scrollToAndFilter('תפילין'); toggleMenu(false)" class="w-full text-right p-4 rounded-2xl hover:bg-white hover:shadow-sm text-luxury-dark transition-all border border-transparent hover:border-luxury-gold/20 block" data-he="תפילין מהודרות בנתיבות" data-en="Designed Tefillin">תפילין מהודרות בנתיבות</button>
-            <button onclick="scrollToAndFilter('מזוזות'); toggleMenu(false)" class="w-full text-right p-4 rounded-2xl hover:bg-white hover:shadow-sm text-luxury-dark transition-all border border-transparent hover:border-luxury-gold/20 block" data-he="מזוזות קלף ורכישה" data-en="Kosher Mezuzahs">מזוזות בכל הגדלים</button>
-            <button onclick="scrollToAndFilter('יודאיקה'); toggleMenu(false)" class="w-full text-right p-4 rounded-2xl hover:bg-white hover:shadow-sm text-luxury-dark transition-all border border-transparent hover:border-luxury-gold/20 block" data-he="תשמישי קדושה ויודאיקה" data-en="Judaica Items">תשמישי קדושה ויודאיקה</button>
-            <button onclick="document.getElementById('process').scrollIntoView({behavior:'smooth'}); toggleMenu(false)" class="w-full text-right p-4 rounded-2xl hover:bg-white hover:shadow-sm text-luxury-dark transition-all border border-transparent hover:border-luxury-gold/20 block text-right" data-he="תהליך היצירה" data-en="The Process">תהליך היצירה</button>
-            <button onclick="document.getElementById('leadership').scrollIntoView({behavior:'smooth'}); toggleMenu(false)" class="w-full text-right p-4 rounded-2xl hover:bg-white hover:shadow-sm text-luxury-dark transition-all border border-transparent hover:border-luxury-gold/20 block text-right" data-he="פיקוח הלכתי " data-en="Halachic Supervision">פיקוח הלכתי </button>
+        <div class="flex flex-col p-4 text-lg lg:text-xl font-light font-tradition italic text-right overflow-y-auto flex-1 gap-1">
+            <button onclick="scrollToAndFilter('תורה'); toggleMenu(false)" class="w-full text-right p-3 rounded-xl hover:bg-white hover:shadow-md text-gray-800 transition-all border border-transparent hover:border-yellow-500/30 block" data-he="ספרי תורה למכירה" data-en="Torah Scrolls">ספרי תורה למכירה</button>
+            <button onclick="scrollToAndFilter('תפילין'); toggleMenu(false)" class="w-full text-right p-3 rounded-xl hover:bg-white hover:shadow-md text-gray-800 transition-all border border-transparent hover:border-yellow-500/30 block" data-he="תפילין מהודרות בנתיבות" data-en="Designed Tefillin">תפילין מהודרות בנתיבות</button>
+            <button onclick="scrollToAndFilter('מזוזות'); toggleMenu(false)" class="w-full text-right p-3 rounded-xl hover:bg-white hover:shadow-md text-gray-800 transition-all border border-transparent hover:border-yellow-500/30 block" data-he="מזוזות קלף ורכישה" data-en="Kosher Mezuzahs">מזוזות בכל הגדלים</button>
+            <button onclick="scrollToAndFilter('מגילות'); toggleMenu(false)" class="w-full text-right p-3 rounded-xl hover:bg-white hover:shadow-md text-gray-800 transition-all border border-transparent hover:border-yellow-500/30 block" data-he="מגילות קלף" data-en="Megillot">מגילות קלף</button>
+            <button onclick="scrollToAndFilter('יודאיקה'); toggleMenu(false)" class="w-full text-right p-3 rounded-xl hover:bg-white hover:shadow-md text-gray-800 transition-all border border-transparent hover:border-yellow-500/30 block" data-he="תשמישי קדושה ויודאיקה" data-en="Judaica Items">תשמישי קדושה ויודאיקה</button>
+            <button onclick="document.getElementById('leadership').scrollIntoView({behavior:'smooth'}); toggleMenu(false)" class="w-full text-right p-3 rounded-xl hover:bg-white hover:shadow-md text-gray-800 transition-all border border-transparent hover:border-yellow-500/30 block" data-he="פיקוח הלכתי" data-en="Halachic Supervision">פיקוח הלכתי</button>
+            <button onclick="document.getElementById('process').scrollIntoView({behavior:'smooth'}); toggleMenu(false)" class="w-full text-right p-3 rounded-xl hover:bg-white hover:shadow-md text-gray-800 transition-all border border-transparent hover:border-yellow-500/30 block" data-he="תהליך היצירה" data-en="The Process">תהליך היצירה</button>
+            <button onclick="document.getElementById('reviews').scrollIntoView({behavior:'smooth'}); toggleMenu(false)" class="w-full text-right p-3 rounded-xl hover:bg-white hover:shadow-md text-gray-800 transition-all border border-transparent hover:border-yellow-500/30 block" data-he="המלצות גוגל" data-en="Reviews">המלצות לקוחות</button>
         </div>
-        <div class="p-8 bg-white border-t border-gray-200">
-            <a href="tel:0534192798" class="btn-shine flex items-center justify-center gap-3 w-full bg-[#050505] text-white py-4 rounded-xl font-bold font-sans text-[13px] uppercase tracking-[0.2em] shadow-xl hover:scale-105 transition-transform">
-                <span data-he="ייעוץ הלכתי וסת''ם מהיר" data-en="Halachic WhatsApp">ייעוץ הלכתי וסת''ם מהיר</span>
+        <div class="p-6 bg-white border-t border-gray-200">
+            <a href="tel:0534192798" class="flex items-center justify-center gap-3 w-full bg-gradient-to-r from-gray-900 to-black text-white py-4 rounded-xl font-bold font-sans text-sm uppercase tracking-widest shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-300">
+                <span data-he="ייעוץ הלכתי מהיר" data-en="Halachic WhatsApp">ייעוץ הלכתי מהיר</span>
             </a>
         </div>
     </div>
 
-    <!-- MAIN IMMERSIVE CONTAINER -->
+    <!-- MAIN IMMERSIVE CONTAINERעד כאן לא כולל מעודכן -->
     <main id="main-content">
         <h1 class="sr-only">חנות סת"ם בנתיבות | מכון סת"ם תפארתך - תפילין, מזוזות קלף, ספרי תורה ותשמישי קדושה ויודאיקה בנתיבות</h1>
 
